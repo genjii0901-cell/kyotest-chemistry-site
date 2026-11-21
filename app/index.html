@@ -796,7 +796,16 @@ function dlPdf(st,k){const f=k==='a'?st.file.replace('-booklet','-ans'):st.file;
  const h=nativeMsg('share');if(h){h.postMessage({id:++shareSeq,file:f,name});return}const a=document.createElement('a');a.href='past/'+f;a.download=name;document.body.append(a);a.click();a.remove()}
 let shareSeq=0;const shareWait={};window.__shareDone=(id,ok)=>{const f=shareWait[id];delete shareWait[id];f&&f(ok)};
 async function shareOut(text){const h=nativeMsg('share');if(h){const id=++shareSeq;return new Promise(res=>{shareWait[id]=res;h.postMessage({id,text})})}
- if(navigator.share){try{await navigator.share({text});return true}catch(e){return false}}try{await navigator.clipboard.writeText(text);toast('コピーしました。シェアでの解放はアプリか対応ブラウザで')}catch(e){}return false}
+ if(navigator.share){try{await navigator.share({text});return true}catch(e){if(e&&e.name==='AbortError')return false}}
+ return shareMenu(text)}
+/* 共有メニューが無い環境（PCなど）用：X・LINE・リンクのコピー。どれかを押して開いたら成功扱い */
+function shareMenu(text){return new Promise(res=>{const old=$('#shmenu');if(old)old.remove();
+ const m=document.createElement('div');m.className='modal';m.id='shmenu';m.style.zIndex=21;const q=encodeURIComponent(text);
+ m.innerHTML='<div class="mbox stack" style="max-width:420px"><h2>シェアする</h2><p class="lead">どれかでシェアすると開きます。</p><a class="btn pri big" id="shX" style="text-decoration:none;display:flex;align-items:center;justify-content:center;text-align:center" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?text='+q+'">X（Twitter）でシェア</a><a class="btn big" id="shL" style="text-decoration:none;display:flex;align-items:center;justify-content:center;text-align:center" target="_blank" rel="noopener" href="https://line.me/R/share?text='+q+'">LINE でシェア</a><button class="btn big" id="shC">リンクと文章をコピー</button><button class="btn" id="shN">やめる</button></div>';
+ document.body.append(m);const done=ok=>{m.remove();res(ok)};
+ m.onclick=e=>{if(e.target===m)done(false)};$('#shN').onclick=()=>done(false);
+ $('#shX').onclick=()=>setTimeout(()=>done(true),300);$('#shL').onclick=()=>setTimeout(()=>done(true),300);
+ $('#shC').onclick=async()=>{try{await navigator.clipboard.writeText(text);toast('コピーしました。SNSなどに貼ってシェアしてください');done(true)}catch(e){toast('コピーできませんでした')}}})}
 
 /* ---- 毎日のお知らせ（iOS の通知）。許可は1問解いたあとに聞く ---- */
 const NOTI=()=>nativeMsg('notify');
