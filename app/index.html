@@ -796,7 +796,7 @@ function dlPdf(st,k){const f=k==='a'?st.file.replace('-booklet','-ans'):st.file;
  const h=nativeMsg('share');if(h){h.postMessage({id:++shareSeq,file:f,name});return}const a=document.createElement('a');a.href='past/'+f;a.download=name;document.body.append(a);a.click();a.remove()}
 let shareSeq=0;const shareWait={};window.__shareDone=(id,ok)=>{const f=shareWait[id];delete shareWait[id];f&&f(ok)};
 async function shareOut(text){const h=nativeMsg('share');if(h){const id=++shareSeq;return new Promise(res=>{shareWait[id]=res;h.postMessage({id,text})})}
- if(navigator.share){try{await navigator.share({text})}catch(e){}return}try{await navigator.clipboard.writeText(text);toast('コピーしました')}catch(e){}}
+ if(navigator.share){try{await navigator.share({text});return true}catch(e){return false}}try{await navigator.clipboard.writeText(text);toast('コピーしました。シェアでの解放はアプリか対応ブラウザで')}catch(e){}return false}
 
 /* ---- 毎日のお知らせ（iOS の通知）。許可は1問解いたあとに聞く ---- */
 const NOTI=()=>nativeMsg('notify');
