@@ -535,7 +535,7 @@ function todayN(){const k=dkey();return S.hist.filter(h=>dkey(new Date(h.t))===k
 /* ---- 設問ごとの記録：最後に解いたときに合っていたか ---- */
 function subStat(){const key=S.hist.length+':'+(S.hist[0]?S.hist[0].id:'');if(subStat.k===key)return subStat.m;const M={};
  for(let i=S.hist.length-1;i>=0;i--){const h=S.hist[i];const st=setById(h.set);if(!st)continue;const G={};
-  gradeItems(scopeItems(st,h),h.ans||{}).forEach(r=>{const k=st.id+':'+r.it.q+'.'+r.it.s;(G[k]=G[k]||[]).push(r.ok)});
+  gradeItems(scopeItems(st,h),h.ans||{}).forEach(r=>{if(!r.it.boxes.some(b=>(h.ans||{})[b]!=null))return;const k=st.id+':'+r.it.q+'.'+r.it.s;(G[k]=G[k]||[]).push(r.ok)});
   Object.entries(G).forEach(([k,a])=>{const ok=a.every(Boolean);const o=M[k]=M[k]||{n:0,ok:0,last:null};o.n++;if(ok)o.ok++;o.last=ok})}
  subStat.k=key;subStat.m=M;return M}
 function fieldStat(pred){const M=subStat();const L=SUBS.filter(pred);let d=0,ok=0,n=0,okn=0;L.forEach(x=>{const o=M[x.id];if(o){d++;if(o.last)ok++;n+=o.n;okn+=o.ok}});return{t:L.length,d,ok,acc:n?Math.round(okn*100/n):null}}
