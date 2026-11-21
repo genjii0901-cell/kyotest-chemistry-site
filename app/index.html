@@ -1,0 +1,908 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>共テ化学 過去問道場</title>
+<style>
+[hidden]{display:none!important}
+:root{
+ --paper:#EEF2F4;--sheet:#fff;--ink:#16212B;--muted:#5A6672;--line:#D3DCE2;
+ --brand:#0E6E78;--brand-soft:#DDF0F1;--navy:#1F3A7A;
+ --mark:#C8324A;--mark-soft:#FBE7EA;--ok:#1F7A5A;--ok-soft:#E1F2EA;--ng:#B4372D;--ng-soft:#FBE8E5;
+ --amber:#9A6200;--amber-soft:#FBF0D9;
+ --f:"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic",sans-serif;
+ --mono:"Helvetica Neue","Hiragino Sans","Hiragino Kaku Gothic ProN",sans-serif;
+ padding-top:env(safe-area-inset-top,0px)}
+@media (prefers-color-scheme:dark){:root{--paper:#10161B;--sheet:#192229;--ink:#E5EBEF;--muted:#98A6B1;--line:#2C3A44;--brand:#4FC1CB;--brand-soft:#13343A;--navy:#93ABF2;--mark:#F06A7E;--mark-soft:#3A1D24;--ok:#5CC79B;--ok-soft:#15302A;--ng:#F08070;--ng-soft:#3A1F1B;--amber:#F2C25B;--amber-soft:#3A2F14;color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}
+button{font-family:inherit;color:inherit}
+.wrap{max-width:900px;margin:0 auto;padding:14px 16px calc(96px + env(safe-area-inset-bottom,0px))}
+header.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px;min-height:24px}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.streakp{margin-left:auto;display:flex;align-items:center;gap:6px;font-size:.8rem;color:var(--muted);white-space:nowrap}.streakp b{color:var(--ink);font-size:.95rem}.streakp svg{width:15px;height:15px;fill:#F0812E}.streakp .td{border-left:1px solid var(--line);padding-left:6px}.streakp .td.ok{color:var(--ok)}
+.brand h1{margin:0;font-size:1.45rem;font-weight:800;letter-spacing:.02em;line-height:1.2}
+.brand h1 b{color:var(--brand)}
+.brand small{display:block;font-size:.76rem;color:var(--muted)}
+nav.tabs{position:fixed;left:0;right:0;bottom:0;z-index:6;display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--sheet);border-top:1px solid var(--line);padding:4px 6px calc(4px + env(safe-area-inset-bottom,0px))}
+nav.tabs button{border:0;border-radius:10px;background:transparent;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:6px 2px;font-size:.7rem;min-height:54px;color:var(--muted);cursor:pointer}
+nav.tabs svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+nav.tabs button[aria-current="true"]{background:var(--brand-soft);color:var(--brand)}
+@media (min-width:760px){.wrap{padding-bottom:64px}nav.tabs{position:static;display:flex;border:0;padding:0;background:transparent}nav.tabs button{flex-direction:row;border:1px solid var(--line);border-radius:999px;min-height:auto;padding:6px 14px;font-size:.88rem;background:var(--sheet);color:var(--ink)}nav.tabs svg{display:none}nav.tabs button[aria-current="true"]{background:var(--ink);color:var(--sheet);border-color:var(--ink)}}
+.sheet{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:16px}
+.stack{display:flex;flex-direction:column;gap:14px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.muted{color:var(--muted)}.small{font-size:.82rem}.note{font-size:.8rem;color:var(--muted);margin:0}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+h2{font-size:1.08rem;margin:0}h3{font-size:.95rem;margin:0}
+.btn{border:1px solid var(--line);background:var(--sheet);padding:8px 14px;border-radius:8px;cursor:pointer;font-size:.9rem;min-height:42px}
+.btn.sm{min-height:34px;padding:4px 10px;font-size:.8rem}
+.btn.pri{background:var(--brand);border-color:var(--brand);color:#fff;font-weight:700}
+.btn.big{width:100%;min-height:56px;font-size:1rem}
+.btn:disabled{opacity:.45}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:var(--sheet)}
+.seg button{border:0;background:transparent;padding:5px 12px;font-size:.84rem;cursor:pointer;min-height:34px}
+.seg button[aria-pressed="true"]{background:var(--brand);color:#fff}
+.chip{display:inline-flex;align-items:center;font-size:.72rem;border:1px solid var(--line);padding:0 8px;border-radius:999px;color:var(--muted);white-space:nowrap;line-height:1.7}
+.chip.t-理論{border-color:transparent;background:#E3EAFB;color:#2A4FA8}.chip.t-無機{border-color:transparent;background:#E0F2EC;color:#1D7357}.chip.t-有機{border-color:transparent;background:#FBEBD9;color:#9A5A12}.chip.t-総合{border-color:transparent;background:#EFE5FA;color:#6B3FA8}
+@media (prefers-color-scheme:dark){.chip.t-理論{background:#1E2A47;color:#9FB8F5}.chip.t-無機{background:#163329;color:#7DD5B3}.chip.t-有機{background:#3A2A16;color:#F2BE7F}.chip.t-総合{background:#2E2343;color:#C9A8F2}}
+.meter{height:7px;background:var(--paper);border-radius:4px;overflow:hidden}.meter i{display:block;height:100%;background:var(--brand)}
+.warn{background:var(--amber-soft);border-radius:8px;padding:10px 12px;font-size:.85rem}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(80px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--sheet);padding:8px 16px;border-radius:999px;font-size:.86rem;z-index:30;max-width:90vw;text-align:center}
+input[type=text]{font:inherit;font-size:16px;border:1px solid var(--line);background:var(--sheet);color:var(--ink);border-radius:6px;padding:6px 8px;min-width:0}
+.setline{display:flex;justify-content:space-between;gap:12px;align-items:center}
+/* home */
+.yearh{font-weight:800;font-size:1.15rem;margin:4px 0 -4px}
+.sets{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}.setc{min-width:0}
+.setc{display:flex;flex-direction:column;gap:4px;text-align:left;background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:14px;cursor:pointer;font-size:.9rem}
+.setc .k{font-weight:800;font-size:1.05rem}
+.setc .b{font-size:.78rem;color:var(--muted)}
+.setc .sc{font-weight:800;color:var(--brand);font-size:1.1rem}
+.daily{display:flex;align-items:center;gap:14px;background:var(--sheet);border:1px solid var(--line);border-radius:12px;padding:12px 14px}.daily .fire{font-size:1.05rem;white-space:nowrap;display:flex;align-items:center;gap:3px}.daily .fire svg{width:24px;height:24px;fill:#F0812E}.daily .fire b{font-size:1.4rem}.daily .goal{flex:1;display:flex;flex-direction:column;gap:5px;font-size:.95rem}.daily.ok{border-color:var(--ok)}.daily.ok .meter i{background:var(--ok)}
+.tools{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tool{display:flex;gap:10px;align-items:center;text-align:left;background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:12px;cursor:pointer;font-size:.86rem;line-height:1.4}
+.tool svg{flex:none;width:34px;height:34px;fill:none;stroke:var(--brand);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.tool b{display:block;font-size:.95rem}
+.resume{border:2px solid var(--brand)}
+/* 大問リスト */
+.qrow{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px;align-items:center;padding:10px 0;border-top:1px solid var(--line)}
+.qrow:first-child{border-top:0}
+.qrow .qn{font-weight:800;width:3.4em}
+.qrow .meta{font-size:.78rem;color:var(--muted)}
+.topics{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.topic{display:flex;flex-direction:column;gap:6px;text-align:left;background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:14px;cursor:pointer}
+.topic .nm{font-weight:800;font-size:1.05rem}
+.topic .d{font-size:.76rem;color:var(--muted);line-height:1.5}
+/* 成績 */
+.tiles{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+@media (min-width:640px){.tiles{grid-template-columns:repeat(4,1fr)}}
+.tile{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:12px}
+.tile .v{font-weight:800;font-size:1.5rem;line-height:1.2}
+.tile .l{font-size:.76rem;color:var(--muted)}
+.hrow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center;padding:9px 0;border-top:1px solid var(--line);cursor:pointer}
+.hrow .s{font-weight:800}
+.trow{display:grid;grid-template-columns:4.2em minmax(0,1fr) 3.4em;gap:10px;align-items:center;font-size:.86rem}
+.rkr{display:grid;grid-template-columns:2.2em minmax(0,1fr) auto;gap:8px;padding:6px 4px;border-top:1px solid var(--line);font-size:.88rem}
+.rkr.me{background:var(--brand-soft);border-radius:6px}
+.rkno{font-weight:800;text-align:center}
+.rkscroll{max-height:320px;overflow:auto}
+/* 結果 */
+.score{display:flex;align-items:baseline;gap:8px}.score .big{font-size:2.6rem;font-weight:800;line-height:1;color:var(--brand)}
+table.rt{width:100%;border-collapse:collapse;font-size:.86rem}
+table.rt th,table.rt td{padding:6px 4px;border-bottom:1px solid var(--line);text-align:center}
+.perfect{font-size:2rem;font-weight:900;color:var(--mark);letter-spacing:.08em;animation:pf .6s cubic-bezier(.2,1.6,.4,1)}@keyframes pf{from{transform:scale(.4);opacity:0}to{transform:none;opacity:1}}
+table.rt th{font-weight:500;color:var(--muted);font-size:.76rem}
+table.rt td.l{text-align:left}
+td.okc{color:var(--ok);font-weight:800}td.ngc{color:var(--ng);font-weight:800}
+/* ===== 演習画面 ===== */
+body.in-exam{overflow:hidden}
+body.in-exam nav.tabs,body.in-exam .wrap{display:none}
+.exam{position:fixed;inset:0;z-index:8;background:var(--paper);padding-top:env(safe-area-inset-top,0px);display:flex;flex-direction:column}
+.exhead{display:flex;align-items:center;gap:6px;padding:6px 8px;background:var(--sheet);border-bottom:1px solid var(--line)}
+.exhead .ttl{flex:1;min-width:0;font-size:.84rem;line-height:1.25;overflow:hidden}
+.exhead .ttl b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.exhead .ttl span{color:var(--muted);font-size:.74rem;white-space:nowrap}
+.ib{border:1px solid var(--line);background:var(--sheet);border-radius:8px;min-width:42px;height:40px;padding:0 8px;font-size:.74rem;line-height:1.1;cursor:pointer;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:1px}
+.ib svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ib.on{background:var(--ink);color:var(--sheet);border-color:var(--ink)}
+.tmr{font-family:var(--mono);font-variant-numeric:tabular-nums;font-weight:700;font-size:.95rem;min-width:62px}
+.tmr.over{color:var(--ng);border-color:var(--ng)}.tmr.paused{opacity:.55}
+.exbody{flex:1;min-height:0;position:relative;display:flex}
+.pane{position:relative;min-height:0;overflow:auto;-webkit-overflow-scrolling:touch}
+.pdfpane{flex:1;background:#8C969E}
+@media (prefers-color-scheme:dark){.pdfpane{background:#0B0F12}}
+.pages{display:flex;flex-direction:column;gap:8px;padding:8px;margin:0 auto}
+.pg{position:relative;background:#fff;width:100%;box-shadow:0 1px 4px rgba(0,0,0,.25)}
+.clip{overflow:hidden;width:100%;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.25);flex:none}.clip .pg{box-shadow:none}
+.exam.one .scorebox{display:none}.exam.one .pdfpane{background:var(--paper)}.exam.one .pages{padding-bottom:70px}.exam.one .widebtn{background:var(--sheet);color:var(--ink);border:1px solid var(--line)}
+.widebtn{align-self:center;border:0;border-radius:999px;background:rgba(255,255,255,.92);color:#16212B;font:inherit;font-size:.82rem;font-weight:700;padding:6px 14px;cursor:pointer}
+.pg canvas.pc{position:absolute;inset:0;width:100%;height:100%;z-index:1}
+.pg .ld{position:absolute;top:40%;left:0;right:0;text-align:center;color:#999;font-size:.8rem}.pg .pno{z-index:3;position:absolute;right:6px;bottom:4px;font-size:.66rem;color:#888;font-family:var(--mono)}
+.inkcv{position:absolute;left:0;top:0;pointer-events:none;z-index:2}
+.zoomctl{position:sticky;bottom:10px;float:right;margin:-50px 10px 0 0;display:flex;gap:4px;z-index:3}
+.zoomctl button{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--sheet);font-size:1.1rem;box-shadow:0 2px 8px rgba(0,0,0,.2);cursor:pointer}
+.sheetpane{width:340px;flex:none;background:var(--sheet);border-left:1px solid var(--line);padding:10px 10px 30px}
+.msec{margin-bottom:14px}
+.msh{display:flex;gap:6px;align-items:center;padding:6px 2px;position:sticky;top:-10px;background:var(--sheet);z-index:1}
+.msh b{font-size:.95rem}
+.msh .lnk{margin-left:auto;border:0;background:none;color:var(--brand);font-size:.78rem;cursor:pointer;padding:4px}
+.mrow{display:grid;grid-template-columns:30px minmax(0,1fr);gap:4px;align-items:center;padding:3px 0;border-top:1px dashed var(--line)}
+.mrow .bn{font-family:var(--mono);font-weight:700;font-size:.82rem;text-align:center;background:var(--ink);color:var(--sheet);border-radius:4px;line-height:1.6}
+.bubs{display:grid;grid-template-columns:repeat(10,1fr);gap:2px}
+.bb{height:34px;border:0;background:none;padding:0;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.bb i{display:flex;align-items:center;justify-content:center;width:20px;height:29px;border:1.5px solid var(--mark);border-radius:50%;font-style:normal;font-family:var(--mono);font-size:.74rem;color:var(--mark)}
+.bb.sel i{background:var(--mark);color:#fff}
+.mrow.done .bb{cursor:default}
+.bb.right i{border-color:var(--ok);box-shadow:0 0 0 2px var(--ok)}
+.bb.sel.right i{background:var(--ok);border-color:var(--ok);color:#fff}
+.bb.sel.wrong i{background:var(--ng);border-color:var(--ng)}
+.mrow .res{grid-column:2;font-size:.72rem;color:var(--muted);margin-top:-2px}
+.mrow .res b.o{color:var(--ok)}.mrow .res b.x{color:var(--ng)}
+.gnote{font-size:.72rem;color:var(--muted);padding:0 0 2px 34px}
+.gradebar{padding-top:8px}
+.mpanel{display:flex;flex-direction:column;flex:none;width:340px;min-height:0;background:var(--sheet);border-left:1px solid var(--line)}
+.mpanel .sheetpane{flex:1;width:auto;border-left:0}
+.mhandle{display:none}
+@media (max-width:899px),(orientation:portrait){
+ .exbody{flex-direction:column}
+ .mpanel{width:auto;border-left:0;border-top:1px solid var(--line);height:38%;box-shadow:0 -4px 14px rgba(0,0,0,.12);padding-bottom:env(safe-area-inset-bottom,0px)}
+ .exam[data-p="fold"] .mpanel{height:auto}.exam[data-p="fold"] .sheetpane{display:none}
+ .exam[data-p="sheet"] .mpanel{height:auto;flex:1}.exam[data-p="sheet"] .pdfpane{display:none}
+ .mhandle{display:flex;align-items:center;gap:6px;padding:6px 8px;border-bottom:1px solid var(--line)}
+ .mhandle b{font-size:.95rem}.mhandle .num{font-size:.85rem;color:var(--muted)}
+ .mhandle .sp{flex:1}
+ .mhandle button{min-width:40px;height:36px;border:1px solid var(--line);background:var(--sheet);border-radius:8px;font-size:.85rem;font-weight:700;cursor:pointer;padding:0 10px}
+ .mhandle button.on{background:var(--ink);color:var(--sheet);border-color:var(--ink)}
+ .exam:not([data-p="sheet"]) .msec:not(.cur){display:none}
+ .exam:not([data-p="sheet"]) .msh,.exam:not([data-p="sheet"]) .gradebar{display:none}
+ .sheetpane{padding:6px 10px 12px}
+}
+@media (orientation:portrait) and (min-width:700px){.exam:not([data-p="sheet"]) .mpanel{height:auto;max-height:34%}.exam:not([data-p="sheet"]) .msec.cur{display:grid;grid-template-columns:1fr 1fr;column-gap:18px}.exam:not([data-p="sheet"]) .msec.cur .gnote{grid-column:1/-1}}
+@media (min-width:1100px) and (orientation:landscape){.mpanel{width:380px}}
+/* 設問1つ：マーク欄は小さく、採点ボタンをその場に出す */
+.exam.one:not([data-p="fold"]) .gradebar{display:block!important;padding:8px 0 4px}
+@media (max-width:899px),(orientation:portrait){.exam.one:not([data-p="sheet"]) .mpanel{height:auto;max-height:46%}}
+
+/* 書き込みツール */
+#inkbar{position:fixed;right:calc(8px + env(safe-area-inset-right,0px));top:50%;transform:translateY(-50%);z-index:25;display:flex;flex-direction:column;gap:4px;background:var(--sheet);border:1px solid var(--line);border-radius:16px;padding:6px;box-shadow:0 6px 24px rgba(16,24,40,.22)}
+#inkbar button{width:44px;height:40px;border-radius:10px;border:1.5px solid transparent;background:transparent;display:grid;place-items:center;font-size:.66rem;line-height:1.1;padding:0;cursor:pointer}
+#inkbar button.on{background:var(--brand-soft);border-color:var(--brand)}
+#inkbar hr{border:0;border-top:1px solid var(--line);margin:2px 4px;width:36px}
+#inkbar .dot{width:18px;height:18px;border-radius:50%}
+body.inkbarH #inkbar{flex-direction:row;align-items:center;top:auto;left:50%;right:auto;transform:translateX(-50%);padding:3px 5px;gap:1px;border-radius:999px;max-width:calc(100% - 16px);background:color-mix(in srgb,var(--sheet) 88%,transparent);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+body.inkbarH #inkbar button{width:38px;height:38px;border-radius:999px}body.inkbarH #inkbar hr{width:0;height:22px;border-top:0;border-left:1px solid var(--line);margin:0 3px}
+#inkbar button{color:var(--ink)}#inkbar svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}#inkbar .done{width:auto!important;white-space:nowrap;padding:0 10px!important;font-size:.8rem!important;font-weight:700;color:var(--brand)}
+body.inkbarH .pages{padding-bottom:64px}body.inkbarH .zoomctl{display:none}
+body.inking .frank{display:flex;align-items:center;gap:10px;width:100%;padding:10px 4px;border:0;border-top:1px solid var(--line);background:none;color:var(--ink);font:inherit;cursor:pointer;text-align:left}.frank .frs{flex:1;display:flex;align-items:center;gap:8px}
+.weakb{border:1px solid var(--line);background:var(--sheet);color:var(--muted);border-radius:999px;font:inherit;font-size:.74rem;padding:2px 9px;margin-left:6px;cursor:pointer;white-space:nowrap}.weakb.on,.mhandle .weakb.on{color:#B7791F;border-color:#E9B949;background:#FFF6DC}.mhandle .weakb{width:auto;height:auto}
+.wkst{color:#B7791F;font-size:.74rem;font-weight:700}
+.fixnote{margin:6px 8px;padding:8px 10px;border-radius:10px;background:#fff6dc;border:1px solid #f0d58a;color:#5a4300;font-size:13px;line-height:1.5}
+.frgo{font-weight:700;color:var(--brand);white-space:nowrap}
+.rankbtn{display:flex;align-items:center;gap:10px;width:100%;padding:14px;border:0;border-radius:12px;background:linear-gradient(120deg,#1F2F66,#2A5BC4);color:#fff;font:inherit;cursor:pointer;text-align:left}.rankbtn>span:first-child{flex:1;display:flex;flex-direction:column}.rankbtn small{opacity:.85;font-size:.78rem}.rankbtn .frgo{background:#fff;color:#1F2F66;border-radius:999px;padding:6px 12px}
+#inkbar .hl{width:22px;height:10px;border-radius:3px;background:#F5C518;opacity:.75}
+/* モーダル（周期表・計算用紙） */
+.modal{position:fixed;inset:0;z-index:20;background:rgba(10,16,22,.45);display:flex;align-items:flex-end;justify-content:center}
+@media (min-width:760px){.modal{align-items:center}}
+.mbox{background:var(--sheet);width:100%;max-width:1000px;max-height:calc(100% - env(safe-area-inset-top,0px) - 20px);overflow:auto;border-radius:16px 16px 0 0;padding:12px 14px calc(16px + env(safe-area-inset-bottom,0px))}
+@media (min-width:760px){.mbox{border-radius:16px;max-height:92%}}
+.mhead{display:flex;align-items:center;gap:8px;position:sticky;top:-12px;background:var(--sheet);padding:4px 0 8px;z-index:2}
+.mhead h2{flex:1}
+.ptwrap{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px}
+.pt{display:grid;grid-template-columns:repeat(18,minmax(38px,1fr));gap:2px;min-width:700px}
+.el{border:0;border-radius:4px;padding:2px 1px;text-align:center;line-height:1.1;cursor:pointer;background:#EEF1F4;color:#16212B;min-height:46px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.el .z{font-size:.56rem;opacity:.7}.el .s{font-weight:800;font-size:.95rem}.el .m{font-size:.54rem;font-family:var(--mono)}
+.el.nm{background:#DCE9FB}.el.tr{background:#FBEBCF}.el.ng{background:#E9DEFA}.el.hg{background:#DDF1EA}
+.el.ph{background:transparent;border:1px dashed #AAB4BD;color:var(--muted);font-size:.6rem}
+.el.on{outline:3px solid var(--mark)}
+.el .gas{color:#2A62C9}.el .liq{color:#C8324A}
+.gh{font-size:.6rem;text-align:center;color:var(--muted);align-self:end}
+.ptinfo{min-height:52px;margin:8px 0;padding:8px 12px;border-radius:8px;background:var(--brand-soft);font-size:.9rem}
+.ptinfo b{font-size:1.2rem}
+.pthint{display:none}@media (max-width:760px){.pthint{display:block;margin-bottom:4px}}.legend{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:.72rem;color:var(--muted);margin:4px 0}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-2px;margin-right:3px}
+.qa{display:grid;grid-template-columns:repeat(auto-fill,minmax(84px,1fr));gap:6px}
+.qa div{border:1px solid var(--line);border-radius:6px;padding:4px 6px;font-size:.84rem;display:flex;justify-content:space-between;gap:4px}
+.qa b{font-weight:800}
+.consts{display:grid;grid-template-columns:1fr;gap:4px;font-size:.86rem}
+@media (min-width:640px){.consts{grid-template-columns:1fr 1fr}}
+.consts div{border-bottom:1px solid var(--line);padding:4px 0}
+.memo{position:fixed;inset:0;z-index:18;background:var(--sheet);display:flex;flex-direction:column;padding-top:env(safe-area-inset-top,0px)}
+.memopad{flex:1;position:relative;overflow:hidden;touch-action:none;background-color:#FFFEF8;background-image:linear-gradient(#E4E9EE 1px,transparent 1px),linear-gradient(90deg,#E4E9EE 1px,transparent 1px);background-size:24px 24px}
+@media (prefers-color-scheme:dark){.memopad{background-color:#161C21;background-image:linear-gradient(#25303A 1px,transparent 1px),linear-gradient(90deg,#25303A 1px,transparent 1px)}}
+body.inking .pg{touch-action:none}
+html{touch-action:manipulation}
+.expl,.sx{border:1px solid var(--line);border-radius:8px;margin:6px 0;background:var(--sheet)}
+.expl summary,.sx summary{list-style:none;display:flex;gap:8px;align-items:center;padding:8px 10px;cursor:pointer;font-size:.88rem}.expl summary::-webkit-details-marker,.sx summary::-webkit-details-marker{display:none}
+.expl summary::after,.sx summary::after{content:'▾';margin-left:auto;color:var(--muted)}.expl[open] summary::after,.sx[open] summary::after{content:'▴'}
+.expl .eans{font-size:.82rem}.ebody{padding:0 12px 12px;display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.etext{line-height:1.8;font-size:.92rem;white-space:normal}.erow{font-size:.86rem}
+.slist{display:flex;flex-direction:column}.sx.ng{border-color:var(--ng)}.sx .sxt{display:flex;flex-direction:column;line-height:1.35}.sx .sxa{font-size:.82rem;margin-left:auto}.sx summary::after{margin-left:6px}
+.stepv{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:1.5rem;font-weight:900;padding:6px 0 8px}.stepv.ok{color:var(--ok)}.stepv.ng{color:var(--ng)}.stepv .small{font-size:.78rem;font-weight:500;color:var(--muted)}
+.explcard{background:var(--sheet);border-radius:10px;padding:14px;border:1px solid var(--line);display:flex;flex-direction:column;gap:8px;color:var(--ink)}
+/* v1.0 追加：設問・分野・ランク戦 */
+.lead{margin:0;font-size:.95rem;line-height:1.65}
+.pbar{display:flex;height:7px;background:var(--paper);border-radius:4px;overflow:hidden}.pbar i{display:block;height:100%}.pbar i.ok{background:var(--ok)}.pbar i.ng{background:var(--ng);opacity:.75}
+.setc .info{font-size:.8rem}.setc .foot{display:flex;justify-content:space-between;align-items:baseline;gap:6px;font-size:.8rem;flex-wrap:wrap}.setc .foot .sc{font-size:.95rem;white-space:nowrap}.setc .foot>span{white-space:nowrap}.setc .pbar{margin:4px 0 2px}
+.rankcard{display:flex;align-items:center;gap:12px;text-align:left;width:100%;background:linear-gradient(135deg,#1B2B57,#2A62C9);color:#fff;border:0;border-radius:14px;padding:16px;cursor:pointer;font:inherit}
+.rankcard .rkt{flex:1;display:flex;flex-direction:column;gap:4px;min-width:0}.rankcard .rkl{font-size:.82rem;opacity:.9}.rankcard .rkv{display:flex;align-items:center;gap:8px}.rankcard .rkv b{font-size:1.6rem;line-height:1.1}.rankcard .rks{font-size:.78rem;opacity:.85}
+.rankcard .rkbar{height:6px;background:rgba(255,255,255,.25);border-radius:3px;overflow:hidden}.rankcard .rkbar i{display:block;height:100%;background:#FFD54A}
+.rankcard .rkgo{background:#fff;color:#1B2B57;font-weight:800;border-radius:999px;padding:8px 14px;white-space:nowrap;font-size:.9rem}
+.tierb{display:inline-block;font-size:.74rem;font-weight:800;padding:1px 9px;border-radius:999px;line-height:1.6}
+.tb0{color:#8A5A2B;background:#F3E4D4}.tb1{color:#56616D;background:#E4E8EE}.tb2{color:#8A6700;background:#FBEFC2}.tb3{color:#1C7772;background:#D6F1EE}.tb4{color:#2A62C9;background:#DDE8FB}.tb5{color:#7A3FC0;background:#ECE0FA}.tb6{color:#B0263A;background:#FBDDE1}
+.facts{display:flex;flex-wrap:wrap;gap:6px}.facts span{background:var(--paper);border-radius:6px;padding:2px 10px;font-size:.85rem;font-weight:700}.facts .best{background:var(--brand-soft);color:var(--brand)}
+.hint{margin:4px 0 6px;font-size:.84rem}
+.qblk{border-top:1px solid var(--line);padding:4px 0 10px}.qblk .qrow{border-top:0}.qm{font-size:.8rem;margin-left:4px}
+.subs{display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:6px}
+.subb{display:flex;flex-direction:column;align-items:flex-start;gap:0;text-align:left;border:1px solid var(--line);background:var(--sheet);color:var(--ink);border-radius:8px;padding:6px 9px;cursor:pointer;font:inherit;line-height:1.35}
+.subb b{font-size:.92rem}.subb span{font-size:.74rem}.subb.ok{border-color:var(--ok);background:var(--ok-soft)}.subb.ng{border-color:var(--ng);background:var(--ng-soft)}
+.pageh{font-size:1.25rem}
+.bigf{display:grid;gap:10px}@media (min-width:640px){.bigf{grid-template-columns:repeat(3,1fr)}}
+.bigc{display:flex;flex-direction:column;gap:8px;text-align:left;background:var(--sheet);color:var(--ink);border:1px solid var(--line);border-radius:12px;padding:14px;cursor:pointer;font:inherit}
+.bigc .bh,.fhead{display:flex;justify-content:space-between;align-items:center;gap:8px}.bigc .bh .chip{font-size:1rem;padding:2px 12px}.bigc .bd{font-size:.86rem;line-height:1.5}
+.bigc .bf{display:flex;gap:12px;font-size:.82rem;align-items:center}.bigc .bf .chev{margin-left:auto}
+.chev{font-size:1.3rem;color:var(--muted);line-height:1}
+.tlist{display:flex;flex-direction:column;background:var(--sheet);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.srow{display:flex;align-items:center;gap:12px;padding:13px 14px;border:0;border-top:1px solid var(--line);background:none;color:var(--ink);text-align:left;cursor:pointer;font:inherit}.srow:first-child{border-top:0}
+.srow .sbody{flex:1;display:flex;flex-direction:column;gap:6px;min-width:0}.srow .snm{font-weight:700}.srow .scnt{display:flex;flex-direction:column;align-items:flex-end;font-size:.86rem;line-height:1.3}
+.yg{font-weight:800;font-size:.9rem;margin:10px 0 2px}.yg:first-child{margin-top:0}
+.qline{display:flex;align-items:center;gap:10px;width:100%;padding:9px 2px;border:0;border-top:1px solid var(--line);background:none;color:var(--ink);text-align:left;cursor:pointer;font:inherit}.qline>span:nth-child(2){flex:1}
+.mk{width:1.6em;height:1.6em;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:800;background:var(--paper);font-size:.85rem}.mk.ok{background:var(--ok-soft);color:var(--ok)}.mk.ng{background:var(--ng-soft);color:var(--ng)}
+.verdict{text-align:center;align-items:stretch}.verdict.ok{border:2px solid var(--ok)}.verdict.ng{border:2px solid var(--ng)}
+.verdict .vsub{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;align-items:center;font-size:.9rem}.verdict .vbig{font-size:2rem;font-weight:900}.verdict.ok .vbig{color:var(--ok)}.verdict.ng .vbig{color:var(--ng)}.verdict .row{justify-content:center}
+.ratebox{display:flex;justify-content:center;align-items:center;gap:10px;background:var(--paper);border-radius:10px;padding:10px;flex-wrap:wrap}.ratebox b{font-size:1.5rem}.ratebox .up{color:var(--ok);font-weight:800}.ratebox .dn{color:var(--ng);font-weight:800}
+.sheet.ratebox{background:var(--sheet)}
+.promo{font-weight:900;font-size:1.15rem;color:#8A6700;background:#FBEFC2;border-radius:10px;padding:8px}
+.rkbar2{flex-basis:100%;height:6px;background:var(--line);border-radius:3px;overflow:hidden}.rkbar2 i{display:block;height:100%;background:#E2B100}
+.fcard{display:flex;flex-direction:column;gap:8px;text-align:left;color:var(--ink);font:inherit;cursor:pointer;width:100%}.fcard>span{width:100%;box-sizing:border-box}.bigc>span,.srow .sbody>span{width:100%}
+.frow{display:grid;grid-template-columns:minmax(0,9em) minmax(0,1fr) 3.2em;gap:10px;align-items:center;font-size:.86rem;padding:3px 0}
+.dlrow{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px 0;border-top:1px solid var(--line)}
+#inkbar .wl{display:block;width:18px;margin:0 auto 2px;background:currentColor;border-radius:3px}
+.chip.beta{font-size:.68rem;padding:0 7px;vertical-align:middle;background:#FBEFC2;color:#8A6700;font-weight:700}
+.setc.lock{opacity:.8;border-style:dashed}
+details.sheet summary{cursor:pointer;padding:2px 0}
+details.sheet[open] summary{margin-bottom:8px}
+.tip{display:flex;gap:8px;align-items:flex-start;background:var(--sheet);border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:10px;padding:10px 12px;font-size:.88rem;line-height:1.6}
+.tipx{border:0;background:none;font-size:1rem;color:inherit;opacity:.5;padding:0 4px;margin-left:auto;cursor:pointer}
+.rkhead{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.linkb{border:0;background:none;color:var(--brand);font-size:.85rem;padding:4px 0;cursor:pointer;max-width:55%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rkme{display:flex;gap:16px;align-items:center;background:var(--brand-soft);border-radius:12px;padding:14px 16px}
+.rkpos{display:flex;align-items:baseline;gap:2px;white-space:nowrap}.rkpos b{font-size:2.2rem;line-height:1;color:var(--brand)}.rkpos span{font-weight:700}.rkpos small{color:var(--muted);margin-left:6px;font-size:.8rem}
+.rkmine{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px}.rkmine b{font-size:1.15rem}
+.rbar{display:block;height:8px;border-radius:99px;background:var(--line);overflow:hidden}.rbar i{display:block;height:100%;background:var(--brand);border-radius:99px}
+.rklist{display:flex;flex-direction:column;gap:2px;margin-top:4px}
+.rk2{display:grid;grid-template-columns:1.8em minmax(0,7em) minmax(0,1fr) 3.6em;gap:10px;align-items:center;padding:7px 6px;border-radius:8px;font-size:.9rem}
+.rk2 .rbar{height:6px}.rk2.me{background:var(--brand-soft);font-weight:700}.rkn{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.rkn small{font-weight:400;color:var(--muted)}
+.rkval{text-align:right;white-space:nowrap;font-weight:700}.rkval small{font-size:.75rem;font-weight:400;color:var(--muted);margin-left:2px}
+.rkcard .seg{display:flex;width:100%}.rkcard .seg button{flex:1;padding:6px 4px}
+.rkpos{min-width:4.6em;justify-content:center}
+.rkmine b small{font-size:.8rem;font-weight:400;color:var(--muted);margin-left:3px}
+.rkno{font-weight:800;text-align:center}.rkno.t1{color:#C9A227}.rkno.t2{color:#8E9AA6}.rkno.t3{color:#B87333}
+.rkgap{text-align:center;color:var(--muted);line-height:1}
+.tiles.tiles3{grid-template-columns:repeat(3,1fr)}.tile .v small{font-size:.8rem}
+.fbig{width:100%;background:none;border:0;padding:6px 0;text-align:left;color:inherit;font:inherit;cursor:pointer}
+.frow.fbig{grid-template-columns:4.4em minmax(0,1fr) 3.2em;padding:8px 0}
+</style></head><body>
+<div class="wrap">
+ <header class="top">
+  <h1 class="vh">共テ化学 過去問道場</h1><div class="streakp" id="streakP"></div>
+  <nav class="tabs" id="tabs">
+   <button data-v="home"><svg viewBox="0 0 24 24"><path d="M4 4h11l5 5v11H4z"/><path d="M15 4v5h5"/><path d="M8 13h8M8 17h5"/></svg>過去問</button>
+   <button data-v="topic"><svg viewBox="0 0 24 24"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-9V3"/><path d="M7 15h10"/></svg>分野別</button>
+   <button data-v="stats"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>成績</button>
+   <button data-v="settings"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>マイページ</button>
+  </nav>
+ </header>
+ <main id="app"></main>
+</div>
+<div id="examRoot"></div>
+<div class="toast" id="toast" hidden></div>
+<script>
+'use strict';
+/* ================= 収録データ（正解・配点は大学入試センター公表の正解表どおり） =================
+ 書式: 「大問.設問」のあと「解答番号=正解/配点」。13-14=1-3 は順序を問わず両方正解で得点、18+19+20=8+0+4 は全部正解で得点 */
+const SETS=[
+ {id:'k26',sub:'1.1@1:0.437:r1 1.2@2:0.121:r3 1.3@2:0.395:r3 1.4@3:0.121:r1 1.5@5:0.121:r2 2.1@7:0.176:r4 2.2@7:0.505:r5 2.3@8:0.121:r6 2.4@9:0.121:r7 3.1@12:0.176:i1 3.2@12:0.313:i1 3.3@13:0.121:i2 3.4@14:0.121:i3 3.5@15:0.121:i4 4.1@18:0.176:o4 4.2@19:0.121:o5 4.3@20:0.121:o5 4.4@21:0.121:o6 4.5@22:0.121:o6 5.1@24:0.203:i3 5.2@26:0.121:o7 5.3@28:0.121:o2',y:2026,kind:'本試験',file:'k26-booklet.pdf',pages:[1,7,12,18,24],tp:['理論','理論','無機','有機','総合'],
+  key:'1.1 1=2/3 1.2 2=3/3 1.3 3=3/3 1.4 4=1/3 1.5 5=3/4 6=2/4 2.1 7=3/3 2.2 8=3/4 2.3 9=1/4 2.4 10=4/3 11=2/3 12=2/3 3.1 13=1/3 3.2 14=2/3 3.3 15=1/3 3.4 16=5/3 3.5 17=3/4 18=4/4 4.1 19=1/3 4.2 20=5/4 4.3 21=3/2 22=1/1 4.4 23=4/4 4.5 24=6/3 25=3/1 26=2/1 27=4/1 5.1 28=3/3 29=4/3 5.2 30=5/3 31=5/4 5.3 32=2/3 33=8/4'},
+ {id:'k26t',sub:'1.1@1:0.491:r1 1.2@2:0.121:r3 1.3@3:0.121:r3 1.4@4:0.121:r2 1.5@6:0.121:r2 2.1@8:0.176:r6 2.2@8:0.423:r7 2.3@9:0.121:r6 2.4@10:0.121:r6 3.1@13:0.176:i5 3.2@13:0.437:i1 3.3@14:0.121:i2 3.4@15:0.121:i6 4.1@17:0.176:o1 4.2@18:0.121:o4 4.3@19:0.121:o4 4.4@21:0.121:o6 5.1@23:0.231:i3 5.2@23:0.533:i4 5.3@24:0.121:r2 5.4@25:0.121:o7',y:2026,kind:'追試験',file:'k26t-booklet.pdf',pages:[1,8,13,17,23],tp:['理論','理論','無機','有機','総合'],
+  key:'1.1 1=2/3 1.2 2=5/3 1.3 3=1/3 1.4 4=3/3 1.5 5=1/4 6=3/4 2.1 7=1/3 2.2 8=2/3 2.3 9=2/4 2.4 10=4/3 11=2/3 12=2/4 3.1 13=2/3 3.2 14=4/3 3.3 15=5/3 3.4 16=4/4 17=1/3 18=8/4 4.1 19=4/3 20=4/2 4.2 21=4/3 4.3 22=1/2 23=5/2 24=2/2 25=4/3 4.4 26=3/3 5.1 27=4/3 5.2 28=2/3 5.3 29=3/4 5.4 30=1/3 31=2/3 32=5/4'},
+ {id:'k25',sub:'1.1@2:0.382:r1 1.2@3:0.121:r2 1.3@4:0.121:r3 1.4@5:0.121:r3 1.5@6:0.121:r3 2.1@9:0.176:r4 2.2@9:0.505:r5 2.3@10:0.121:r7 2.4@11:0.121:r6 3.1@15:0.176:i3 3.2@15:0.478:i1 3.3@16:0.121:i5 3.4@17:0.121:i1 4.1@20:0.176:o2 4.2@21:0.121:o5 4.3@22:0.121:o6 4.4@23:0.121:o1 5.1@26:0.395:o1 5.2@28:0.121:o7 5.3@30:0.121:i3 6.1@35:0.45:o1 6.2@37:0.121:o7 6.3@39:0.121:i3',y:2025,kind:'本試験',file:'k25-booklet.pdf',pages:[2,9,15,20,26,35],tp:['理論','理論','無機','有機','総合','総合'],
+  key:'1.1 1=2/3 1.2 2=1/3 1.3 3=5/4 1.4 4=2/3 1.5 5=1/3 6=1/4 2.1 7=3/3 2.2 8=2/3 2.3 9=4/4 2.4 10=5/3 11=3/4 12=4/3 3.1 13=2/3 3.2 14=3/3 3.3 15=2/3 3.4 16=3/3 17=5/4 18+19+20=8+0+4/4 4.1 21=2/3 4.2 22=5/4 4.3 23=4/3 4.4 24=5/3 25=6/1 26=1/1 27=9/1 28=3/4 5.1 29=3/3 5.2 30=4/4 5.3 31=4/3 32=1/3 33=1/4 34=3/3 6.1 35=3/3 6.2 36=4/4 6.3 37=4/3 38=1/3 39=6/4 40=3/3'},
+ {id:'k25t',sub:'1.1@2:0.382:r1 1.2@3:0.121:r1 1.3@4:0.121:r2 1.4@6:0.121:r3 2.1@8:0.176:i7 2.2@8:0.395:i1 2.3@9:0.121:i2 2.4@11:0.121:i6 3.1@15:0.176:o1 3.2@16:0.121:o1 3.3@17:0.121:o7 3.4@18:0.121:o2 3.5@19:0.121:o3 4.1@23:0.203:i2 4.2@25:0.121:i3 4.3@26:0.121:o4 5.1@32:0.286:r4 5.2@33:0.121:r7 5.3@34:0.121:r6 5.4@36:0.121:r5 6.1@39:0.34:r4 6.2@40:0.121:r7 6.3@41:0.121:r6 6.4@43:0.121:r5',y:2025,kind:'追試験',file:'k25t-booklet.pdf',pages:[2,8,15,23,32,39],tp:['理論','無機','有機','総合','総合','総合'],
+  key:'1.1 1=2/3 1.2 2=2/3 1.3 3=2/4 1.4 4=4/3 5=3/3 6=1/4 2.1 7=4/3 2.2 8=3/3 2.3 9=7/3 2.4 10=3/3 11=5/4 12=1/4 3.1 13=2/3 3.2 14=5/4 3.3 15=1/3 3.4 16=5/3 3.5 17=3/3 18=4/4 4.1 19=3/2 20+21=5+2/3 22=5/3 4.2 23=1/3 4.3 24=3/3 25=4/3 26=4/3 5.1 27=3/3 5.2 28=4/4 5.3 29=3/3 30=2/3 5.4 31=2/3 32=6/4 6.1 33=5/3 6.2 34=4/4 6.3 35=3/3 36=2/3 6.4 37=2/3 38=6/4'},
+ {id:'k24',sub:'1.1@1:0.491:r1 1.2@2:0.121:r2 1.3@3:0.121:r3 1.4@4:0.121:r2 2.1@7:0.176:r4 2.2@8:0.121:r6 2.3@9:0.121:r5 2.4@10:0.121:r7 3.1@14:0.176:i7 3.2@14:0.533:i1 3.3@15:0.121:i6 3.4@16:0.121:i6 4.1@19:0.176:o2 4.2@19:0.579:o7 4.3@20:0.121:o6 4.4@21:0.121:o4 5.1@26:0:r1 5.2@26:0:r1 5.3@29:0.121:r1',y:2024,kind:'本試験',file:'k24-booklet.pdf',pages:[1,7,14,19,26],tp:['理論','理論','無機','有機','総合'],
+  key:'1.1 1=4/3 1.2 2=1/4 1.3 3=4/3 1.4 4=4/3 5=3/3 6=5/4 2.1 7=1/3 2.2 8=3/3 2.3 9=4/3 2.4 10=4/4 11=2/4 12=4/3 3.1 13-14=1-3/4 3.2 15=4/3 3.3 16=3/2 17=4/2 3.4 18=3/3 19=5/3 20=2/3 4.1 21=3/4 4.2 22=1/3 4.3 23=7/4 4.4 24=2/3 25=2/3 26=5/3 5.1 27=4/4 5.2 28=3/4 5.3 29=4/4 30=2/4 31=1/4'},
+ {id:'k24t',sub:'1.1@1:0.491:r7 1.2@2:0.121:r1 1.3@2:0.533:r2 1.4@3:0.121:r3 2.1@5:0.176:r6 2.2@6:0.121:r6 2.3@6:0.478:r6 2.4@7:0.121:r5 3.1@10:0.176:i1 3.2@11:0.121:i4 3.3@12:0.121:i3 4.1@15:0.176:o4 4.2@16:0.121:o7 4.3@17:0.121:o5 4.4@19:0.121:o3 5.1@21:0:o7 5.2@21:0:o6 5.3@21:0:o7',y:2024,kind:'追試験',file:'k24t-booklet.pdf',pages:[1,5,10,15,21],tp:['理論','理論','無機','有機','総合'],
+  key:'1.1 1=2/3 1.2 2=2/3 1.3 3=3/4 1.4 4=4/3 5=3/3 6=5/4 2.1 7=3/3 2.2 8=7/3 2.3 9=2/4 2.4 10=4/3 11=1/3 12=1/4 3.1 13=8/4 3.2 14=3/4 3.3 15=3/4 16=2/4 17=5/4 4.1 18=5/3 4.2 19=4/3 4.3 20=3/3 21=3/4 4.4 22=2/3 23=1/4 5.1 24=3/4 5.2 25=4/4 26=1/4 5.3 27=3/4 28=4/4'},
+ {id:'k23',sub:'1.1@1:0.545:r1 1.2@2:0.121:r2 1.3@3:0.121:r2 1.4@4:0.121:r1 2.1@7:0.176:r4 2.2@7:0.483:r5 2.3@8:0.476:r6 2.4@9:0.121:r6 3.1@12:0.176:i1 3.2@13:0.121:i4 3.3@14:0.121:i2 4.1@16:0.176:o2 4.2@16:0.589:o4 4.3@17:0.121:o7 4.4@18:0.121:o3 5.1@21:0.119:i1 5.2@22:0.34:r7 5.3@23:0.121:i1',y:2023,kind:'本試験',file:'k23-booklet.pdf',pages:[1, 7, 12, 16, 21],tp:['理論','理論','無機','有機','総合'],
+  key:'1.1 1=3/3 1.2 2=6/3 1.3 3=2/4 1.4 4=2/2 5=1/2 6=2/3 7+8=2+1/3 2.1 9=6/3 2.2 10~11=3~4/4 2.3 12=4/4 2.4 13=4/3 14=6/3 15=5/3 3.1 16=4/4 3.2 17-18=3-5/4 3.3 19=5/2 20=2/2 21=3/4 22=4/4 4.1 23=2/3 4.2 24=2/4 4.3 25=4/4 4.4 26+27+28=0+2+0/3 29=3/3 30=4/3 5.1 31=2/4 32=1/4 5.2 33=3/4 5.3 34=3/4 35=4/4'},
+ {id:'k23t',sub:'1.1@1:0.491:r1 1.2@2:0.121:r2 1.3@2:0.49:r3 1.4@3:0.121:r2 1.5@4:0.121:r3 2.1@6:0.176:r4 2.2@7:0.121:r5 2.3@8:0.121:r7 2.4@9:0.121:r4 3.1@13:0.176:i1 3.2@13:0.423:i5 3.3@14:0.121:i3 3.4@15:0.121:i3 4.1@17:0.176:o1 4.2@17:0.507:o4 4.3@18:0.121:o7 4.4@19:0.121:o2 5.1@21:0.119:o7 5.2@23:0.121:o7 5.3@23:0.492:r3 5.4@24:0.121:r3',y:2023,kind:'追試験',file:'k23t-booklet.pdf',pages:[1, 6, 13, 17, 21],tp:['理論','理論','無機','有機','総合'],
+  key:'1.1 1=4/3 1.2 2=3/3 1.3 3=3/3 1.4 4=1/3 1.5 5=2/4 6=4/4 2.1 7=4/4 2.2 8=4/4 2.3 9=2/4 2.4 10=2/4 11=3/4 3.1 12=3/4 3.2 13-14=3-5/4 3.3 15=3/4 3.4 16+17=4+2/4 18=4/4 4.1 19=3/3 4.2 20=2/3 4.3 21=5/4 4.4 22=4/2 23=1/4 24=1/4 5.1 25=4/4 5.2 26=2/4 5.3 27=1/4 5.4 28+29+30=2+5+3/4 31=5/4'},
+ {id:'k22',sub:'1.1@1:0.518:r1 1.2@2:0.121:r1 1.3@3:0.121:r2 1.4@4:0.121:r1 1.5@5:0.121:r3 2.1@7:0.176:r4 2.2@7:0.395:r7 2.3@8:0.121:r6 2.4@9:0.121:r4 3.1@11:0.176:i2 3.2@12:0.121:i2 3.3@13:0.121:i6 4.1@15:0.176:o1 4.2@15:0.477:o4 4.3@16:0.121:o7 4.4@17:0.121:o2 5.1@20:0.119:o1 5.2@21:0.121:o5',y:2022,kind:'本試験',file:'k22-booklet.pdf',pages:[1, 7, 11, 15, 20],tp:['理論','理論','無機','有機','総合'],
+  key:'1.1 1=2/3 1.2 2=2/3 1.3 3=4/4 1.4 4=4/3 1.5 5=2/3 6=3/4 2.1 7=3/3 2.2 8=3/3 2.3 9=1/3 2.4 10=4/4 11=4/3 12=4/4 3.1 13=3/4 3.2 14=1/4 3.3 15=5/4 16=1/4 17=2/4 4.1 18=4/3 4.2 19=2/2 20=2/2 4.3 21=5/4 4.4 22=2/2 23=5/3 24=4/4,3:2 5.1 25=3/4 5.2 26=4/4 27=3/4 28+29+30=3+2+8/4 31+32+33=2+5+5/4'},
+ {id:'k22t',sub:'1.1@1:0.491:r1 1.2@2:0.121:r2 1.3@3:0.121:r2 1.4@4:0.121:r3 2.1@6:0.176:r6 2.2@6:0.532:r5 2.3@7:0.121:r6 2.4@8:0.121:r6 3.1@10:0.176:i1 3.2@11:0.121:i7 3.3@12:0.121:i2 4.1@14:0.176:o2 4.2@15:0.121:o5 4.3@15:0.284:o7 4.4@16:0.121:o1 5.1@18:0.119:o4 5.2@20:0.121:i3 5.3@21:0.121:i3',y:2022,kind:'追試験',file:'k22t-booklet.pdf',pages:[1, 6, 10, 14, 18],tp:['理論','理論','無機','有機','総合'],
+  key:'1.1 1=1/3 1.2 2=3/4 1.3 3=7/4 1.4 4+5=4+0/3 6=3/3 7=3/3 2.1 8=4/3 2.2 9=2/3 2.3 10=2/4 2.4 11=1/3 12=5/3 13~14=3~5/4 3.1 15=1/4 3.2 16=1/2 17=2/2 3.3 18=4/4 19=3/4 20=4/4 4.1 21=3/4 4.2 22=2/4 4.3 23=3/4 4.4 24=3/3 25+26+27=2+4+2/2 28=2/3 5.1 29=4/4 30~31=2~6/4 5.2 32=2/4 5.3 33=3/4 34=1/4'},
+ {id:'k21',sub:'1.1@1:0.468:r1 1.2@2:0.121:r1 1.3@2:0.353:r3 1.4@3:0.121:r2 2.1@6:0.176:r4 2.2@7:0.121:r5 2.3@8:0.121:r4 3.1@11:0.176:i2 3.2@12:0.121:i2 3.3@13:0.121:i3 4.1@15:0.176:o4 4.2@16:0.121:o3 4.3@17:0.121:o2 4.4@18:0.121:o7 4.5@19:0.121:o6 5.1@20:0.119:o6 5.2@22:0.121:o6 5.3@23:0.121:o6',y:2021,kind:'第1日程',file:'k21-booklet.pdf',pages:[1, 6, 11, 15, 20],tp:['理論','理論','無機','有機','総合'],
+  key:'1.1 1=1/4 1.2 2=5/4 1.3 3=2/4 1.4 4+5=4+2/4 6=1/4 2.1 7=3/4 2.2 8=3/4 2.3 9=1/4 10=2/4 11=4/4 3.1 12=3/4 3.2 13=3/2 14=4/2 3.3 15=3/4 16=1/4 17=4/4 4.1 18=1/4 4.2 19=3/3 4.3 20=3/3 21=2/3 4.4 22=1/3 4.5 23=2/4 5.1 24=4/4 25=2/3 26=4/3 5.2 27=1/3 5.3 28=4/4 29=1/3'},
+ {id:'k21b',sub:'1.1@1:0.468:r1 1.2@2:0.121:r2 1.3@3:0.121:r3 1.4@4:0.121:r3 2.1@8:0.176:r5 2.2@9:0.121:r7 2.3@10:0.121:r6 3.1@14:0.176:i7 3.2@15:0.121:i2 3.3@16:0.121:i4 3.4@18:0.121:i1 4.1@20:0.176:o2 4.2@21:0.121:o5 4.3@22:0.121:o4 4.4@24:0.121:o7 4.5@25:0.121:o6 5.1@26:0.119:r7 5.2@28:0.121:r7',y:2021,kind:'第2日程',file:'k21b-booklet.pdf',pages:[1, 8, 14, 20, 26],tp:['理論','理論','無機','有機','総合'],
+  key:'1.1 1=1/4 1.2 2=3/4 1.3 3=5/4 1.4 4=3/4 5=5/4 2.1 6=2/4 2.2 7+8+9=7+9+8/4 2.3 10=2/4 11=1/4 12=2/4 3.1 13=3/4 3.2 14=2/4 3.3 15=4/4 3.4 16=1/4 17=3/4 4.1 18=1/3 4.2 19=5/4 4.3 20=2/1 21=4/1 22=5/1 23=4/3 4.4 24=4/4 4.5 25=3/3 5.1 26=2/4 27+28=4+2/4 5.2 29=2/2 30=4/2 31=3/4 32=1/4'},
+];
+/* 正解表の文字列を「採点の単位（item）」に分解する */
+function parseKey(k){const items=[];let q=0,s=0;
+ k.trim().split(/\s+/).forEach(t=>{const m=t.match(/^(\d)\.(\d)$/);if(m){q=+m[1];s=+m[2];return}
+  const [lhs,rest0]=t.split('=');const [rest,altS]=rest0.split(',');const [ans,pts]=rest.split('/');
+  let mode='one',boxes,a,each=false;
+  if(lhs.includes('~')){mode='any';each=true;boxes=lhs.split('~').map(Number);a=ans.split('~').map(Number)}
+  else if(lhs.includes('-')){mode='any';boxes=lhs.split('-').map(Number);a=ans.split('-').map(Number)}
+  else if(lhs.includes('+')){mode='all';boxes=lhs.split('+').map(Number);a=ans.split('+').map(Number)}
+  else{boxes=[+lhs];a=[+ans]}
+  const it={q,s,boxes,a,pts:+pts,mode};if(each)it.each=true;if(altS){const [x,y]=altS.split(':');it.alt={[+x]:+y}}items.push(it)});return items}
+SETS.forEach(st=>{st.items=parseKey(st.key);st.nq=Math.max(...st.items.map(i=>i.q));st.elective=st.nq===6;
+ st.name=`${st.y}年度 ${st.kind}`;st.short=`${st.y} ${st.kind.replace('験','')}`;
+ st.subs=(st.sub||'').split(' ').filter(Boolean).map(t=>{const m=t.match(/^(\d)\.(\d)@(\d+):([\d.]+):(\w+)$/);return{st,q:+m[1],s:+m[2],pg:+m[3],y:+m[4],f:m[5],id:st.id+':'+m[1]+'.'+m[2]}})});
+/* 設問ごとの切り出し範囲（問題冊子PDFの文字位置と印刷範囲から計測）。ページ:上:下（0〜1）。x は左右の余白を除く範囲 */
+const CROP={"k26":{"x":[0.103,0.903],"c":"1.1=1:0.355:0.6424 1.2=2:0.0971:0.3547 1.3=2:0.3717:0.6538 1.4=3:0.0971:0.6721,4:0.1016:0.3867 1.5=5:0.0971:0.7269,6:0.1016:0.8753 2.1=7:0.094:0.4621 2.2=7:0.4815:0.7383 2.3=8:0.0971:0.6835 2.4=9:0.0971:0.8958,10:0.1016:0.6127,11:0.1016:0.4073 3.1=12:0.094:0.2726 3.2=12:0.2893:0.5191 3.3=13:0.0971:0.2726 3.4=14:0.0971:0.3274 3.5=15:0.0971:0.6287,16:0.1016:0.6013,17:0.0993:0.4347 4.1=18:0.094:0.6949 4.2=19:0.0971:0.5831 4.3=20:0.0971:0.3821 4.4=21:0.0971:0.494 4.5=22:0.0971:0.9004,23:0.1016:0.6995 5.1=24:0.094:0.599,25:0.1016:0.5488 5.2=26:0.0971:0.6607,27:0.0993:0.8433 5.3=28:0.0971:0.6287,29:0.1016:0.4347"},"k26t":{"x":[0.103,0.903],"c":"1.1=1:0.409:0.6424 1.2=2:0.0971:0.3547 1.3=3:0.0971:0.2931 1.4=4:0.0971:0.7908,5:0.0993:0.2178 1.5=6:0.0971:0.9027,7:0.1016:0.9027 2.1=8:0.094:0.3776 2.2=8:0.3991:0.5465 2.3=9:0.0971:0.4369 2.4=10:0.0971:0.7383,11:0.1016:0.6858,12:0.1016:0.7543 3.1=13:0.094:0.3936 3.2=13:0.4129:0.615 3.3=14:0.0971:0.6561 3.4=15:0.0971:0.9027,16:0.1016:0.8319 4.1=17:0.094:0.8342 4.2=18:0.0971:0.5739 4.3=19:0.0971:0.6287,20:0.1016:0.3799 4.4=21:0.0971:0.5831,22:0.0993:0.8867 5.1=23:0.094:0.494 5.2=23:0.5089:0.7657 5.3=24:0.0971:0.4643 5.4=25:0.0971:0.8365,26:0.0993:0.8045,27:0.1016:0.5808"},"k25":{"x":[0.103,0.903],"c":"1.1=2:0.3:0.5054 1.2=3:0.0971:0.7497 1.3=4:0.0971:0.4643 1.4=5:0.0971:0.4895 1.5=6:0.0971:0.8205,7:0.1039:0.526,8:0.1016:0.6424 2.1=9:0.094:0.4621 2.2=9:0.4815:0.8205 2.3=10:0.0971:0.7474 2.4=11:0.0971:0.7452,12:0.1016:0.5009,13:0.1016:0.5168,14:0.1016:0.6744 3.1=15:0.094:0.4369 3.2=15:0.454:0.8753 3.3=16:0.0971:0.6242 3.4=17:0.0971:0.6561,18:0.1016:0.4643,19:0.0947:0.7497 4.1=20:0.094:0.4643 4.2=21:0.0971:0.9004 4.3=22:0.0971:0.3547 4.4=23:0.0971:0.4895,24:0.1016:0.8981,25:0.1016:0.5853 5.1=26:0.204:0.8182,27:0.1016:0.5032 5.2=28:0.0971:0.6401,29:0.0993:0.8936 5.3=30:0.0971:0.4369,31:0.1016:0.4164,32:0.1016:0.8433,33:0.1016:0.4712,34:0.1016:0.4917 6.1=35:0.166:0.873,36:0.1016:0.5032 6.2=37:0.0971:0.6401,38:0.0993:0.8936 6.3=39:0.0971:0.4369,40:0.1016:0.4164,41:0.1016:0.8433,42:0.1016:0.4712,43:0.1016:0.4917"},"k25t":{"x":[0.103,0.897],"c":"1.1=2:0.3:0.5876 1.2=3:0.0971:0.8502 1.3=4:0.0971:0.7452,5:0.1016:0.7726 1.4=6:0.0971:0.8479,7:0.1016:0.7269 2.1=8:0.094:0.3547 2.2=8:0.3717:0.6789 2.3=9:0.0971:0.7931,10:0.0993:0.3662 2.4=11:0.0971:0.7885,12:0.1016:0.8045,13:0.1016:0.4392,14:0.1016:0.8479 3.1=15:0.094:0.752 3.2=16:0.0971:0.9004 3.3=17:0.0971:0.3502 3.4=18:0.0971:0.8159 3.5=19:0.0971:0.736,20:0.1016:0.4095,21:0.1016:0.8159,22:0.1016:0.4438 4.1=23:0.094:0.8205,24:0.1016:0.3821 4.2=25:0.0971:0.6835 4.3=26:0.0971:0.6858,27:0.1016:0.9004,28:0.1016:0.7018,29:0.1016:0.4347,30:0.1016:0.8159,31:0.0993:0.3114 5.1=32:0.204:0.8045 5.2=33:0.0971:0.6013 5.3=34:0.0971:0.8456,35:0.1016:0.6653 5.4=36:0.0971:0.7497,37:0.1016:0.8205,38:0.1016:0.4575 6.1=39:0.166:0.8319 6.2=40:0.0971:0.6013 6.3=41:0.0971:0.8456,42:0.1016:0.6653 6.4=43:0.0971:0.7497,44:0.1016:0.8205,45:0.1016:0.4575"},"k24":{"x":[0.103,0.903],"c":"1.1=1:0.409:0.6698 1.2=2:0.0971:0.3 1.3=3:0.0971:0.5305 1.4=4:0.0971:0.8502,5:0.1016:0.8137,6:0.1016:0.3547 2.1=7:0.094:0.7566 2.2=8:0.0971:0.4643 2.3=9:0.0971:0.873 2.4=10:0.0971:0.357,11:0.1016:0.8068,12:0.1016:0.752,13:0.1016:0.4073 3.1=14:0.094:0.494 3.2=14:0.5089:0.8205 3.3=15:0.0971:0.4506 3.4=16:0.0971:0.7223,17:0.1016:0.4917,18:0.1016:0.8091 4.1=19:0.094:0.5328 4.2=19:0.5555:0.8365 4.3=20:0.0971:0.6219 4.4=21:0.0971:0.5694,22:0.1016:0.357,23:0.1016:0.7429,24:0.1016:0.3776,25:0.1016:0.7109 5.1=26:0.094:0.7132,27:0.1039:0.6264 5.2=28:0.0971:0.5739 5.3=29:0.0971:0.7611,30:0.1039:0.6812,31:0.1016:0.7885,32:0.1016:0.9004,33:0.1016:0.8616"},"k24t":{"x":[0.103,0.903],"c":"1.1=1:0.409:0.6972 1.2=2:0.0971:0.494 1.3=2:0.5089:0.6561 1.4=3:0.0971:0.7954,4:0.1016:0.9027 2.1=5:0.094:0.7383 2.2=6:0.0971:0.4369 2.3=6:0.454:0.7657 2.4=7:0.0971:0.7223,8:0.1016:0.8981,9:0.1016:0.5191 3.1=10:0.094:0.6675 3.2=11:0.0971:0.6972 3.3=12:0.0971:0.6538,13:0.1016:0.5579,14:0.1016:0.6835 4.1=15:0.094:0.4895 4.2=16:0.0971:0.357 4.3=17:0.0971:0.7703,18:0.0993:0.4506 4.4=19:0.0971:0.7954,20:0.0993:0.6013 5.1=21:0.0742:0.82,22:0.1016:0.3662 5.2=23:0.0971:0.6447,24:0.1016:0.7018 5.3=25:0.0971:0.7817,26:0.0947:0.5808,27:0.1016:0.4095,28:0.1039:0.7931"}};
+SETS.forEach(st=>{const c=CROP[st.id];if(!c)return;st.cx=c.x;c.c.split(' ').forEach(t=>{const[k,v]=t.split('=');const[q,sn]=k.split('.').map(Number);const x=st.subs.find(z=>z.q===q&&z.s===sn);if(x){x.rg=v.split(',').map(a=>a.split(':').map(Number));x.pg=x.rg[0][0];x.y=x.rg[0][1]}})});
+/* 解説（アプリ作成。設問ごと） */
+/*EXPL*/const EXPL={"k24:1.1": "配位結合は、一方の原子が「非共有電子対」を相手に提供してできる共有結合。\n① NH₄⁺：NH₃ の N の非共有電子対が H⁺ に配位。② H₃O⁺：H₂O の O の非共有電子対が H⁺ に配位。③ [Ag(NH₃)₂]⁺：NH₃ が Ag⁺ に配位（錯イオン）。\n④ ギ酸イオン HCOO⁻ は、ギ酸 HCOOH から H⁺ が取れただけで、配位結合はない → 正解", "k24:1.2": "液体：16 g ÷ 0.42 g/cm³ ≒ 38 cm³\n気体：16 g は 1.0 mol。V = nRT/P = 1.0 × 8.3×10³ × 300 ÷ 1.0×10⁵ = 24.9 L = 2.49×10⁴ cm³\n2.49×10⁴ ÷ 38 ≒ 6.5×10² 倍 → ①\n（cm³ と L の単位をそろえるのがポイント。1 L = 1000 cm³）", "k24:1.3": "すき間の大きさは ろ紙 ＞ セロハン（半透膜）。\n・砂：ろ紙も通れない。\n・トリプシン（コロイド粒子）：ろ紙は通れるが、セロハンは通れない。\n・グルコース（小さな分子）：どちらも通れる。\nろ紙を通過：グルコース・トリプシン、セロハンを通過：グルコース → ④", "k24:1.4": "ａ 誤りは ④。9×10⁴ Pa は 1.01×10⁵ Pa より低い。圧力が低いと蒸気圧曲線上の温度も低くなるので、水は 100 ℃ より「低い」温度で沸騰する（山の上でお湯が 100 ℃ 未満で沸く）。\n① 2×10² Pa は三重点の圧力（6.11×10² Pa）より低いので、液体にはならず昇華する。昇華曲線の温度は 0 ℃ より低い。正しい。\n② 固体と液体の境界線が左上がりなので、0 ℃ で圧力を上げると液体の領域に入り融解する。正しい。\n③ 三重点。正しい。\nｂ 正しいのは ③。図2で、12 ℃ の水の密度は約 0.9995 g/cm³、−4 ℃ の過冷却の水（破線）は約 0.9994 g/cm³ で、12 ℃ の方が大きい。\n① 0 ℃ の氷の密度（0.917）は水（0.9998）より小さいので、同じ 1 g なら氷の体積の方が「大きい」。\n② 氷の密度は温度が低いほど大きく、0 ℃ で最小。\n④ 4 ℃ より冷えた水は密度が小さくなるので、上に残る（下へは移動しない）。だから池は表面から凍る。\nｃ 6.0 kJ ÷ 6.0 kJ/mol = 1.0 mol（18 g）の氷がとける。\n残った氷：54 − 18 = 36 g\n0 ℃ の氷の密度は図2より 0.917 g/cm³。\n36 ÷ 0.917 ≒ 39 cm³ → ⑤", "k24:2.1": "吸熱反応では、生成物（NH₄NO₃ aq）の方がエネルギーが「高い」。\n下の NH₄NO₃(固) + aq から、上の NH₄NO₃ aq へ向かう上向きの矢印 → ①\n（周りから熱を吸収してエネルギーが上がるので、まわりが冷える＝冷却剤）\nポイント：エネルギー図は「上ほどエネルギーが高い」。\n発熱反応 → 生成物が下（エネルギーを放出して下がる）\n吸熱反応 → 生成物が上（まわりから熱を吸収して上がる）\n硝酸アンモニウムが水に溶けると冷たくなる（瞬間冷却パック）ので吸熱、と覚えておくと速い。", "k24:2.2": "③ 温度と圧力を一定のまま H₂ を加えると、反応物が増えるので平衡は右へ移動し、CO が増える → 正解\n① 正反応は吸熱反応なので、温度を下げると発熱の向き（左）へ移動し、CO は減る。\n② 左右とも気体の分子数は 2 なので、圧力を変えても平衡は移動しない。\n④ 圧力一定でアルゴンを加えると体積が増えて各気体の分圧が同じ割合で下がるが、分子数が左右で同じなので平衡は移動しない。", "k24:2.3": "反応物の合計の質量と、そのとき流れる電子の物質量を比べる。\nアルカリマンガン：2MnO₂ + Zn + 2H₂O（174 + 65 + 36 = 275 g）で電子 2 mol（Zn → Zn²⁺）\n→ 1 g 当たり 2/275 ≒ 0.0073 mol\n空気亜鉛：O₂ + 2Zn（32 + 130 = 162 g）で電子 4 mol\n→ 1 g 当たり 4/162 ≒ 0.025 mol\nリチウム：Li + MnO₂（6.9 + 87 = 93.9 g）で電子 1 mol\n→ 1 g 当たり 1/93.9 ≒ 0.011 mol\n大きい順に 空気亜鉛 ＞ リチウム ＞ アルカリマンガン → ④\n（空気亜鉛電池は正極の材料（O₂）を空気から取り入れるので軽くできる）", "k24:2.4": "ａ α ≪ 1 のとき Ka = cα² → α = √(Ka/c)。\nα は c の平方根に反比例する。c₀ で α₀ なら、4c₀ で α₀/2、c₀/4 で 2α₀。\nc → 0 で大きくなり、4c₀ で α₀/2 になる曲線 → ④\n（⑤ は α が c に反比例するグラフ（4c₀ で α₀/4）なので違う）\nｂ 2.5 mL 滴下したとき、HA 1.0×10⁻³ mol のうち 2.5×10⁻⁴ mol が中和されて A⁻ になる。\n残りの HA：7.5×10⁻⁴ mol、A⁻：2.5×10⁻⁴ mol（同じ溶液中なので物質量の比＝濃度の比）\nKa = [H⁺][A⁻]/[HA] = 8.1×10⁻⁵ × (2.5/7.5) = 2.7×10⁻⁵ mol/L → ②\nｃ 誤りは ④。10 mL で HA はすべて中和されているので、それ以上 NaOH を加えても中和反応は起こらない。[A⁻] が減るのは、溶液の体積が増えて「薄まる」から。\n① 陽イオン（Na⁺, H⁺）も陰イオン（A⁻, OH⁻）もすべて1価なので、電気的に中性なら数は等しい。正しい。\n② 水のイオン積は温度が一定なら一定。正しい。\n③ 中和で H⁺ が減ると、HA ⇄ H⁺ + A⁻ の平衡が右へ移り、A⁻ が増える。正しい。", "k24:3.1": "誤りは ① と ③。\n① ナトリウムはエタノールと反応して水素を出すので、エタノールには保存できない。灯油（石油）の中に保存する。\n③ 濃硫酸に水を加えると、激しく発熱して水が沸騰し飛び散る。希釈するときは「水に濃硫酸を少しずつ」加える。\n② 強塩基が皮膚についたら、すぐに大量の水で洗う。正しい。④ 濃硝酸は光で分解するので褐色びんに入れる。正しい。⑤ 有毒な H₂S はドラフト内で扱う。正しい。", "k24:3.2": "ハロゲンの性質は、周期表の下へいくほど次のように変わる。At は I のさらに下。\n・融点・沸点は高くなる（分子間力が大きくなる）→ ① 正しい\n・水に溶けにくくなる → ② 正しい\n・AgCl・AgBr・AgI と同じく AgAt も沈殿 → ③ 正しい\n・酸化力は小さくなる（F₂ ＞ Cl₂ ＞ Br₂ ＞ I₂ ＞ At₂）\n誤りは ④。Br₂ は At₂ より酸化力が強いので、2At⁻ + Br₂ → At₂ + 2Br⁻ の酸化還元反応が起こる。", "k24:3.3": "ア ステンレス鋼は、Fe にクロム Cr やニッケル Ni を加えた合金。Cr が表面に緻密な酸化物の膜をつくり、さびにくい → ③\nイ トタンは、鋼板に亜鉛 Zn をめっきしたもの。傷がついても、イオン化傾向の大きい Zn が先に溶けて鉄を守る → ④\n（スズ Sn をめっきしたものはブリキ）", "k24:3.4": "ａ 酸化数で見る。\nNi：NiS 中で +2 → NiCl₂ 中で +2 → 酸化も還元もされない\nS：NiS 中で −2 → 単体 S で 0 → 酸化される\n（Cu は CuCl₂ の +2 → CuCl の +1 で還元される）→ ③\nｂ 式⑴：NiS + 2CuCl₂ → NiCl₂ + 2CuCl + S\n式⑵：2CuCl + Cl₂ → 2CuCl₂\n足し合わせると CuCl₂ は消えて：NiS + Cl₂ → NiCl₂ + S\nCuCl₂ はくり返し使われるだけなので、Cl₂ は NiS と同じ物質量だけ使われる。\nNiS（式量 91）：36.4×10³ g ÷ 91 = 400 mol → Cl₂ 400 mol → ⑤\n（CuCl₂ の 40.5 kg は答えには関係しない）\nｃ 陽極で Cl₂ が n(Cl₂) mol 出たなら、流れた電子は 2n(Cl₂) mol。\n陰極ではその電子が Ni と H₂ に分かれて使われる：2n(Cl₂) = 2n(Ni) + 2n(H₂)\n→ n(Ni) = n(Cl₂) − n(H₂)\n気体の物質量は n = PV/RT なので\nw = M × P(V_Cl₂ − V_H₂)/RT → ②", "k24:4.1": "エチレン 2 mol と O₂ 1 mol から A が 2 mol できるので、A は C₂H₄ に O が1つ加わった C₂H₄O。\nこの条件（PdCl₂・CuCl₂ 触媒での酸化、ヘキスト・ワッカー法）でできるのはアセトアルデヒド CH₃CHO → ③\n① エタノールは C₂H₆O、② ジメチルエーテルも C₂H₆O、④ 酢酸は C₂H₄O₂ で、分子式が合わない。", "k24:4.2": "誤りは ①。デンプンのうち、枝分かれの多いアミロペクチンは水（温水にも）に溶けにくい。温水に溶けるのは、枝分かれのないアミロース。\n② アクリル繊維はアクリロニトリルが主成分。正しい。\n③ 加硫。正しい。\n④ レーヨンはセルロースを溶かして繊維にもどした再生繊維。正しい。", "k24:4.3": "このトリペプチドは、アミノ酸3つ（チロシン・アラニン・システイン）がつながったもの。\nア ニンヒドリン反応：–NH₂（アミノ基）があれば紫色。末端に –NH₂ がある → 示す\nイ キサントプロテイン反応：ベンゼン環があれば黄色→橙黄色。チロシンのベンゼン環がある → 示す\nウ ビウレット反応：ペプチド結合が2つ以上（トリペプチド以上）で赤紫色。トリペプチドなのでペプチド結合が2つある → 示す\nア・イ・ウすべて → ⑦", "k24:4.4": "ａ 誤りは ②。サリシンのグルコース部分は、1位の –OH がサリチルアルコールとグリコシド結合しているので、環が開いてアルデヒド基になることができない。だから還元性がなく、銀鏡反応を示さない。\n① グリコシド結合は酸で加水分解される。正しい。\n③ コルベ・シュミット反応。正しい。\n④ サリチル酸メチル（湿布薬）。正しい。\nｂ β-ラクタム環は、N と C 3つ（そのうち1つが C=O）からなる四員環。\n–NH₂ と –COOH の間に炭素が2つある化合物なら、N と C=O が結合（脱水）して四員環ができる。\nH₂N–CH₂–CH₂–COOH（β-アミノ酸）→ ②\n（① は三員環、③ は五員環、④ は六員環になる）\nｃ トルエン →（濃硝酸・濃硫酸：ニトロ化）→ p-ニトロトルエン（A）\n→（KMnO₄：側鎖の –CH₃ を –COOH に酸化）→ p-ニトロ安息香酸（B）\n→（Sn・HCl：–NO₂ を –NH₂ に還元）→ p-アミノ安息香酸（C）\n→（エタノール・濃硫酸：エステル化）→ p-アミノ安息香酸エチル\n化合物Ｂは O₂N–C₆H₄–COOH → ⑤\n（先に還元して –NH₂ にすると、KMnO₄ でアミノ基も酸化されてしまうので、この順番にする）", "k24:5.1": "図1は原点を通る直線。信号強度 100 ↔ 5.0×10⁻⁸ g なので、信号強度 10 ↔ 5.0×10⁻⁹ g（尿 3.0 mL 中）。\n尿 90 mL は 3.0 mL の 30 倍なので、5.0×10⁻⁹ × 30 = 1.5×10⁻⁷ g → ④", "k24:5.2": "実験Ⅰで取り分けた 100 mL には、X の Ag の半分が入っている。その物質量を n とする。\n¹⁰⁷Ag：0.500n、¹⁰⁹Ag：0.500n\n実験Ⅱで ¹⁰⁷Ag を 5.00×10⁻³ mol 加えると、¹⁰⁷Ag の割合が 75.0 % になった。\n(0.500n + 5.00×10⁻³) ÷ (n + 5.00×10⁻³) = 0.750\n→ 0.250n = 1.25×10⁻³ → n = 5.00×10⁻³ mol（100 mL 中）\nX 全体（200 mL）ではその2倍：1.00×10⁻² mol → ③", "k24:5.3": "ａ CH₃Cl の分子イオンは、³⁵Cl なら 12 + 3 + 35 = 50、³⁷Cl なら 52。\n³⁵Cl：³⁷Cl ≒ 3：1 なので、50 の強度が 100 なら 52 は約 33。\nさらに H が取れた断片イオン（CH₂Cl⁺ の 49、CHCl⁺ の 48、CCl⁺ の 47）が小さく出る。\n50 が最大で、52 がその約 1/3 → ④\n（① ② は ³⁷Cl を考えていない。⑤ は 1：1、③ ⑥ は 52 の方が大きくて逆）\nｂ 正確な相対質量を計算する。\nCO：12 + 15.995 = 27.995\nN₂：14.003 × 2 = 28.006\nC₂H₄：12 × 2 + 1.008 × 4 = 28.032\n小さい順に ア（27.995）＝CO⁺、イ（28.006）＝N₂⁺、ウ（28.032）＝C₂H₄⁺ → ②\nｃ 破線の2か所（CH₃ と C=O の間、C=O と CH=CH₂ の間）で切れてできるイオンを考える。\n分子イオン CH₃COCH=CH₂⁺：70\nCH₃⁺：15、COCH=CH₂⁺：55\nCH₃CO⁺：43、CH=CH₂⁺：27\n15・27・43・55・70 にピークがある → ①\n（② ④ の 60、③ ④ の 38 にあたるイオンはできない）", "k24t:1.1": "ア 塩基性を示す塩：弱酸と強塩基からできた塩 → 硫化ナトリウム（H₂S と NaOH）、乳酸ナトリウム（乳酸と NaOH）\nイ 二重結合をもたない：乳酸ナトリウムは –COO⁻（C=O）をもつので ×\n両方に当てはまるのは硫化ナトリウム Na₂S → ②\n① 塩化アンモニウムは弱塩基と強酸の塩で酸性。④ 塩化カルシウムは強酸と強塩基の塩で中性。", "k24t:1.2": "誤りは ②。HCl は極性分子で、無極性の F₂ より分子間力が強いので沸点が高い。理由は「分子の極性が大きいと分子間力が強くはたらく」が正しい。\n① 構造が似た分子では、分子量が大きいほどファンデルワールス力が強く沸点が高い。正しい。\n③ H₂O は水素結合のため、同族の水素化合物の中で沸点がとび抜けて高い。正しい。\n④ 不揮発性の溶質を溶かすと蒸気圧が下がり、沸点が上がる（沸点上昇）。正しい。", "k24t:1.3": "物質量が一定なので、ボイル・シャルルの法則 P₁V₁/T₁ = P₂V₂/T₂ を使う。\n体積を 1/3 にし、温度が 280 K → 420 K（1.5倍）になったので\nP₂ = 1.0×10⁵ × 3 × 1.5 = 4.5×10⁵ Pa → ③\nポイント：P は V に反比例、T に比例。\n・体積 1/3 → 圧力 3倍\n・温度 280 K → 420 K で 420/280 ＝ 1.5倍 → 圧力 1.5倍\nあわせて 3 × 1.5 ＝ 4.5倍。温度は必ず絶対温度（K）で比べる。", "k24t:1.4": "ａ 誤りは ④。メタノールは –OH をもち水と水素結合をつくるので、水とはどんな割合でも混ざり合う。二層には分かれない。\n① ヘキサンは C と H だけの無極性分子。② メタノールは極性分子。③ ヘキサンは水にほとんど溶けない。いずれも正しい。\nｂ 下層は「メタノールにヘキサンが飽和した溶液」。表1より 20 ℃ ではメタノール 100 g にヘキサンが 59 g 溶ける。\n質量パーセント濃度 = 59 ÷ (100 + 59) × 100 ≒ 37 % → ③\nｃ 10 ℃ では、メタノール 100 g にヘキサンは 44 g まで溶ける。\nメタノール 10 g なら 4.4 g まで溶けて均一な溶液のまま。\n1.0 g ずつ加えると、4.0 g までは溶けきり、5.0 g で 4.4 g を超えて初めて二層に分かれる → ⑤", "k24t:2.1": "v = k[H₂][Br₂]^(1/2) で、それぞれ何倍になるかを比べる。\n① [H₂] を2倍 → 2倍\n② [Br₂] を2倍 → √2 ≒ 1.4倍\n③ 物質量・温度が同じで圧力を2倍 → 体積が半分になり、[H₂] も [Br₂] も2倍 → 2 × √2 ≒ 2.8倍\n④ k を2倍 → 2倍\nいちばん大きいのは ③", "k24t:2.2": "変化した物質量を見る。\nX：1.0 → 0.60（0.40 mol 減少）\nY：1.0 → 0.80（0.20 mol 減少）\nZ：0 → 0.40（0.40 mol 増加）\n変化量の比が係数の比なので a：b：c = 0.40：0.20：0.40 = 2：1：2\na/b = 2.0 → ⑦", "k24t:2.3": "BaSO₄ の飽和水溶液の濃度が 1×10⁻⁵ mol/L なので、溶解度積は Ksp = (1×10⁻⁵)² = 1×10⁻¹⁰ (mol/L)²。\n混合後の体積：900 + 100 = 1000 mL = 1.00 L\nBa²⁺：10.4 mg ÷ 208 = 5.0×10⁻⁵ mol、SO₄²⁻：142 mg ÷ 142 = 1.0×10⁻³ mol\nSO₄²⁻ の方がずっと多いので、Ba²⁺ はほとんど沈殿し、[SO₄²⁻] ≒ 1.0×10⁻³ mol/L のまま。\n[Ba²⁺] = 1×10⁻¹⁰ ÷ 1.0×10⁻³ = 1×10⁻⁷ mol/L → ②", "k24t:2.4": "ａ 銅の電解精錬では、粗銅を陽極（ア）、純銅を陰極（イ）にする。\n陽極では Cu とイオン化傾向の大きい Zn がイオンになって溶け出し、Zn²⁺ は溶液中に残る（エ＝Zn）。\nイオン化傾向の小さい Ag は溶けずに陽極の下にたまる（陽極泥、ウ＝Ag）。→ ④\nｂ Q₀ で Cu が 16 g ＝ 16/64 = 0.25 mol 析出。Cu²⁺ + 2e⁻ → Cu なので、Q₀ は電子 0.50 mol 分。\nAl³⁺ + 3e⁻ → Al なので、電子 0.50 mol で Al は 0.50/3 mol → 27 × 0.50/3 = 4.5 g。\n2Q₀ では 9.0 g。原点を通り、2Q₀ で約 9 g の直線 → ①\nｃ 電気量：5.00×10⁻² A × 193 s = 9.65 C → 電子 9.65 ÷ 9.65×10⁴ = 1.00×10⁻⁴ mol\n2I⁻ → I₂ + 2e⁻ なので、I₂ は 5.00×10⁻⁵ mol。\nI₂ と H₂O は同じ物質量で反応するので、H₂O も 5.00×10⁻⁵ mol → ①", "k24t:3.1": "Ⅱ 光の屈折率が大きいガラスは鉛ガラス（クリスタルガラス）→ ア＝Pb\nⅠ 酸にも塩基にも溶けるのは両性金属の Sn と Pb → イ＝Sn\nⅢ ケイ素は、二酸化ケイ素をコークス（炭素）で還元してつくる：SiO₂ + 2C → Si + 2CO → ウ＝Si、エ＝C\nPb・Sn・Si・C → ⑧", "k24t:3.2": "ア 塩酸を加えると PbCl₂ だけが沈殿し、Fe²⁺ は残る → 分けられる\nイ 過剰のアンモニア水で Fe(OH)₃ は沈殿、Zn²⁺ は [Zn(NH₃)₄]²⁺ になって溶ける → 分けられる\nウ 炭酸アンモニウムを加えると CaCO₃ も BaCO₃ も沈殿する → 片方だけにできない\n→ ウ → ③\n（Ca²⁺ と Ba²⁺ を分けるなら、希硫酸で BaSO₄ だけ沈殿させる方法などがある）", "k24t:3.3": "ａ Co₃O₄：0.964 ÷ 241 = 4.00×10⁻³ mol → Co は3倍の 1.20×10⁻² mol\nCo の質量：1.20×10⁻² × 59 = 0.708 g\n含有率：0.708 ÷ 3.01 × 100 ≒ 23.5 % → ③\nｂ 誤りは ②。中和点の水溶液には (NH₄)₂SO₄ と Na₂SO₄ が含まれる。NH₄⁺ が加水分解して H⁺ を出すので、水溶液は弱い「酸性」になる。\nだから変色域が酸性側にあるメチルオレンジを使う（③ は正しい）。\n① 入れる希硫酸の物質量は決まっているので、三角フラスコがぬれていても結果は変わらない。正しい。\n④ NaOH 水溶液が空気中の CO₂ を吸うと濃度が変わるので、ソーダ石灰管で防ぐ。正しい。\nｃ 希硫酸の H⁺：1.00 × 35.0/1000 × 2 = 7.00×10⁻² mol\nNaOH で中和した分：1.00 × 20.00/1000 = 2.00×10⁻² mol\nNH₃ が中和した分：7.00×10⁻² − 2.00×10⁻² = 5.00×10⁻² mol\nCo³⁺ 1.00×10⁻² mol に対して NH₃ 5.00×10⁻² mol → 1つの Co³⁺ に NH₃ 5個 → ⑤", "k24t:4.1": "誤りは ⑤。ベンゼンスルホン酸は強酸で、カルボン酸の安息香酸より「強い」酸。\n（酸の強さ：スルホン酸 ＞ カルボン酸 ＞ 炭酸 ＞ フェノール）\n① クメン法の最初の反応。② フェノールは臭素と置換して 2,4,6-トリブロモフェノールの白色沈殿。③ アセチレン3分子が重合してベンゼン。④ アニリンはさらし粉で赤紫色。いずれも正しい。", "k24t:4.2": "誤りは ④。イソプレン CH₂=C(CH₃)–CH=CH₂ が 1,4 位で付加重合すると、まん中の 2・3 位の間に新しく C=C ができ、–CH₂–C(CH₃)=CH–CH₂– となる。繰り返し単位ごとに二重結合が1つ残る（だから加硫ができる）。\n① 合成高分子の重合度はばらつきがあり、分子量は平均で表す。② 結晶部分と非結晶部分がある。③ ポリメタクリル酸メチル（アクリル樹脂）は透明で、水槽や風防に使われる。いずれも正しい。", "k24t:4.3": "ａ エステル C₆H₅–COO–(CH₂)₄–C₆H₅ を NaOH で加水分解すると、\n安息香酸ナトリウム C₆H₅COONa（塩なので水に溶ける）と、アルコール C₆H₅–(CH₂)₄–OH（水に溶けにくい）ができる。\n1回目：エーテルを加えると、アルコールＢはエーテル層＝上層①へ。安息香酸ナトリウムは水層＝下層①に残る。\n2回目：下層①に塩酸を加えると安息香酸（カルボン酸Ａ）になり、水に溶けにくくなってエーテル層＝上層②へ。\nＡ：上層②、Ｂ：上層① → ③\n（ジエチルエーテルは水より密度が小さいので上の層になる）\nｂ C₁₀H₁₄O で、フェニル基をもつ第一級アルコール（–CH₂OH をもつ）を考える。\nC₆H₅– と –CH₂OH を除いた残りは C₃H₆。炭素4つの第一級アルコール（1-ブタノール・2-メチル-1-プロパノール）の H 1つを C₆H₅ にかえる形で数える。\n・HOCH₂–CH(C₆H₅)–CH₂–CH₃ → 不斉炭素あり ○\n・HOCH₂–CH₂–CH(C₆H₅)–CH₃ → 不斉炭素あり ○\n・HOCH₂–CH₂–CH₂–CH₂–C₆H₅（アルコールＢ自身）→ なし\n・HOCH₂–C(CH₃)₂–C₆H₅ → なし\n・HOCH₂–CH(CH₃)–CH₂–C₆H₅ → 不斉炭素あり ○\n不斉炭素原子をもつのは 3 つ → ③", "k24t:4.4": "ａ 誤りは ②。硬水には Ca²⁺ や Mg²⁺ が多く、セッケン（脂肪酸ナトリウム）と結びついて水に溶けにくい塩をつくるので、洗浄力が下がる（合成洗剤は硬水でも下がりにくい）。\n① 表面張力を下げて繊維にしみこむ。③ 陽イオン界面活性剤は柔軟剤・リンスに使う。④ 乳化作用。いずれも正しい。\nｂ ステアリン酸の質量：0.568 g/L × 0.100×10⁻³ L = 5.68×10⁻⁵ g\n物質量：5.68×10⁻⁵ ÷ 284 = 2.00×10⁻⁷ mol\n分子の数：2.00×10⁻⁷ × 6.0×10²³ = 1.20×10¹⁷ 個\n1分子の面積：252 ÷ 1.20×10¹⁷ = 2.1×10⁻¹⁵ cm² → ①", "k24t:5.1": "誤りは ③。ポリ酢酸ビニルは、酢酸ビニル CH₂=CH–OCOCH₃ の C=C が開いてつながる「付加重合」でできる。縮合重合ではない。\n① ナイロン6 は ε-カプロラクタムの開環重合。② ポリスチレンはスチレンの付加重合。④ フェノール樹脂はフェノールとホルムアルデヒドの付加縮合。いずれも正しい。", "k24t:5.2": "ａ pH 6.0 での電荷を考える。\nＡ（アラニン）：等電点が 6.0 なので電荷は全体で 0 → 動かない\nＢ（グルタミン酸）：側鎖にも –COOH があり、等電点は約 3.2（酸性アミノ酸）。pH 6.0 では –COO⁻ が多く、負に帯電 → 陽極側へ動く\nＣ（Ｂが2分子結合）：–COO⁻ が3つ、–NH₃⁺ が1つで、Ｂより負の電荷が大きい → 陽極側へもっと遠くまで動く\nＡはその場、Ｂは陽極側、Ｃはさらに陽極側 → ④\nｂ グリシン H₂N–CH₂–COOH 2分子で、–NH₂ と –COOH が2か所で脱水縮合（アミド結合）すると、\n–NH–CH₂–CO–NH–CH₂–CO– が輪になった六員環（2,5-ジケトピペラジン）ができる。\n環の中で N と C=O が交互に、CH₂ をはさんで並ぶ形 → ①\n（② ③ ④ は原子のつながり方がグリシン2分子からはできない形）", "k24t:5.3": "ａ ナイロン68 は m = 6、n = 8。\n4 ÷ (6 + 8 + 2) = 4 ÷ 16 = 0.25\n図2の直線で横軸 0.25 の融点を読むと約 245 ℃ → ③\nｂ 読み取れないのは ④。図2はナイロンの種類（m・n）と融点の関係しか示しておらず、同じナイロンで重合度を変えたデータはない。\n① m が同じでも n が変われば 4/(m+n+2) が変わり、融点も変わる。読み取れる。\n② 同じ長さ当たりのアミド結合が多い ⇔ m+n が小さい ⇔ 4/(m+n+2) が大きい ⇔ 融点が高い。読み取れる。\n③ m+n が大きいほど 4/(m+n+2) が小さく、融点は低い。読み取れる。", "k25:1.1": "イオン結晶は、陽イオンと陰イオンがクーロン力（静電気的な引力）で結びついた結晶。金属元素と非金属元素の化合物が多い。\n② 酸化マグネシウム MgO は Mg²⁺ と O²⁻ からなるイオン結晶 → 正解\n① p-ジクロロベンゼンは分子結晶、③ ダイヤモンドは共有結合の結晶、④ アルミニウムは金属結晶。", "k25:1.2": "Ⅰ 同じ温度・圧力の気体では、体積の比＝物質量の比。混合後の分圧の比も物質量の比に等しいので、体積比と同じになる。正しい。\nⅡ 高圧では分子どうしが近づき、分子自身の体積の分だけ実在気体の体積が理想気体より大きくなる。正しい。\nⅢ 高温では分子の運動が激しくなり、分子間力の影響が相対的に小さくなるので理想気体に近づく。正しい。\n正・正・正 → ①", "k25:1.3": "ヘンリーの法則：溶ける気体の物質量は、その気体の圧力に比例する。\n水 500 mL（0.500 L）に、1.0×10⁵ Pa で溶ける CO₂ は 4.0×10⁻² × 0.500 = 2.0×10⁻² mol。\n蓋を閉めた後（1.0×10⁵ Pa）に溶けている CO₂ は 2.0×10⁻² mol。\n緩める前は、それより 0.060 mol 多く溶けていたので 0.020 + 0.060 = 0.080 mol。\n0.080 は 0.020 の4倍なので、圧力も4倍 → 4.0×10⁵ Pa → ⑤", "k25:1.4": "誤りは ②。液体の中に液体の粒子が分散したもの（牛乳など）は「乳濁液（エマルション）」。懸濁液（サスペンション）は、液体の中に固体の粒子が分散したもの（泥水など）。\n① 親水コロイドに多量の電解質を加えて沈殿させるのが塩析。正しい。\n③ 電気泳動では、粒子は自分と反対の電荷の電極へ動く。正しい。\n④ ブラウン運動の原因。正しい。\n⑤ チンダル現象。正しい。", "k25:1.5": "ａ 沸騰は「溶液の蒸気圧＝外の圧力」になったときに起こる。\nNaCl 水溶液の沸点上昇度が 8 K なので、90 ℃ で沸騰するこの溶液の蒸気圧は、90 − 8 = 82 ℃ の純水の蒸気圧と同じ。\n図2で 82 ℃ の蒸気圧を読むと約 5.1×10⁴ Pa。容器B内の圧力はこれに等しい → ①\n（② 7.0×10⁴ は 90 ℃ の純水の値で、沸点上昇を考えていない）\nｂ 水が移動しなくなるのは、溶液側にかけた圧力の差が溶液の浸透圧と等しくなったとき。\n圧力の差：3.1×10⁶ − 1.0×10⁵ = 3.0×10⁶ Pa\nNaCl → Na⁺ + Cl⁻ なので粒子の濃度は NaCl の2倍。平衡時の NaCl の濃度を C (mol/L) とすると\n3.0×10⁶ = 2C × 8.3×10³ × 300 → C ≒ 0.602 mol/L\nNaCl は 0.50 × 10 = 5.0 mol で変わらないので、溶液の体積は 5.0 ÷ 0.602 ≒ 8.3 L。\n移動した水は 10 − 8.3 = 1.7 L → ①", "k25:2.1": "化学発光は、化学反応で生じたエネルギーが光として出る現象。\n③ ネオンサインは、ネオンなどの気体に電圧をかけて放電させて光らせるもので、化学反応ではない → 正解\n① ルミノール反応、② ケミカルライト（シュウ酸エステルと過酸化水素の反応）、④ ホタルの光（ルシフェリンの酸化）はどれも化学発光。", "k25:2.2": "負極：Cd → Cd(OH)₂ で、Cd 1 mol 当たり OH 2つ分（17 × 2 = 34 g）質量が増える。\n1.7 ÷ 34 = 0.050 mol の Cd が反応 → 流れた電子は 0.050 × 2 = 0.10 mol。\n正極：電子 1 mol 当たり H₂O 1 mol が消費される → H₂O 0.10 mol（負極では水は消費されない）。\n0.10 × 18 = 1.8 g → ②\n（全体の反応 Cd + 2NiO(OH) + 2H₂O → Cd(OH)₂ + 2Ni(OH)₂ からも、電子2個で水2個と分かる）", "k25:2.3": "1−α≒1 のとき、弱酸の [H⁺] = √(c·Ka)。\n体積を k 倍にすると濃度 c は 1/k になるので、[H⁺] は 1/√k 倍。\npH = 4.0 + ½ log k\n5V₀ → 4.0 + 0.35 ≒ 4.35、10V₀ → 4.5、20V₀ → 4.0 + 0.65 ≒ 4.65\n初めにゆるやかに上がり、20V₀ でも 4.7 弱にとどまるグラフ → ④\n① 弱酸を薄めても pH は 7 を超えないし、こんなに急に 7 にはならない。② 一定にはならない。③ は上がりすぎ（20V₀ で 5.3 になるのは強酸のように pH = 4 + log k となる場合）。", "k25:2.4": "ａ 気体の分圧 P = (n/V)RT = [濃度]×RT なので、Kp = Kc × (RT)^(生成物の係数の和 − 反応物の係数の和)。\nN₂ + 3H₂ ⇄ 2NH₃ では 2 − (1+3) = −2。\nKp = Kc(RT)⁻² = Kc / (RT)² → ⑤\nｂ NH₃ が 3.0 mol できたとき、N₂ は 1.5 mol、H₂ は 4.5 mol 減る。\n平衡時：N₂ 0.5 mol、H₂ 1.5 mol、NH₃ 3.0 mol、合計 5.0 mol\nNH₃ の体積百分率 = 3.0 ÷ 5.0 × 100 = 60 %\n図1の 1.0×10⁸ Pa の曲線で 60 % になる温度を読むと約 490 ℃ → ③\nｃ 温度を上げると2つのことが起こる。\n・反応速度が大きくなる → 立ち上がりが急になり、早く平衡に達する。\n・この反応は発熱反応（図1でも高温ほど NH₃ が少ない）→ 平衡は左へ移り、NH₃ の割合は小さくなる。\n「速く立ち上がって、低いところで平らになる」のは ④ → 正解\n① ② は平衡時の割合が大きい・同じでまちがい。③ ⑤ は立ち上がりが遅くまちがい。", "k25:3.1": "誤りは ②。ヘキサシアニド鉄(Ⅲ)酸カリウム K₃[Fe(CN)₆] で濃青色の沈殿ができるのは「鉄(Ⅱ)イオン Fe²⁺」。Fe³⁺ では沈殿はできない（褐色の溶液になる）。\n（Fe³⁺ の検出は K₄[Fe(CN)₆] で濃青色沈殿、またはチオシアン酸カリウムで血赤色）\n① Cu(OH)₂ の青白色沈殿ができる。正しい。\n③ 塩基性〜中性では MnO₄⁻ → MnO₂（酸性では Mn²⁺）。正しい。\n④ [Ag(NH₃)₂]⁺ ができて溶ける。正しい。", "k25:3.2": "誤りは ③。シリカゲルは、水ガラスに塩酸を加えてできたケイ酸を、加熱・乾燥させてつくる。水ガラスをそのまま乾燥させたものではない。\n① SiO₂ + 2NaOH → Na₂SiO₃ + H₂O で、NaOH でもできる。正しい。\n② Na₂SiO₃：(+1)×2 + x + (−2)×3 = 0 → x = +4。正しい。\n④ 弱酸の塩 + 強酸 → 弱酸。ケイ酸ができる。正しい。", "k25:3.3": "まず気体を決める。\nア 銅 + 濃硝酸 → 二酸化窒素 NO₂、イ 銅 + 希硝酸 → 一酸化窒素 NO\nウ ホタル石 CaF₂ + 濃硫酸 → フッ化水素 HF、エ 酸素の無声放電 → オゾン O₃\n誤りは ②。NO は水に溶けにくく、空気中の O₂ とすぐ反応して NO₂ になるので「水上置換」で集める。\n① NO₂ は水と反応して硝酸などができ、酸性になる。正しい。\n③ フッ化水素酸はガラス（SiO₂）を溶かすので、ポリエチレンの容器に入れる。正しい。\n④ O₃ は酸化力が強く、KI を I₂ に酸化してデンプンを青紫色にする。正しい。", "k25:3.4": "ａ 誤りは ③。I⁻ から I₂ をつくるには I⁻ を「酸化」する必要がある。塩化スズ(Ⅱ) SnCl₂ は還元剤なので、H₂O₂ の代わりにならない。\n① H₂O₂ は I⁻ から電子を受け取る酸化剤。正しい。\n② I₂ は無極性なので、水よりヘキサンによく溶けて抽出される。正しい。\n④ Cl₂ は I₂ より酸化力が強いので、2I⁻ + Cl₂ → I₂ + 2Cl⁻。正しい。\nｂ 電子のやりとりで考える。\nI：NaIO₃ の +5 → I₂ の 0。I 1個で電子5個を受け取る。NaIO₃ 2 mol（I₂ 1 mol）で電子 10 mol。\nS：NaHSO₃ の +4 → +6。NaHSO₃ 1 mol で電子 2 mol を出す。\n電子 10 mol を出すには NaHSO₃ が 5 mol 必要 → ⑤\n（2NaIO₃ + 5NaHSO₃ → 3NaHSO₄ + 2Na₂SO₄ + H₂O + I₂ で、原子の数も合う）\nｃ I₂：25.4 kg = 25400 g ÷ 254 = 100 mol\n式⑸ 2CuI + O₂ → 2CuO + I₂ より CuI は 200 mol、式⑷ より NaI : CuI = 1 : 1 なので NaI も 200 mol。\n濃度 = 200 ÷ 2.50×10⁵ = 8.0×10⁻⁴ mol/L → 8・0・4", "k25:4.1": "誤りは ②。フェノールは炭酸より弱い酸なので、炭酸水素ナトリウムとは反応せず、CO₂ は出ない（CO₂ が出るのはカルボン酸）。\n① –OH をもつので Na と反応して H₂ が出る。正しい。\n③ エタノールを濃硫酸で約 130〜140 ℃ に加熱すると、分子間で脱水してジエチルエーテル。正しい。\n④ CH₃CO– をもつのでヨードホルム反応を示す。正しい。\n⑤ フェノールはアセチル化されて酢酸フェニルになる。正しい。", "k25:4.2": "分子量 179.0 は 86.0 + 93.0 とちょうど同じ。つまり何も取れずに、アニリンの N–H がアクリル酸メチルの C=C にそのまま「付加」した。\n選択肢を条件で確かめる。\n① ② は C=C が残っていて、分子量が H₂ 分少ない（177）。×\n③ はカルボン酸、④ はアミドで、エステル結合をもたない。×\n⑥ は CH₃–CH(NH–C₆H₅)– の炭素が不斉炭素原子。×\n条件Ⅰ〜Ⅲをすべて満たすのは C₆H₅–NH–CH₂–CH₂–COOCH₃ → ⑤", "k25:4.3": "誤りは ④。フルクトースとグルコースはどちらも C₆H₁₂O₆ だが、グルコースはアルデヒド基（アルドース）、フルクトースはケトン基（ケトース）をもち、原子のつながり方が違う「構造異性体」。立体異性体ではない。\n① α-ヘリックスや β-シートは、ペプチド結合の C=O と N–H の水素結合でできる。正しい。\n② 結晶中のアミノ酸は –NH₃⁺ と –COO⁻ をもつ双性イオン。正しい。\n③ α形・β形の環状構造2種類と、鎖状構造1種類の合計3種類。正しい。", "k25:4.4": "ａ 誤りは ⑤。ポリアセチレンは –CH=CH–CH=CH– のように「二重結合と単結合」が交互に並んだ高分子（電気を通すことで知られる）。三重結合ではない。\n① CaC₂ + 2H₂O → C₂H₂ + Ca(OH)₂。正しい。② 酸素アセチレン炎は約3000 ℃で溶接に使う。正しい。③ ビニルアルコールを経てアセトアルデヒドになる。正しい。④ HCN の付加でアクリロニトリル（アクリル繊維の原料）。正しい。\nｂ 酢酸ビニル CH₂=CH–OCOCH₃ の C=C がつながるのは「付加重合」（反応ア → ⑥）。\nできる化合物Ｂはポリ酢酸ビニル –[CH₂–CH(OCOCH₃)]ₙ–（→ ⑨）。\nこれのエステル部分を NaOH などで「加水分解」（けん化）すると –OH になり、ポリビニルアルコールができる（反応イ → ①）。\n（ビニルアルコール ⓪ は不安定でアセトアルデヒドに変わるので、直接重合させることはできない。だから酢酸ビニルを経由する）\nｃ PVA の繰り返し単位（–CH₂–CH(OH)–、44.0）：88.0 ÷ 44.0 = 2.00 mol → ヒドロキシ基も 2.00 mol。\nアセタール化1か所では、OH 2つとブチルアルデヒド1分子から水1分子が取れる。\n質量の増加は 1か所当たり 72.0 − 18.0 = 54.0 g/mol。\n増えた質量：120.4 − 88.0 = 32.4 g → 32.4 ÷ 54.0 = 0.600 mol のアセタール化\n使われた OH は 0.600 × 2 = 1.20 mol → 1.20 ÷ 2.00 × 100 = 60 % → ③", "k25:5.1": "沸点が低い順に、石油ガス → ナフサ（粗製ガソリン）→ 灯油 → 軽油 → 重油。\n分子が小さい（炭素数が少ない）ほど沸点が低く、上の段で取り出される。\nA（30〜180 ℃）ナフサ、B（180〜250 ℃）灯油、C（250〜350 ℃）軽油 → ③\n理由：石油は炭素数の違う炭化水素の混合物。分留塔の下で加熱し、沸点の高い成分（大きな分子）ほど下の段で液体になって取り出される。\n上から順に「ガス → ナフサ → 灯油 → 軽油 → 重油」と並ぶ、と覚えておく。", "k25:5.2": "ベンゼンに H₂ を付加させる（3 mol 付加）と、二重結合のないシクロヘキサン C₆H₁₂ ができる → 化合物Ｄ。\n（①〜③ の D は H₂ が 2 mol しか付加していないシクロヘキサジエン）\nε-カプロラクタムは、–CO–(CH₂)₅–NH– が輪になった化合物。開環重合すると –[CO–(CH₂)₅–NH]ₙ– のナイロン6 → 化合物Ｅ。\n（⑤ の E はアジピン酸とヘキサメチレンジアミンからできるナイロン66）\nD シクロヘキサン、E ナイロン6 → ④", "k25:5.3": "ａ VO²⁺ は V と O からなるイオンで、全体の電荷が +2。\nx + (−2) = +2 → x = +4 → ④\nｂ ナフタレンを V₂O₅ を触媒に酸化すると、片方のベンゼン環が壊れて、フタル酸を経て無水フタル酸ができる → ①\n（⑤ の無水マレイン酸は、ベンゼンを V₂O₅ で酸化したときにできる）\nｃ 反応エンタルピー ＝（生成物の生成エンタルピーの和）−（反応物の生成エンタルピーの和）。単体は 0。\n経路Ⅰ：V₂O₅ + 5Ca → 2V + 5CaO\nΔHⅠ = 5×(−636) − (−1550) = −3180 + 1550 = −1630 kJ\n経路Ⅱ：\nV₂O₅ + 2H₂ → V₂O₃ + 2H₂O：(−1220) + 2×(−286) − (−1550) = −242 kJ\nV₂O₃ + 3Ca → 2V + 3CaO：3×(−636) − (−1220) = −688 kJ\nΔHⅡ = −242 + (−688) = −930 kJ\nどちらも負で、ΔHⅠ（−1630）＜ ΔHⅡ（−930）＜ 0 → ①\n（出発物質と最終生成物が違う（H₂O ができる）ので、ヘスの法則でも同じ値にはならない）\nｄ 滴定に使った EDTA：1.00×10⁻² × 4.00/1000 = 4.00×10⁻⁵ mol\nVO²⁺ と EDTA は 1：1 なので、10.0 mL 中の V も 4.00×10⁻⁵ mol。\n250 mL 全体ではその 25 倍：1.00×10⁻³ mol\nV の質量：1.00×10⁻³ × 51 = 5.10×10⁻² g → ③", "k25t:1.1": "誤りは ②。同じ周期では、原子番号が大きいほど陽子が増えて原子核の正電荷が大きくなり、電子を強く引きつけるので、原子は「小さく」なる（例：Li ＞ Be ＞ … ＞ F）。\n① 同族では下ほど電子殻が増えるので大きくなる。正しい。\n③ 陽イオンは最外殻の電子を失い、電子殻が1つ減るなどして小さくなる。正しい。\n④ 陰イオンは電子が増えて電子どうしの反発が大きくなり、大きくなる。正しい。", "k25t:1.2": "Ａは面心立方格子の配置なので、単位格子中に 1/8 × 8（頂点）+ 1/2 × 6（面心）= 4 個。\nＢは「4個のＡがつくる正四面体の重心」にあり、図から単位格子の中に 8 個（立方体を8つに分けた小立方体それぞれの中心）。\nＡ：Ｂ = 4：8 = 1：2（ホタル石 CaF₂ 型）。\n配位数：Ｂ1個は 4個のＡに囲まれる。数が Ａの2倍の Ｂ が4個ずつ Ａ に接するので、Ａ1個は 4 × 2 = 8 個の Ｂ に囲まれる。\n配位数 8、Ａ 4、Ｂ 8 → ②", "k25t:1.3": "液体と気体が共存している間（体積 V₀ まで）は、温度が一定なので圧力は飽和蒸気圧 P₀ のまま変わらない。\nすべて気体になった後は、物質量・温度が一定なのでボイルの法則 PV = 一定。\nP = P₀V₀ / V → 2V₀ で 0.5P₀、4V₀ で 0.25P₀ と、反比例の曲線で下がる。\n「V₀ まで水平、その後なめらかに反比例で下がる」→ ②\n（③ は直線的に下がっていて反比例になっていない）", "k25t:1.4": "ａ 誤りは ④。溶質を溶かすと溶液の体積は水だけのときより増える。だから 1 mol/L のショ糖水溶液 1 L の中の水は 1 L より少なく、水 1 L とは物質量が同じにならない。\n① 温度で溶液の体積が変わるので、モル濃度（mol/L）は変わる。正しい。\n② 質量モル濃度（mol/kg）は質量だけで決まるので、温度で変わらない。正しい。\n③ 1 mol/kg ならどちらも「水 1 kg に溶質 1 mol」なので、溶質と水の物質量の比は同じ。正しい。\nｂ 凝固点降下度は、溶けている粒子の質量モル濃度に比例する。\nNaCl → Na⁺ + Cl⁻（粒子2個）、Na₂SO₄ → 2Na⁺ + SO₄²⁻（粒子3個）\n0.052 × 3/2 = 0.078 K → ③\nｃ ΔT = Kf × m より、温度から「その時点の水溶液の質量モル濃度」が分かる。\n点A：0.370 = 1.85 × m → m = 0.200 mol/kg → 液体の水は 0.100 ÷ 0.200 = 0.500 kg\n点B：0.740 = 1.85 × m → m = 0.400 mol/kg → 液体の水は 0.100 ÷ 0.400 = 0.250 kg\nショ糖は液体側にだけ残るので、凍って氷になった水の増加量は 0.500 − 0.250 = 0.250 kg → ①\n（過冷却で一気に凍るため、点A ではすでに氷ができている）", "k25t:2.1": "誤りは ④。ハロゲン化銀のうち AgCl・AgBr・AgI は水に溶けにくいが、フッ化銀 AgF は水によく溶ける。\n① H₂・CO₂・He はどれも無色・無臭。正しい。\n② HCl・HBr・HI は強酸（HF だけが弱酸）。正しい。\n③ アルカリ金属は常温の水と反応して H₂ を出す。正しい。", "k25t:2.2": "誤りは ③。金は硝酸にも溶けない。金を溶かすのは王水（濃硝酸と濃塩酸を 1：3 で混ぜたもの）。\n① HClO₄：(+1) + x + (−2)×4 = 0 → x = +7。正しい。\n② SO₂ は、H₂S に対しては酸化剤、KMnO₄ などに対しては還元剤としてはたらく。正しい。\n④ P₄O₁₀ + 6H₂O → 4H₃PO₄。正しい。\n⑤ 濃硫酸の脱水作用でスクロースから H と O が水として取られ、炭素が残る。正しい。", "k25t:2.3": "混ぜた後の体積は 5.0 + 0.50 = 5.5 mL。\n各金属イオン：1.0×10⁻² × 5.0/5.5 ≒ 9.1×10⁻³ mol/L\nSO₄²⁻：1.0×10⁻³ × 0.50/5.5 ≒ 9.1×10⁻⁵ mol/L\n濃度の積：9.1×10⁻³ × 9.1×10⁻⁵ ≒ 8.3×10⁻⁷ (mol/L)²\nＡ（Mg²⁺）：MgSO₄ は 3.0 mol/L まで溶けるので沈殿しない → 無\nＢ（Ca²⁺）：8.3×10⁻⁷ ＜ 1.9×10⁻⁴ なので沈殿しない → 無\nＣ（Ba²⁺）：8.3×10⁻⁷ ＞ 9.2×10⁻¹¹ なので沈殿する → 有\n無・無・有 → ⑦", "k25t:2.4": "ａ 誤りは ③。2Al(OH)₃ → Al₂O₃ + 3H₂O なので、Al(OH)₃ 2 mol から Al₂O₃ 1 mol と水「3 mol」ができる。\n① CO₂ は酸性の気体で、OH⁻ と反応するので pH は下がる。正しい。\n② OH⁻ が CO₂ に消費されるので、平衡が右へ移って Al(OH)₃ が沈殿する。正しい。\n④ 氷晶石と混ぜると、Al₂O₃ だけ（融点約 2000 ℃）より低い約 1000 ℃ で融解できる。正しい。\nｂ Al：2.70×10⁵ ÷ 27 = 1.00×10⁴ mol。Al³⁺ + 3e⁻ → Al なので電子は 3.00×10⁴ mol。\n電気量：3.00×10⁴ × 9.65×10⁴ = 2.895×10⁹ C → 電流 = 2.895×10⁹ ÷ 9650 = 3.00×10⁵ A\n陽極の C：1.08×10⁵ ÷ 12 = 9.00×10³ mol が CO か CO₂ になった。\nCO を a mol、CO₂ を b mol とすると\na + b = 9.00×10³（炭素の数）\n2a + 4b = 3.00×10⁴（電子の数）\n→ b = 6.00×10³ mol\n3.00×10⁵ A、6.00×10³ mol → ⑤\nｃ Al(NH₄)(SO₄)₂ 100 mg は 100/237 mmol。Al は2つで Al₂(SO₄)₃ や Al₂O₃ 1つになるので、\nAl₂(SO₄)₃：100 × 342 / (2 × 237) ≒ 72 mg（約 450〜550 ℃ で減る）\nAl₂O₃：100 × 102 / (2 × 237) ≒ 22 mg（約 650〜950 ℃ で減る）\n100 → 約 72 → 約 22 mg と2段階で減るグラフ → ①\n（加熱で気体が出ていくので、質量が増える ⑤ ⑥ はありえない）", "k25t:3.1": "付加反応は ② と ⑤（H₂ が付加）。① ④ は置換反応、③ は脱離反応。\n② CH₃–C≡C–CH₃ に H₂ が1分子付加すると、2-ブテン CH₃–CH=CH–CH₃ になる。C=C の2つの炭素と、それに直接つく原子はすべて同じ平面上にあるので、炭素4つが同一平面 → 正解\n⑤ シクロヘキサンは C=C がなく、炭素は正四面体形の結合をもつので、6つの炭素は同一平面にない（いす形）。", "k25t:3.2": "切れた結合の両端の炭素に Br がつく。\nア（CH(CH₃) と CH₂ の間）が切れる：Br–CH(CH₃)–CH₂–CH₂–Br\n→ Br がつく CH は H・CH₃・Br・CH₂CH₂Br の4つが全部違う → 不斉炭素あり ○\nイ もアと同じ形の結合なので、同じ化合物ができる → ○\nウ（CH₂ と CH₂ の間）が切れる：Br–CH₂–CH(CH₃)–CH₂–Br\n→ まん中の C に CH₂Br が2つつくので不斉炭素なし → ×\n○・○・× → ⑤", "k25t:3.3": "誤りは ①。ポリ酢酸ビニルは鎖状の高分子で、加熱すると軟らかくなる熱可塑性樹脂（接着剤やチューインガムに使われる）。\n② アラミド繊維（ケブラーなど）はとても強く、防弾チョッキなどに使われる。正しい。\n③ メラミン樹脂はメラミンとホルムアルデヒドからつくる。正しい。\n④ シリコーンゴムの主鎖は –Si–O–Si–O– で、C=C をもたない。正しい。", "k25t:3.4": "エステルＤ CH₃CH₂–CO–O–CH₂CH₂CH₃ を酸とアルコールに分ける。\n酸の部分：CH₃CH₂COOH（プロピオン酸）→ カルボン酸Ｂ\nアルコールの部分：CH₃CH₂CH₂OH（1-プロパノール）→ アルコールＣ ＝ イ\nカルボン酸Ｂ（炭素3個）は、炭素数が同じ第一級アルコール CH₃CH₂CH₂OH を酸化してできる → アルコールＡ ＝ イ\nイ・イ → ⑤", "k25t:3.5": "ａ 正しいのは ③。図4で、二重結合 0→1 では約 70 ℃ から約 13 ℃ へ、約 57 K 下がる。1→2、2→3 では 20 K 以下しか下がらない。\n① 図3で、分子量 172→200→228 の融点は約 31→43→54 ℃ で、n が 2 増えると約 11〜12 K ずつ上がる。20 K ではない。\n② CH₃(CH₂)₂₀COOH は炭素数 22 で分子量 340。図3の傾向をのばすと約 80 ℃。70 ℃ は分子量 284 のステアリン酸の値。\n④ C₁₇H₃₁COOH はリノール酸（二重結合2つ）で融点は約 −5 ℃。常温で液体。\nｂ 液体の油脂は、融点の低い不飽和脂肪酸を多く含む。\n油脂イは常温で液体なのに、オレイン酸（C）は少なく、B が半分以上をしめる。だから B も融点の低い不飽和脂肪酸のはず。\n選択肢で不飽和脂肪酸はリノール酸だけ（ミリスチン酸・パルミチン酸・ステアリン酸は飽和で常温では固体）→ ④\n（実際、油脂イは大豆油のように、リノール酸の多い植物油と考えられる）", "k25t:4.1": "ａ 石灰石（CaCO₃）を強く熱すると酸化カルシウム（生石灰）CaO ができる（ア → ③）。\nCaO + H₂O → Ca(OH)₂（消石灰）\n壁に塗った Ca(OH)₂ は空気中の二酸化炭素と反応して（イ → ⑤）\nCa(OH)₂ + CO₂ → CaCO₃ + H₂O\n炭酸カルシウムになって固まる（ウ → ②）。顔料は CaCO₃ の中に閉じこめられるので色が長持ちする（フレスコ画）。\nｂ Ca(OH)₂ → Ca²⁺ + 2OH⁻ なので、[Ca²⁺] = ½[OH⁻]。\nKsp = [Ca²⁺][OH⁻]² = ½[OH⁻]³ = 5.00×10⁻⁶ → [OH⁻]³ = 1.00×10⁻⁵\n[OH⁻] = 10^(−5/3) → pOH = 5/3 ≒ 1.67\npH = 14 − 1.67 ≒ 12.3 → ⑤", "k25t:4.2": "Cu₃(CO₃)₂(OH)₂ を a mol、Cu₂CO₃(OH)₂ を b mol とする。\n式⑴：Cu₃(CO₃)₂(OH)₂ → 3CuO + H₂O + 2CO₂\n式⑵：Cu₂CO₃(OH)₂ → 2CuO + H₂O + CO₂\nH₂O：a + b = 0.50\nCO₂：2a + b = 0.70\n→ a = 0.20 mol、b = 0.30 mol\n加熱でできた CuO：3 × 0.20 + 2 × 0.30 = 1.20 mol\nはじめからあった CuO：1.30 − 1.20 = 0.10 mol → ①", "k25t:4.3": "ａ 式⑶ より Na₂S₂O₄ 1 mol から電子 2 mol が出る。式⑷ よりインジゴ 1 mol は電子 2 mol を受け取る。\n→ Na₂S₂O₄ とインジゴは 1：1 で反応する。\nx = 0.10 g のとき：インジゴ 0.10 ÷ 262 ≒ 3.8×10⁻⁴ mol\n必要な Na₂S₂O₄ 水溶液：3.8×10⁻⁴ ÷ 0.20 = 1.9×10⁻³ L ≒ 1.9 mL\n原点を通る直線で、0.10 g のとき約 1.9 mL → ③\n（NaOH は 0.20 mol あり十分足りるので、直線が途中で折れることはない）\nｂ 酸化も還元もされないのは ④。安息香酸とメタノールのエステル化（脱水縮合）で、酸化数は変わらない。\n① 2-プロパノールは二クロム酸カリウムで酸化されてアセトンになる。\n② マルトースは還元糖で、フェーリング液を還元する（マルトース自身は酸化される）。\n③ ニトロベンゼンは水素で還元されてアニリンになる。\nｃ 最後に –NH₂ と –SO₃H がパラ（p-）の位置にあればよい。性質Ⅲより、アニリンをスルホン化すれば p- の位置に –SO₃H が入る。\nだからアニリンを先につくる：ベンゼン →（ニトロ化）ニトロベンゼン →（還元）アニリン →（スルホン化）p-アミノベンゼンスルホン酸\nニトロ化・還元・スルホン化 → ④\n（性質Ⅰ・Ⅱのように、先にスルホン化やニトロ化を2回すると m-（メタ）の位置に入ってしまう）", "k25t:5.1": "ヘスの法則：反応エンタルピー ＝（反応物の燃焼エンタルピーの和）−（生成物の燃焼エンタルピーの和）。CO₂ は燃焼しないので 0。\nΔH = (−2803) − 2 × (−1368) = −2803 + 2736 = −67 kJ\nΔH が負なので発熱反応 → ③", "k25t:5.2": "pH 9.3 → 8.3（0.50 mL）：CO₃²⁻ + H⁺ → HCO₃⁻\n→ はじめの CO₃²⁻ は 1.00 × 0.50/1000 = 5.0×10⁻⁴ mol。これが HCO₃⁻ に変わった。\npH 8.3 → 4.0（6.00 − 0.50 = 5.50 mL）：HCO₃⁻ + H⁺ → H₂O + CO₂\n→ このとき反応した HCO₃⁻ は 5.50×10⁻³ mol。\nこれは「はじめからあった HCO₃⁻」と「CO₃²⁻ から変わった 5.0×10⁻⁴ mol」の合計。\nはじめの HCO₃⁻：5.50×10⁻³ − 0.50×10⁻³ = 5.00×10⁻³ mol\n濃度：5.00×10⁻³ ÷ 0.100 = 5.00×10⁻² mol/L → ④", "k25t:5.3": "もとの実験：H₂・I₂ 各 0.50 mol から HI 0.80 mol で平衡（0.80² ÷ (0.10 × 0.10) = 64 で確かめられる）。\n条件Ⅰ（体積2倍）：\n・反応の前後で気体の分子数が同じ（1 + 1 = 2）なので、平衡定数の式から体積が消え、平衡時の HI は同じ 0.80 mol。\n・濃度が半分になるので、正反応の速度 v₁ = k₁[H₂][I₂] ははじめ 1/4 になり、ゆっくり進む。\n同じ 0.80 mol に、ゆっくり近づく → ③\n条件Ⅱ（H₂ 3倍、I₂ 1/3倍）：\n・[H₂][I₂] は 3 × 1/3 = 1 倍なので、はじめの反応速度は同じ（立ち上がりが重なる）。\n・I₂ は 0.50 × 1/3 ≒ 0.17 mol しかないので、HI は最大でも 0.33 mol。実際に計算するとほぼ 0.33 mol で平衡。\nはじめは同じ傾きで、約 0.33 mol で平らになる → ②\n（④ は立ち上がりが遅くまちがい）", "k25t:5.4": "ａ 陰イオン（Cl⁻）だけを通すには、膜に「正の電荷をもつ」官能基が固定されていればよい。正電荷が Cl⁻ を引きつけて通し、Na⁺ ははね返す。\n–CH₂N⁺(CH₃)₃（第四級アンモニウム基）は正電荷をもつ → ②\n③ –SO₃⁻ は負電荷なので、逆に陽イオンを通す（陽イオン交換膜の官能基）。① ④ は電荷をもたない。\nｂ 電子 1 mol 分の電気が流れると、\n・希釈室1：Na⁺ 1 mol が陽イオン交換膜を通って濃縮室へ、Cl⁻ 1 mol が陰イオン交換膜を通って陽極側へ出ていく\n・希釈室2：Cl⁻ 1 mol が陰イオン交換膜を通って濃縮室へ、Na⁺ 1 mol が陰極側へ出ていく\n→ 濃縮室の NaCl は 1 mol 増え、希釈室1の NaCl は 1 mol 減る。\n流れた電子を n mol とすると\n濃縮室：xV + n、希釈室1：xV − n\nxV + n = 2(xV − n) → n = xV/3\nQ = nF = xVF/3 → ⑥", "k26:1.1": "ア「二重結合をもつ」とイ「水溶液が弱い酸性」の両方を満たすものを探す。\n② 二酸化炭素 O=C=O は C=O の二重結合を2つもち、水に溶けると炭酸 H₂CO₃ となって弱い酸性を示す。→ 正解\n① 臭化水素 HBr は単結合のみで、水溶液は強酸。\n③ エチレン CH₂=CH₂ は二重結合をもつが、水にほとんど溶けず酸性を示さない。\n④ 過酸化水素 H–O–O–H は単結合のみ。", "k26:1.2": "電気泳動で陽極側へ移動したので、粘土のコロイド粒子は負の電荷をもつ。\n負のコロイドを凝析させるのは陽イオンで、価数が大きいほど少量で凝析する。\n陽イオンの価数：K⁺ 1、Ca²⁺ 2、Al³⁺ 3、Mg²⁺ 2。グルコースは電解質ではない。\nよって価数最大の Al³⁺ を含む ③ 塩化アルミニウム。", "k26:1.3": "誤りは ③。飽和溶液と固体が共存しているときも、固体から溶け出す粒子と固体にもどる粒子の数が等しくなっている（溶解平衡）だけで、移動が止まっているわけではない。\n① 多くの固体は高温ほど溶解度が大きい。正しい。\n② 水和水をもつ物質の溶解度は、水100 g に溶ける無水物の質量で表す。正しい。\n④ 温度による溶解度の差を利用して精製する方法が再結晶。正しい。", "k26:1.4": "面 abcd は、上下の層Aの六角形を「向かい合う頂点 a と b（d と c）」を通る対角線で切った縦の面。\n層Aの原子：対角線上には頂点 a・中心・b（下は d・中心・c）の3個ずつが並ぶので、上辺と下辺に3個ずつ。\n層Bの原子：層Aの3つの原子がつくるくぼみ（三角形の中心）の真上にあり、六角形の中心を通る対角線上には乗らない。\nしたがって中段には原子の中心がない ① が正しい。", "k26:1.5": "ａ 容器内の O₂ の物質量は\nn = PV/RT = (1.0×10⁵ × 0.249 × 0.20) / (8.3×10³ × 300) = 2.0×10⁻³ mol\n燃焼の式は C₂H₅OH + 3O₂ → 2CO₂ + 3H₂O なので、エタノールは O₂ の 1/3。\n2.0×10⁻³ ÷ 3 ≒ 6.7×10⁻⁴ mol → ③\nｂ 体積一定なので、圧力は「物質量 × 絶対温度」に比例する。\nP / P₀ = 1.13 × (3600 / 300) = 13.56 ≒ 1.4×10¹ 倍 → ②", "k26:2.1": "誤りは ③。発熱して溶けるとき、系のエンタルピーは減るので溶解エンタルピーは負の値になる。\n① 一定圧力下で反応に伴って出入りする熱量が反応エンタルピー。正しい。\n② 反応エンタルピー ＝（生成物のエンタルピー）－（反応物のエンタルピー）。正しい。\n④ C（黒鉛）＋O₂ → CO₂ と CO ＋ ½O₂ → CO₂ の燃焼エンタルピーの差から、ヘスの法則で CO の生成エンタルピーが求まる。正しい。", "k26:2.2": "陰極では Ag⁺ + e⁻ → Ag、Pb²⁺ + 2e⁻ → Pb。\nAg：108 mg ÷ 108 g/mol = 1.0×10⁻³ mol → 電子 1.0×10⁻³ mol\nPb：207 mg ÷ 207 g/mol = 1.0×10⁻³ mol → 電子 2.0×10⁻³ mol\n電子の合計 3.0×10⁻³ mol × 9.65×10⁴ C/mol ≒ 290 C → ③", "k26:2.3": "v = k[N₂O₅] より k = v ÷（平均濃度）。\n0〜10 分：v = 3.2×10⁻³ mol/L ÷ 10 min = 3.2×10⁻⁴ mol/(L·min)\nk = 3.2×10⁻⁴ ÷ 10.8×10⁻³ ≒ 3.0×10⁻² /min\n（10〜20 分でも 2.4×10⁻⁴ ÷ 8.0×10⁻³ = 3.0×10⁻² でほぼ同じ）→ ①", "k26:2.4": "ａ ア NH₄NO₃：強酸と弱塩基の塩。NH₄⁺ が H⁺ を出すので酸性。\nイ NaHSO₄：HSO₄⁻ がさらに電離して H⁺ を出すので酸性。\nウ NaHCO₃：弱酸と強塩基の塩で、弱い塩基性。\n酸性はア・イ → ④\nｂ H⁺ を加えると、多量にある A⁻ と結びついて HA になる（H⁺ + A⁻ → HA）。\nつまり (2)式の平衡は左側に移動し、[HA] が増え [A⁻] が減る → ②\nｃ 緩衝液は「弱酸とその塩」または「弱塩基とその塩」の混合物。\n② アンモニア水:塩酸 ＝ 2:1 では、NH₃ の半分が NH₄Cl になり、NH₃ と NH₄Cl が同量ずつ残る → 緩衝液。\n① 1:1 では NH₄Cl だけ、③ は NaCl 水溶液、④ 1:1 では CH₃COONa だけになり、緩衝作用は弱い。→ ②", "k26:3.1": "水 H₂O の H の酸化数は +1。\n① NaH（水素化ナトリウム）は Na⁺ と H⁻ からなり、H の酸化数は −1 → 正解。\nNH₃・H₂O₂・HF の H はいずれも +1。\nポイント：H の酸化数は、ふつう +1。ただし金属の水素化物（NaH・CaH₂ など）では、H が電子を受け取って H⁻ になるので −1。\n確かめ方：化合物全体で酸化数の和は 0。NaH では Na が +1 なので H は −1。", "k26:3.2": "誤りは ②。空気中で自然発火するので水中に保管するのは黄リン。赤リンは自然発火しない。\n① 核酸（DNA・RNA）にはリン酸が含まれる。正しい。\n③ 燃焼すると十酸化四リン P₄O₁₀。正しい。\n④ P₄O₁₀ は吸湿性が強く乾燥剤になる。正しい。\n⑤ リン酸 H₃PO₄ は3価の酸。正しい。", "k26:3.3": "加熱で水和水だけが抜けるので、水和物と無水物の物質量は等しい。\n2.46 / (m + 222) = 1.20 / (m + 96)\n2.46m + 236.16 = 1.20m + 266.4\n1.26m = 30.24　→　m = 24（Mg）→ ①\n考え方：硫酸塩の水和物 MSO₄・7H₂O（式量 m＋222）を加熱すると水だけが出ていき、無水物 MSO₄（式量 m＋96）になる。M の数（物質量）は変わらない。\nそこで「水和物の物質量 ＝ 無水物の物質量」、つまり（質量）÷（式量）どうしを等しいとおく。\n求めた m ＝ 24 は Mg の原子量（MgSO₄・7H₂O）。選択肢に代入して 2.46/(24＋222) ＝ 0.0100、1.20/(24＋96) ＝ 0.0100 と一致することも確かめられる。", "k26:3.4": "誤りは ⑤。錯イオンの配位数は 6 だけではない。例：[Ag(NH₃)₂]⁺ は 2、[Cu(NH₃)₄]²⁺ は 4、[Fe(CN)₆]³⁻ は 6。\n① 典型元素以外が遷移元素。正しい。\n② 遷移元素は第4周期（Sc〜Cu）から現れる。正しい。\n③ 遷移元素はすべて金属元素。正しい。\n④ 第4周期の遷移元素の最外殻電子は 1 または 2 個。正しい。", "k26:3.5": "ａ FeS が沈殿する条件は [Fe²⁺][S²⁻] ＞ Ksp。\n[S²⁻] ＞ 2.5×10⁻⁹ ÷ 0.010 = 2.5×10⁻⁷ mol/L\n[S²⁻] = K[H₂S]/[H⁺]² を代入すると\n[H⁺]² ＜ (1.0×10⁻²¹ × 0.10) ÷ (2.5×10⁻⁷) = 4.0×10⁻¹⁶\n[H⁺] ＜ 2.0×10⁻⁸ mol/L → ③\nｂ ④ の順に考える。\n操作Ⅰ NaOH 水溶液を過剰に：Ag⁺ → Ag₂O（褐色）、Fe³⁺ → Fe(OH)₃（赤褐色）が沈殿。Zn²⁺ は [Zn(OH)₄]²⁻ となって溶け、K⁺ もろ液に残る。\n操作Ⅱ 沈殿にアンモニア水を過剰に：Ag₂O は [Ag(NH₃)₂]⁺ となって溶け（ろ液B・無色）、Fe(OH)₃ は残る（沈殿A・赤褐色）。\n操作Ⅲ ろ液に H₂S：塩基性なので ZnS（白色）が沈殿（沈殿C）、K⁺ はろ液Dに残る。→ ④", "k26:4.1": "正しいのは ①。ベンゼンスルホン酸ナトリウムを固体の NaOH と高温で融解すると（アルカリ融解）ナトリウムフェノキシドができる。\n② クロロベンゼンを NaOH 水溶液と高温・高圧で反応させると、Cl が置き換わってナトリウムフェノキシドになる（Cl は残らない）。\n③ ナトリウムフェノキシドに CO₂ を高温・高圧で反応させると、サリチル酸ナトリウム（OH の隣に COONa）ができる。安息香酸ナトリウムではない。\n④ サリチル酸に無水酢酸を作用させると OH がアセチル化されてアセチルサリチル酸になる。サリチル酸メチルはメタノールとの反応でできる。", "k26:4.2": "Ⅰ〜Ⅳを順に確かめる。\n⑤ CH₃–CH(OH)–CH₂–C≡C–CH₃：分子式 C₆H₁₀O、三重結合で臭素水を脱色、OH のついた C が不斉炭素、CH₃–CH(OH)– の部分でヨードホルム反応。すべて当てはまる → ⑤\n① 不斉炭素がない。② 分子式が C₆H₈O。③ ヨードホルム反応を示さない。④ 臭素水を脱色しない（C=C も C≡C もない）。⑥ 不斉炭素がない。", "k26:4.3": "C₄H₈ のアルケンは\n1-ブテン CH₂=CH–CH₂–CH₃\n2-ブテン CH₃–CH=CH–CH₃\n2-メチルプロペン CH₂=C(CH₃)₂\nの3つ。このうちシス・トランス異性体があるのは、二重結合の両端の炭素にそれぞれ異なる2つの原子（団）がつく 2-ブテンだけ。\n構造異性体 3、立体異性体がある構造異性体 1。", "k26:4.4": "誤りは ④。アミロースは α-グルコースが直鎖状につながったもの。らせん構造の中に I₂ などが取り込まれて青〜濃青色になる、という部分は正しい。\n① 二糖は単糖2分子の脱水縮合物で、その結合はグリコシド結合。正しい。\n② マルトースはデンプンをアミラーゼで分解するとできる。正しい。\n③ トレハロースは還元性を示す部分どうしで結合しているので、銀鏡反応を示さない。正しい。\n⑤ もち米のデンプンはほぼアミロペクチン。正しい。", "k26:4.5": "ａ ア 構造式でアミド結合（–CO–NH–）を数えると2つ。誤り。\nイ カルボキシ基 –COOH を2つ、アミノ基を1つもつので水溶液は酸性。正しい。\nウ –S–S– はジスルフィド結合。正しい。\n正しいのはイ・ウ → ⑥\nｂ グリシンは pH によって形が変わる。\nA（強い酸性、pH 約2）：H₃N⁺–CH₂–COOH → ③\nB（1つめの中和点付近、pH 約6）：双性イオン H₃N⁺–CH₂–COO⁻ → ②\nC（強い塩基性、pH 約12）：H₂N–CH₂–COO⁻ → ④", "k26:5.1": "ａ 誤りは ③。CrO₄²⁻（黄色）は酸性にすると Cr₂O₇²⁻（赤橙色）になり、塩基性にすると CrO₄²⁻ にもどる。記述は酸と塩基が逆。\n① クロムは不動態をつくり、めっきに使われる。正しい。\n② ステンレス鋼は Fe に Cr（や Ni）を加えた合金。正しい。\n④ CrO₄²⁻ と Pb²⁺ から PbCrO₄ の黄色沈殿。正しい。\nｂ 誤りは ④。光ファイバーに使われるのは高純度の二酸化ケイ素 SiO₂（石英ガラス）で、Si の単体ではない。\n① Si はダイヤモンドと同じ正四面体構造の共有結合の結晶。正しい。\n② アモルファスシリコンは原子の並びが不規則。正しい。\n③ SiO₂ + 6HF → H₂SiF₆ + 2H₂O で溶かして除ける。正しい。", "k26:5.2": "ａ 無水フタル酸の酸無水物の部分にアニリンの –NH₂ が反応すると、一方の C=O はアミド結合 –CO–NH–C₆H₅ に、もう一方はカルボキシ基 –COOH になる。これが ⑤。\nこの –COOH と –NH– が分子内で脱水するとイミド結合（環）ができる。\nｂ A の繰り返し単位は、\n・ベンゼン環の両側にイミドの環が2つ → 酸無水物の部分を2つもつ イ\n・2つのベンゼン環が –O– でつながり、それぞれパラ位で N と結合 → –O– をはさんだパラ位のジアミン エ\nからできている。オは –NH₂ がメタ位なので形が合わない。→ ⑤（イ・エ）", "k26:5.3": "ａ Ⅱ アセトアルデヒドを酸化すると酢酸 → D は酢酸。\nⅢ 酸化してケトンになるのは第二級アルコール → E は第二級アルコール。\n② CH₃COO–CH(CH₃)–CH₂CH₂CH₃ は、酢酸と 2-ペンタノール（第二級）のエステル → ②\n① はギ酸、⑤⑥ は酢酸以外のカルボン酸、③④ のアルコールは第一級なのでケトンにならない。\nｂ CH₃COOH + C₂H₅OH ⇄ CH₃COOC₂H₅ + H₂O\n平衡時：酢酸 4.0−3.0 = 1.0、エタノール 5.0−3.0 = 2.0、酢酸エチル 3.0、水 3.0（mol）\n体積は約分されるので K = (3.0 × 3.0) / (1.0 × 2.0) = 4.5 → ⑧", "k26t:1.1": "共有結合の結晶は、原子どうしが共有結合で立体的につながった巨大な結晶。\n② 二酸化ケイ素 SiO₂ は Si と O が共有結合で網目状につながっている → 正解\n① ドライアイスと ⑤ ナフタレンは分子結晶、③ ナトリウムは金属結晶、④ 塩化ナトリウムはイオン結晶。", "k26t:1.2": "浸透圧は溶けている粒子（イオンや分子）の物質量に比例する（ファントホッフの法則）。\nCaCl₂·2H₂O：4.41 ÷ 147 = 3.00×10⁻² mol\nCaCl₂ → Ca²⁺ + 2Cl⁻ と3個に分かれるので、粒子は 3.00×10⁻² × 3 = 9.00×10⁻² mol\nグルコースは電離しないので、同じ 9.00×10⁻² mol が必要。\n9.00×10⁻² × 180 = 16.2 g → ⑤", "k26t:1.3": "溶質の物質量は cV (mol)、その質量は McV (g)。\n質量パーセント濃度 ＝（溶質の質量）÷（溶液の質量）× 100 ＝ 100McV / W → ①\n考え方：濃度の換算は「溶質の質量」と「溶液の質量」を別々に出してから割る。\n・溶質：物質量 c (mol/L) × V (L) ＝ cV (mol)、質量はモル質量 M をかけて McV (g)\n・溶液：問題で与えられた溶液の質量 W (g)（水の質量ではない点に注意）\n単位の確認：(g)÷(g)×100 で % になっていれば OK。", "k26t:1.4": "Z ＞ 1 は、実在気体の体積が理想気体として計算した値より大きいことを表す。\n高圧で分子どうしが近づくと、分子自身の体積が無視できなくなり、その分だけ体積が大きくなる。→ ③\n① 分子間力がはたらくと体積は小さくなり Z ＜ 1 の方向に働く。H₂ は分子間力がとても弱いので、この圧力範囲では分子の体積の効果が勝つ。\n② 温度は 500 K で一定。④ 500 K の H₂ は液体にならない。", "k26t:1.5": "ａ 空気の物質量 n = PV/RT = (1.0×10⁵ × 0.249) / (8.3×10³ × 300) = 1.00×10⁻² mol\n質量 = 1.00×10⁻² × 28.8 ≒ 0.29 g → ①\nｂ ア 加熱中にフラスコ上部で凝縮したトルエンがあれば、その分トルエンの質量が多く量られ、モル質量は大きく出る。小さくなる原因ではないので誤り。\nイ 冷却後もトルエンの一部は蒸発して気体になり、その分の空気がフラスコから追い出されている。差し引く空気の質量が実際より大きいことになり、トルエンの質量が小さく量られるので、モル質量も小さく出る。正しい。\nア 誤・イ 正 → ③", "k26t:2.1": "正しいのは ①。反応速度は単位時間当たりの反応物の濃度の減少量（または生成物の増加量）で表す。\n② 一般に温度が高いほど反応速度は大きい。\n③ 反応速度式は実験で決まり、濃度に比例するとは限らない（2乗に比例する反応などもある）。\n④ 触媒は活性化エネルギーを小さくして反応速度を大きくする。", "k26t:2.2": "純水では [H⁺] = [OH⁻] なので [H⁺]² = 4.0×10⁻¹⁴、[H⁺] = 2.0×10⁻⁷ mol/L。\npH = −log(2.0×10⁻⁷) = 7 − log 2 = 7 − 0.3 = 6.7 → ②\n（高温の純水は pH が 7 より小さいが、[H⁺] = [OH⁻] なので中性）", "k26t:2.3": "PbCl₂ が沈殿し始めるときの [Cl⁻]：\n[Pb²⁺][Cl⁻]² = 1.6×10⁻⁵ → [Cl⁻]² = 1.6×10⁻⁵ ÷ 1.0×10⁻⁴ = 0.16 → [Cl⁻] = 0.40 mol/L\nこのとき AgCl は飽和しているので\n[Ag⁺] = 8.4×10⁻¹¹ ÷ 0.40 = 2.1×10⁻¹⁰ mol/L → ②", "k26t:2.4": "ａ 誤りは ④。触媒は活性化エネルギーを下げて反応を速くするが、反応エンタルピー（ΔH）は変えない。\n① ΔH ＞ 0（吸熱反応）なので、温度を上げると吸熱の向き＝生成物側に移動する。正しい。\n② 気体の分子数は 左 3（1＋2）→ 右 5（1＋4）。圧力を上げると分子数が減る向き＝反応物側に移動する。正しい。\n③ 触媒は平衡を移動させない。正しい。\nｂ 1 g 当たりの発熱量 ＝（燃焼エンタルピーの大きさ）÷（モル質量）\n水素 286 ÷ 2 = 143 kJ/g、メタン 890 ÷ 16 ≒ 56 kJ/g、プロパン 2200 ÷ 44 = 50 kJ/g\n水素がとび抜けて大きく、メタンがプロパンより少し大きいグラフ → ②\n（④ は 1 mol 当たりの値をそのまま並べたもの。③ はプロパンがメタンより大きくなっていて誤り。① は水素の値が大きすぎる）\nｃ 100 mol の H₂O ができたので、発生したエネルギーは 286 × 100 = 28600 kJ。\n熱として残ったのは 28600 − 16000 = 12600 kJ。\n温水の質量を m (g) とすると 4.2 × m × (42.0 − 22.0) = 12600×10³\nm = 1.5×10⁵ g = 150 kg → ②", "k26t:3.1": "乾燥剤は「中和反応や、ほかの化合物をつくる反応を起こさないもの」を選ぶ。\n② 酸素は中性の気体で、塩化カルシウム（中性の乾燥剤）と反応しないので乾燥できる → 正解\n① アンモニア（塩基性）は濃硫酸（酸性）と中和してしまう。\n③ 塩化水素（酸性）は酸化カルシウム（塩基性）と反応してしまう。\n④ 二酸化炭素（酸性）はソーダ石灰（塩基性）に吸収されてしまう。\n（アンモニアは塩化カルシウムとも結びつくので、ソーダ石灰で乾燥させる）", "k26t:3.2": "誤りは ④。鉛 Pb は水素よりイオン化傾向が大きいが、希硫酸に入れると表面に水に溶けにくい硫酸鉛(Ⅱ) PbSO₄ ができ、反応がすぐ止まるのでほとんど溶けない（希塩酸でも PbCl₂ ができて溶けにくい）。\n① 黒鉛は平面の層が積み重なった構造。正しい。\n② 活性炭は小さな穴が多く表面積が大きいので、においの分子を吸着する。正しい。\n③ 鉄にスズをめっきしたものがブリキ（缶詰の缶など）。正しい。", "k26t:3.3": "実験Ⅰ：Zn + 2HCl → ZnCl₂ + H₂ より、Zn 1 mol から H₂ 1 mol。\n→ Zn の物質量は H₂ 60 mL 分に比例する。\n実験Ⅱ：3Ag + 4HNO₃ → 3AgNO₃ + 2H₂O + NO より、Ag 3 mol から NO 1 mol。\n→ Ag の物質量は NO 40 mL の3倍＝120 mL 分に比例する。\n同じ条件の気体の体積は物質量に比例するので\nZn : Ag = 60 : 120 = 1 : 2 → ⑤", "k26t:3.4": "ａ 正しいのは ④。2族の硫酸塩は CaSO₄・BaSO₄ が水に溶けにくく、MgSO₄ だけがよく溶ける。\n① Mg・Ca・Ba はいずれも空気中で酸化される。② Ca と Ba は常温の水と反応するが、Mg は熱水でないと反応しにくい（Mg のみ、は逆）。③ 水に溶けにくい水酸化物は Mg(OH)₂。Ba(OH)₂ はよく溶ける。⑤ 炭酸塩はどれも水に溶けにくい。\nｂ 変換が必要なのは MgO だけ。\nMgO の質量：1.0×10³ kg × 0.040 = 40 kg = 4.0×10⁴ g → 4.0×10⁴ ÷ 40 = 1.0×10³ mol\n式 2MgO + C + 2Cl₂ → 2MgCl₂ + CO₂ より、MgO と Cl₂ は 1 : 1\nCl₂ は 1.0×10³ mol → ①\nｃ Ti の物質量は W/M (mol)。\nTiCl₄ + 2Mg → Ti + 2MgCl₂ より、Ti 1 mol をつくるのに Mg 2 mol が必要。\nMg²⁺ + 2e⁻ → Mg より、Mg 1 mol をつくるのに電子 2 mol が必要。\n→ Ti 1 mol 当たり電子 4 mol。（このとき陽極で Cl₂ 2 mol もでき、それが TiO₂ を TiCl₄ にする Cl₂ 2 mol にちょうど使われる。MgCl₂ はくり返し使われるので、電気量はこれだけでよい）\n電気量 = 4 × (W/M) × F = 4WF/M → ⑧", "k26t:4.1": "ａ 一方のみに当てはまるのは ④。プロピレンに臭素が付加した CH₃–C*HBr–CH₂Br の C* は4つとも違う原子・原子団がつくので不斉炭素原子。エチレンからできる CH₂Br–CH₂Br にはない。\n① どちらも常温で気体。② どちらも C=C をもち、その部分は回転できない。③ どちらも立体異性体はない（プロピレンは二重結合の片方の炭素に H が2つつくのでシス・トランスもない）。⑤ どちらも C=C があり KMnO₄ の色を消す。\nｂ プロピレン CH₂=CH–CH₃ の C=C に何かが付加すると、となり合う 1・2 番目の炭素に原子がつく。\nア H₂ の付加 → CH₃–CH₂–CH₃ ○\nイ ポリプロピレンなら –[CH₂–CH(CH₃)]– になるはず。枝のない –[CH₂–CH₂–CH₂]– にはならない ×\nウ Cl₂ の付加なら CH₂Cl–CHCl–CH₃。3つの炭素すべてに Cl はつかない ×\nエ アセトンはクメン法などでつくり、付加反応では得られない ×\nオ H₂O の付加 → CH₃–CH(OH)–CH₃（2-プロパノール） ○\nア・オ → ④", "k26t:4.2": "誤りは ④。スズと濃塩酸は「還元」に使う試薬で、–NO₂ を –NH₂ に変える（ニトロベンゼン → アニリンと同じ）。–NH₂ を –NO₂ にするのではない。\n① アミノ基（–NH₂ や –N(CH₂CH₃)₂）をもつので弱塩基性。正しい。\n② エステル結合 –COO– をもつので、NaOH で加熱するとけん化（加水分解）される。正しい。\n③ ベンゼン環についた –NH₂ は、ジアゾ化 → カップリングで橙色のアゾ化合物になる。正しい。", "k26t:4.3": "ａ ア「ベンゼン環をもつ異性体がほかにもある」\nキシレン C₈H₁₀ → エチルベンゼンがある ○\nクレゾール C₇H₈O → ベンジルアルコール、アニソール（メチルフェニルエーテル）がある ○\nジクロロベンゼン C₆H₄Cl₂ → ベンゼン環に Cl 2つの o・m・p だけ ×\nイ「パラ体が防虫剤」→ p-ジクロロベンゼンだけ\nウ「NaOH と中和」→ フェノール類のクレゾールだけ\nキシレン：ア → ①、クレゾール：ア・ウ → ⑤、ジクロロベンゼン：イ → ②\nｂ 正しいのは ④。クレゾールはどれもベンゼン環に直接 –OH がつくフェノール類なので、塩化鉄(Ⅲ)で呈色する。\n① 構造が違うので沸点・融点は異なる。② 分子内で脱水して酸無水物になるのは、2つの –COOH が隣り合うフタル酸（o-キシレンから）だけ。③ どのクレゾールも –OH をもち、無水酢酸でアセチル化されエステルになる。", "k26t:4.4": "条件を1つずつ確かめる。\nⅠ アデニンの「五員環の N–H の N」とリボースの「1位の C（O ととなり合う炭素）」がつながる。\n→ ② はアデニンの –NH₂（六員環側）でつながっているので ×。① と ③ と ④ は五員環の N でつながっている。\nⅡ リン酸はリボースの「–CH₂–OH」の O とつながる。\n→ ① はリン酸が1位側、④ は環についた –OH（3位）とつながっていて ×。\n両方を満たすのは ③。", "k26t:5.1": "誤りは ④。銅の電解精錬では、粗銅を「陽極」、純銅を「陰極」にする。陽極の粗銅から Cu が Cu²⁺ として溶け出し、イオン化傾向の小さい金や銀は溶けずに陽極の下にたまる（陽極泥）。これで金を分けられる。\n① 金は展性・延性が最も大きい（金箔）。② 金属光沢は自由電子による。③ 金は熱濃硫酸にも溶けず、王水には溶ける。", "k26t:5.2": "NaOH 水溶液を少し加えるとどれも水酸化物の沈殿になるが、過剰に加えると両性の金属（Al・Zn・Pb）の水酸化物は溶ける。\nAl(OH)₃ → [Al(OH)₄]⁻、Zn(OH)₂ → [Zn(OH)₄]²⁻、Pb(OH)₂ → [Pb(OH)₄]²⁻\nCu(OH)₂（青白色）は過剰の NaOH にも溶けずに残る → ②\n（なおアンモニア水を過剰に加えると Cu(OH)₂ は溶けるので注意）", "k26t:5.3": "液体 He の質量：1.20×10² g/L × 0.100 L = 12.0 g → 12.0 ÷ 4.0 = 3.00 mol\n0℃、1.00×10⁵ Pa では 3.00 mol の体積は 22.7 × 3.00 = 68.1 L。\n同じ温度で 10.0 L に押し込めるので、ボイルの法則より\nP = 1.00×10⁵ × 68.1 ÷ 10.0 = 6.81×10⁵ Pa → ③", "k26t:5.4": "ａ 生ゴムに硫黄を数％加えて加熱すると、分子鎖どうしが硫黄でつながり（架橋）、弾性が増す（加硫）。硫黄を 30〜40％加えると黒くて硬いエボナイトになる。→ ①\nノボラックはフェノール樹脂をつくるときの中間体で、ゴムとは関係ない。\nｂ ポリイソプレンは –CH₂–C(CH₃)=CH–CH₂– のくり返し。シス形とは、C=C をはさんで「鎖をつなぐ CH₂ どうし」が同じ側にあるもの。\n② は2つの C=C のどちらでも、両側の CH₂ が同じ側にある → 正解\n④・⑤ は CH₂ が反対側のトランス形（グッタペルカの構造）。① と ③ は C=C が並ぶ別の構造で、ポリイソプレンではない。\nｃ 付加した H₂：67.2 ÷ 22.4 = 3.00 mol\nブタジエン単位1つに C=C が1つなので、ブタジエン単位は 3.00 mol → n = 3.00 mol 分。\n水素付加後のブタジエン単位（C₄H₈）は 56 なので、その質量は 56 × 3.00 = 168 g。\n残りがスチレン単位：220 − 168 = 52 g → 52 ÷ 104 = 0.500 mol → m = 0.500 mol 分。\nm/n = 0.500 ÷ 3.00 = 1/6 → ⑤"};/*EXPL_END*/
+const explOf=(st,q,sn)=>EXPL[st.id+':'+q+'.'+sn]||null;
+const explBody=t=>esc(t).replace(/\n/g,'<br>');
+function explHTML(st,q,sn,open){const t=explOf(st,q,sn);const its=st.items.filter(i=>i.q===q&&i.s===sn);
+ const ans=its.map(i=>`<span class="num">${i.boxes.join('・')}</span> → <b class="num">${i.a.join('・')}</b>${i.mode==='any'?'（順不同）':''}`).join('　');
+ return`<details class="expl"${open?' open':''}><summary><span>問${sn} の${t?'解説 <span class="chip beta">ベータ</span>':'正解'}</span><span class="eans">${ans}</span></summary><div class="ebody">${t?explBody(t):'この設問の解説は準備中です。'}</div></details>`}
+/* 細かい分野（設問ごとにアプリが分類） */
+const FIELDS={r1:['理論','原子・結合・結晶'],r2:['理論','気体・状態変化'],r3:['理論','溶液・コロイド'],r4:['理論','熱化学・エネルギー'],r5:['理論','電池・電気分解'],r6:['理論','反応速度・平衡'],r7:['理論','酸・塩基・pH'],i1:['無機','非金属元素'],i2:['無機','典型金属元素'],i3:['無機','遷移元素・錯イオン'],i4:['無機','金属イオンの分離'],i5:['無機','気体の製法と性質'],i6:['無機','製錬・工業的製法'],i7:['無機','無機の総合'],o1:['有機','炭化水素'],o2:['有機','アルコール・エステル'],o3:['有機','油脂・セッケン'],o4:['有機','芳香族・医薬品'],o5:['有機','異性体・構造決定'],o6:['有機','糖・タンパク質'],o7:['有機','合成高分子']};
+const BIGF={理論:'物質の状態・エネルギー・反応の速さと平衡',無機:'元素ごとの性質と反応・金属イオン',有機:'有機化合物と高分子の構造・反応'};
+/* 第6問（旧課程用）は第5問と同じ内容なので、設問の一覧には入れない */
+const SUBS=SETS.flatMap(st=>st.subs.filter(x=>x.q<=5));const subById=id=>SUBS.find(x=>x.id===id)||SETS.flatMap(s=>s.subs).find(x=>x.id===id);
+const setById=id=>SETS.find(s=>s.id===id);
+const qsOf=(st,sel)=>st.elective?[1,2,3,4,sel===6?6:5]:[1,2,3,4,5];
+const itemsOf=(st,qs)=>st.items.filter(i=>qs.includes(i.q));
+const scopeItems=(st,o)=>o.s?st.items.filter(i=>i.q===o.q&&i.s===o.s):itemsOf(st,o.q?[o.q]:qsOf(st,o.sel));
+const boxesOf=items=>items.flatMap(i=>i.boxes);
+const TOPICS={理論:'物質の状態・化学反応とエネルギー・反応速度・平衡など',無機:'無機物質の性質・反応、金属イオンの分離など',有機:'有機化合物・高分子化合物の構造と反応など',総合:'テーマ型の総合問題（資料・グラフの読み取り）'};
+const pageEnd=(st,q)=>{const n=st.pages[q];return n?n-1:null};
+
+/* ================= 保存 ================= */
+const KEY='kchem.v1';
+const DEF={hist:[],cur:null,set:{timer:true,sound:true},nick:'',social:true,days:{},tut:0};
+let S;try{S=JSON.parse(localStorage.getItem(KEY))}catch(e){}
+S=Object.assign({},DEF,S||{});S.set=Object.assign({},DEF.set,S.set||{});
+let saveT=0;function save(){clearTimeout(saveT);saveT=setTimeout(saveNow,250)}
+function saveNow(){clearTimeout(saveT);try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){try{if(S.cur)S.cur.ink={};localStorage.setItem(KEY,JSON.stringify(S))}catch(e2){}}}
+/* 1.0は全問無料。この版で使い始めた人を記録（後の版で無料のまま扱うため） */
+const FREE_ALL=true;if(FREE_ALL&&!S.freeV1){S.freeV1=Date.now();save()}
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const uid=()=>Math.random().toString(36).slice(2,9);
+const dkey=(d=new Date())=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+const fmtT=s=>{s=Math.max(0,Math.floor(s));return Math.floor(s/60)+':'+String(s%60).padStart(2,'0')};
+const fmtDate=t=>{const d=new Date(t);return `${d.getMonth()+1}/${d.getDate()} ${d.getHours()}:${String(d.getMinutes()).padStart(2,'0')}`};
+/* 効果音：マークは小さく「コッ」、採点は点数に応じて、満点はファンファーレ */
+let actx=null;function snd(kind){if(!S.set.sound)return;try{actx=actx||new (window.AudioContext||window.webkitAudioContext)();if(actx.state==='suspended')actx.resume();
+ const t0=actx.currentTime;const tone=(f,st,du,vol,type)=>{const o=actx.createOscillator(),g=actx.createGain();o.type=type||'sine';o.frequency.value=f;g.gain.setValueAtTime(0,t0+st);g.gain.linearRampToValueAtTime(vol,t0+st+.01);g.gain.exponentialRampToValueAtTime(.0001,t0+st+du);o.connect(g).connect(actx.destination);o.start(t0+st);o.stop(t0+st+du+.05)};
+ if(kind==='tap')tone(1400,0,.05,.05,'triangle');
+ else if(kind==='off')tone(700,0,.05,.04,'triangle');
+ else if(kind==='ok'){tone(880,0,.12,.12);tone(1320,.09,.28,.12)}
+ else if(kind==='ng'){tone(300,0,.25,.1,'square')}
+ else if(kind==='done'){tone(660,0,.18,.12);tone(880,.12,.3,.12)}
+ else if(kind==='low'){tone(440,0,.2,.1);tone(392,.15,.35,.1)}
+ else if(kind==='perfect'){[523,659,784,1047].forEach((f,i)=>tone(f,i*.11,.35,.13,'triangle'));tone(1319,.48,.7,.12,'triangle');tone(1047,.48,.7,.08)}}catch(e){}}
+function toast(m){const t=$('#toast');t.textContent=m;t.hidden=false;clearTimeout(toast.h);toast.h=setTimeout(()=>t.hidden=true,2600)}
+const nativeMsg=n=>window.webkit&&window.webkit.messageHandlers&&window.webkit.messageHandlers[n];
+const SITE_URL='https://genjii0901-cell.github.io/kyotest-chemistry-site';
+
+/* ================= 採点 ================= */
+function gradeItems(items,ans){return items.map(it=>{const u=it.boxes.map(b=>ans[b]);let ok;
+ if(it.mode==='any'){const x=[...u].sort().join(','),y=[...it.a].sort().join(',');ok=x===y}
+ else ok=it.boxes.every((b,k)=>ans[b]===it.a[k]);
+ /* 部分点：「各2点」の順不同（each）と、正解表の注にある別解（alt） */
+ let got=ok?it.pts:0;
+ if(!ok&&it.each){const seen=new Set();u.forEach(v=>{if(v!=null&&it.a.includes(v))seen.add(v)});got=seen.size*it.pts/it.boxes.length}
+ if(!ok&&it.alt&&it.alt[u[0]]!=null)got=it.alt[u[0]];
+ /* 順不同の組では、個々のマークが正解の集合に入っていれば「合っている」と表示する */
+ const boxOk=it.boxes.map((b,k)=>it.mode==='any'?it.a.includes(ans[b]):ans[b]===it.a[k]);
+ return{it,ok,got,boxOk}})}
+function summarize(st,qs,ans,its){const g=gradeItems(its||itemsOf(st,qs),ans);const byQ={};
+ g.forEach(r=>{const o=byQ[r.it.q]=byQ[r.it.q]||[0,0];o[0]+=r.got;o[1]+=r.it.pts});
+ return{g,byQ,score:g.reduce((a,r)=>a+r.got,0),max:g.reduce((a,r)=>a+r.it.pts,0)}}
+
+/* ================= PDF（pdf.js をアプリに同梱） ================= */
+let pdfReady=null;const pdfDocs={};
+function loadScript(src){return new Promise((res,rej)=>{const s=document.createElement('script');s.src=src;s.onload=res;s.onerror=()=>rej(new Error(src));document.head.appendChild(s)})}
+class CMapFactory{async fetch({name}){if(!window.CMAPS)await loadScript('pdf-cmaps.js');const b=window.CMAPS[name];if(!b)throw new Error('CMap '+name);return{cMapData:Uint8Array.from(atob(b),c=>c.charCodeAt(0)),compressionType:1}}}
+function pdfLib(){if(!pdfReady)pdfReady=(async()=>{await loadScript('pdf.min.js');const L=window.pdfjsLib;L.GlobalWorkerOptions.workerSrc='pdf.worker.min.js';return L})().catch(e=>{pdfReady=null;throw e});return pdfReady}
+async function getDoc(file){if(!pdfDocs[file])pdfDocs[file]=(async()=>{const L=await pdfLib();let r=await fetch('past/'+file).catch(()=>null);if(!r||!r.ok)r=await fetch(file);if(!r.ok)throw new Error('missing');const buf=await r.arrayBuffer();return L.getDocument({data:buf,CMapReaderFactory:CMapFactory,cMapPacked:true}).promise})().catch(e=>{delete pdfDocs[file];throw e});return pdfDocs[file]}
+
+/* ================= 書き込み（Apple Pencil はいつでも書ける。指は「ペン」オンのときだけ） ================= */
+let inkOn=false,inkT='pen',inkC='k',inkHist=[],penUsed=false,inkWi=1;const INK_W=[1.4,2.2,3.6],INK_WN=['細','中','太'];
+const INK_COL={k:'#1A2130',r:'#C8324A',b:'#2B4C9B'};
+const inkStore=()=>sess?(sess.ink=sess.ink||{}):(window.__freeInk=window.__freeInk||{});
+function inkSet(on){inkOn=!!on;if(!on)penUsed=false;document.body.classList.toggle('inking',inkOn);const b=$('#inkBtn');if(b){b.classList.toggle('on',inkOn);b.setAttribute('aria-pressed',String(inkOn))}inkBar()}
+function inkPaint(host){const cv=host._inkcv;if(!cv)return;const W=host._inkW||1,d=cv.width/W,g=cv.getContext('2d');g.setTransform(1,0,0,1,0,0);g.clearRect(0,0,cv.width,cv.height);g.lineCap='round';g.lineJoin='round';
+ const oy=host._oy||0;const memoDark=host.classList.contains('memopad')&&matchMedia('(prefers-color-scheme: dark)').matches;
+ (inkStore()[host.dataset.ink]||[]).forEach(k=>{const P=k.p,X=q=>q[0]*W*d,Y=q=>(q[1]*W-oy)*d;if(!P.length)return;g.strokeStyle=k.hl?'#F5C518':(k.c==='k'&&memoDark?'#E5EBEF':INK_COL[k.c]||k.c);
+  if(k.hl){g.globalAlpha=.38;g.lineWidth=k.w*d;g.beginPath();g.moveTo(X(P[0]),Y(P[0]));P.forEach(q=>g.lineTo(X(q),Y(q)));g.stroke();g.globalAlpha=1;return}
+  if(P.length===1){g.fillStyle=g.strokeStyle;g.beginPath();g.arc(X(P[0]),Y(P[0]),k.w*d*.6,0,7);g.fill();return}
+  for(let i=1;i<P.length;i++){const a=P[i-1],b=P[i];g.lineWidth=k.w*d*(.55+.9*b[2]);g.beginPath();g.moveTo(X(a),Y(a));g.lineTo(X(b),Y(b));g.stroke()}})}
+function inkAttach(host,key){if(!host||host._inkcv)return;host.dataset.ink=key;
+ const cv=document.createElement('canvas');cv.className='inkcv';cv.setAttribute('aria-hidden','true');host.append(cv);host._inkcv=cv;
+ const size=()=>{const W=host.clientWidth,H=host.clientHeight,d=Math.min(window.devicePixelRatio||1,2);if(!W)return;host._inkW=W;cv.width=Math.round(W*d);cv.height=Math.round(H*d);cv.style.width=W+'px';cv.style.height=H+'px';inkPaint(host)};
+ size();if('ResizeObserver'in window)new ResizeObserver(size).observe(host);
+ let cur=null,raf=0,last=0;const memo=host.classList.contains('memopad');
+ const pt=e=>{const r=host.getBoundingClientRect(),W=host._inkW||r.width;return[(e.clientX-r.left)/W,(e.clientY-r.top+(host._oy||0))/W,e.pointerType==='pen'?(e.pressure||.5):.5]};
+ const mine=e=>e.pointerType==='pen'||memo||(inkOn&&(e.pointerType==='mouse'||e.pointerType==='touch'));
+ const erase=q=>{const L=inkStore()[key]||[],W=host._inkW||1;const i=L.findIndex(k=>k.p.some(a=>Math.hypot((a[0]-q[0])*W,(a[1]-q[1])*W)<14));if(i>=0){inkHist.push({key,k:L[i],del:1});L.splice(i,1);inkPaint(host)}};
+ host.addEventListener('touchstart',e=>{const t=e.touches[0];if(t&&(t.touchType==='stylus'||memo||inkOn))e.preventDefault()},{passive:false});
+ const tps=new Map();let pan=null;const mid=()=>{const v=[...tps.values()];return(v[0]+v[1])/2};
+ host.addEventListener('pointerdown',e=>{if(memo&&e.pointerType==='touch'){tps.set(e.pointerId,e.clientY);if(tps.size>=2){e.preventDefault();
+   if(cur&&cur.p){const L=inkStore()[key]||[];const i=L.indexOf(cur);if(i>=0)L.splice(i,1);const j=inkHist.findIndex(h=>h.k===cur);if(j>=0)inkHist.splice(j,1)}cur=null;pan=mid();inkPaint(host);return}}
+  if(!mine(e))return;e.preventDefault();last=Date.now();try{host.setPointerCapture(e.pointerId)}catch(x){}
+  if(e.pointerType==='pen'&&!penUsed&&!memo){penUsed=true;inkBar()}
+  if(inkT==='er'){cur={er:1};erase(pt(e));return}
+  const L=inkStore()[key]=inkStore()[key]||[];cur={c:inkC,w:inkT==='hl'?16:INK_W[inkWi],hl:inkT==='hl'?1:0,p:[pt(e)]};L.push(cur);inkHist.push({key,k:cur});inkPaint(host)});
+ host.addEventListener('pointermove',e=>{if(tps.has(e.pointerId)){tps.set(e.pointerId,e.clientY);if(pan!=null&&tps.size>=2){e.preventDefault();const m=mid();memoScroll(host,pan-m);pan=m;return}}
+  if(!cur)return;e.preventDefault();const ce=e.getCoalescedEvents?e.getCoalescedEvents():[],evs=ce.length?ce:[e];
+  if(cur.er){evs.forEach(x=>erase(pt(x)));return}
+  evs.forEach(x=>cur.p.push(pt(x).map(v=>Math.round(v*10000)/10000)));if(!raf)raf=requestAnimationFrame(()=>{raf=0;inkPaint(host)})});
+ if(memo)host.addEventListener('wheel',e=>{e.preventDefault();memoScroll(host,e.deltaY)},{passive:false});
+ const up=e=>{if(e&&tps.delete(e.pointerId)&&tps.size<2)pan=null;if(!cur)return;cur=null;last=Date.now();inkPaint(host);persistSess()};
+ host.addEventListener('pointerup',up);host.addEventListener('pointercancel',up)}
+function inkRepaintKey(key){document.querySelectorAll('.pg,.memopad').forEach(h=>{if(h.dataset.ink===key)inkPaint(h)})}
+function inkBar(){let b=document.getElementById('inkbar');const show=(inkOn||penUsed||memoOpen)&&(view==='exam'||memoOpen);
+ document.body.classList.toggle('inkbarH',!!(show&&!memoOpen));
+ if(!show){if(b)b.remove();return}
+ if(!b){b=document.createElement('div');b.id='inkbar';b.setAttribute('role','toolbar');b.setAttribute('aria-label','書き込みツール');document.body.append(b)}
+ const on=(t,c)=>inkT===t&&(c==null||inkC===c)?'on':'';
+ const CN={k:'黒',r:'赤',b:'青'},CC={k:'#1A2130',r:'#C8324A',b:'#2B4C9B'};
+ b.innerHTML=`<button data-t="pen" class="${on('pen')}" aria-label="ペン"><svg viewBox="0 0 24 24"><path d="M5 19l1-4L16 5l3 3L9 18z"/><path d="M14 7l3 3"/></svg></button>
+ <button data-t="hl" class="${on('hl')}" aria-label="マーカー"><span class="hl"></span></button>
+ <button data-t="er" class="${on('er')}" aria-label="消しゴム"><svg viewBox="0 0 24 24"><path d="M4 16l8-8 6 6-5 5H8z"/><path d="M9 21h11"/></svg></button><hr>
+ <button id="inkC" aria-label="色 ${CN[inkC]||''}（押すと変わる）"><span class="dot" style="background:${CC[inkC]||inkC};box-shadow:0 0 0 2px var(--sheet),0 0 0 3.5px ${CC[inkC]||inkC}"></span></button>
+ <button id="inkW" aria-label="線の太さ ${INK_WN[inkWi]}"><span class="wl" style="height:${[2,3,5][inkWi]}px"></span></button><hr>
+ <button id="inkUndo" aria-label="ひとつ戻す"><svg viewBox="0 0 24 24"><path d="M9 7L4 12l5 5"/><path d="M4 12h10a6 6 0 0 1 0 12"/></svg></button>
+ ${memoOpen?'':'<button id="inkX" class="done" aria-label="書き込みを終える">完了</button>'}`;
+ {const cb=b.querySelector('#inkC');if(cb)cb.onclick=()=>{inkC={k:'r',r:'b',b:'k'}[inkC]||'k';if(inkT==='er')inkT='pen';inkBar()}}
+ if(!memoOpen){const pn=$('#pdfPane');if(pn){const r=pn.getBoundingClientRect();b.style.top=Math.max(r.top+6,r.bottom-54)+'px'}}else b.style.top=''
+ b.querySelectorAll('[data-t]').forEach(x=>x.onclick=()=>{inkT=x.dataset.t;if(x.dataset.c)inkC=x.dataset.c;inkBar()});
+ b.querySelector('#inkW').onclick=()=>{inkWi=(inkWi+1)%3;if(inkT!=='pen')inkT='pen';inkBar()};
+ b.querySelector('#inkUndo').onclick=()=>{const h=inkHist.pop();if(!h)return;const L=inkStore()[h.key]=inkStore()[h.key]||[];if(h.del)L.push(h.k);else{const i=L.indexOf(h.k);if(i>=0)L.splice(i,1)}inkRepaintKey(h.key);persistSess()};
+ const x=b.querySelector('#inkX');if(x)x.onclick=()=>inkSet(false)}
+
+/* ================= 周期表・原子量 ================= */
+const EL='H水素1.008 He ヘリウム4.003 Liリチウム6.94 Beベリリウム9.012 Bホウ素10.81 C炭素12.01 N窒素14.01 O酸素16.00 Fフッ素19.00 Neネオン20.18 Naナトリウム22.99 Mgマグネシウム24.31 Alアルミニウム26.98 Siケイ素28.09 Pリン30.97 S硫黄32.07 Cl塩素35.45 Arアルゴン39.95 Kカリウム39.10 Caカルシウム40.08 Scスカンジウム44.96 Tiチタン47.87 Vバナジウム50.94 Crクロム52.00 Mnマンガン54.94 Fe鉄55.85 Coコバルト58.93 Niニッケル58.69 Cu銅63.55 Zn亜鉛65.38 Gaガリウム69.72 Geゲルマニウム72.63 Asヒ素74.92 Seセレン78.97 Br臭素79.90 Krクリプトン83.80 Rbルビジウム85.47 Srストロンチウム87.62 Yイットリウム88.91 Zrジルコニウム91.22 Nbニオブ92.91 Moモリブデン95.95 Tcテクネチウム(99) Ruルテニウム101.1 Rhロジウム102.9 Pdパラジウム106.4 Ag銀107.9 Cdカドミウム112.4 Inインジウム114.8 Snスズ118.7 Sbアンチモン121.8 Teテルル127.6 Iヨウ素126.9 Xeキセノン131.3 Csセシウム132.9 Baバリウム137.3 Hfハフニウム178.5 Taタンタル180.9 Wタングステン183.8 Reレニウム186.2 Osオスミウム190.2 Irイリジウム192.2 Pt白金195.1 Au金197.0 Hg水銀200.6 Tlタリウム204.4 Pb鉛207.2 Biビスマス209.0 Poポロニウム(210) Atアスタチン(210) Rnラドン(222) Frフランシウム(223) Raラジウム(226)'
+ .replace('He ヘ','Heヘ').split(' ').map(t=>{const m=t.match(/^([A-Z][a-z]?)(.+?)(\(?[\d.]+\)?)$/);return{sym:m[1],ja:m[2],m:m[3]}});
+EL.forEach((e,i)=>{const z=i<56?i+1:i+16;e.z=z;let p,g;
+ if(z<=2){p=1;g=z===1?1:18}else if(z<=18){p=z<=10?2:3;const o=z-(p===2?2:10);g=o<=2?o:o+10}
+ else if(z<=54){p=z<=36?4:5;g=z-(p===4?18:36)}else{p=z<=86?6:7;g=z<=56?z-54:z>=87?z-86:z-68}
+ e.p=p;e.g=g});
+const NONMETAL=new Set(['H','He','B','C','N','O','F','Ne','Si','P','S','Cl','Ar','As','Se','Br','Kr','Te','I','Xe','At','Rn']);
+const GAS=new Set(['H','He','N','O','F','Ne','Cl','Ar','Kr','Xe','Rn']),LIQ=new Set(['Br','Hg']);
+const HALO=new Set(['F','Cl','Br','I','At']),NOBLE=new Set(['He','Ne','Ar','Kr','Xe','Rn']);
+const COMMON='H 1.0,He 4.0,Li 6.9,C 12,N 14,O 16,F 19,Na 23,Mg 24,Al 27,Si 28,P 31,S 32,Cl 35.5,K 39,Ca 40,Fe 56,Cu 64,Zn 65,Br 80,Ag 108,I 127,Ba 137,Pb 207'.split(',');
+const CONSTS=[['アボガドロ定数','N<sub>A</sub> = 6.0×10<sup>23</sup> /mol'],['気体定数','R = 8.31×10<sup>3</sup> Pa·L/(K·mol)'],['ファラデー定数','F = 9.65×10<sup>4</sup> C/mol'],['0 ℃, 1.013×10<sup>5</sup> Pa の気体1 mol','22.4 L'],['水のイオン積（25 ℃）','K<sub>w</sub> = 1.0×10<sup>−14</sup> (mol/L)<sup>2</sup>'],['絶対温度','T(K) = t(℃) + 273'],['常用対数','log 2 = 0.30　log 3 = 0.48　log 5 = 0.70'],['1 atm','1.013×10<sup>5</sup> Pa = 760 mmHg']];
+const elCls=e=>NOBLE.has(e.sym)?'ng':HALO.has(e.sym)?'hg':NONMETAL.has(e.sym)?'nm':(e.g>=3&&e.g<=12)?'tr':'';
+const stateJa=e=>GAS.has(e.sym)?'気体':LIQ.has(e.sym)?'液体':'固体';
+let memoOpen=false;
+function openPT(){closeModal();const m=document.createElement('div');m.className='modal';m.id='modal';
+ const cells=EL.map(e=>`<button class="el ${elCls(e)}" data-z="${e.z}" style="grid-column:${e.g};grid-row:${e.p+1}" aria-label="${e.ja} ${e.sym} 原子量${e.m}"><span class="z">${e.z}</span><span class="s ${GAS.has(e.sym)?'gas':LIQ.has(e.sym)?'liq':''}">${e.sym}</span><span class="m">${e.m}</span></button>`).join('');
+ const gh=[...Array(18)].map((_,i)=>`<div class="gh" style="grid-column:${i+1};grid-row:1">${i+1}</div>`).join('');
+ const ph=`<div class="el ph" style="grid-column:3;grid-row:7">57–71<br>ランタ<br>ノイド</div><div class="el ph" style="grid-column:3;grid-row:8">89–103<br>アクチ<br>ノイド</div>`;
+ m.innerHTML=`<div class="mbox" role="dialog" aria-label="周期表と原子量"><div class="mhead"><h2>周期表・原子量</h2><button class="btn sm" id="mClose">閉じる</button></div>
+ <div class="ptinfo" id="ptInfo">元素をタップすると、名前と原子量を表示します。</div>
+ <p class="note pthint">横にスクロールすると18族まで見られます</p><div class="ptwrap"><div class="pt">${gh}${cells}${ph}</div></div>
+ <div class="legend"><span><i style="background:#FBEBCF"></i>遷移元素</span><span><i style="background:#DCE9FB"></i>非金属</span><span><i style="background:#DDF1EA"></i>ハロゲン</span><span><i style="background:#E9DEFA"></i>貴ガス</span><span><i style="background:#EEF1F4"></i>典型金属</span><span><b style="color:#2A62C9">青字</b>＝常温で気体　<b style="color:#C8324A">赤字</b>＝液体</span></div>
+ <h3 style="margin-top:12px">共通テストでよく与えられる原子量</h3><div class="qa" style="margin-top:6px">${COMMON.map(t=>{const[a,b]=t.split(' ');return`<div><b>${a}</b><span class="num">${b}</span></div>`}).join('')}</div>
+ <p class="note" style="margin-top:6px">※ 本番では、問題冊子の最初に書かれた値を使ってください（年度ごとに与えられる元素が違います）。表の原子量は4桁程度に丸めた参考値です。</p>
+ <h3 style="margin-top:12px">よく使う定数</h3><div class="consts" style="margin-top:4px">${CONSTS.map(c=>`<div><span class="muted small">${c[0]}</span><br><b>${c[1]}</b></div>`).join('')}</div></div>`;
+ document.body.append(m);m.onclick=e=>{if(e.target===m)closeModal()};$('#mClose').onclick=closeModal;
+ m.querySelectorAll('.el[data-z]').forEach(b=>b.onclick=()=>{m.querySelectorAll('.el.on').forEach(x=>x.classList.remove('on'));b.classList.add('on');const e=EL.find(x=>x.z===+b.dataset.z);
+  $('#ptInfo').innerHTML=`<b>${e.sym}</b>　${e.ja}　<span class="muted small">原子番号</span> ${e.z}　<span class="muted small">原子量</span> <b class="num">${e.m}</b><br><span class="small muted">${e.p}周期 ${e.g}族・${elCls(e)==='tr'?'遷移元素':'典型元素'}・${NONMETAL.has(e.sym)?'非金属':'金属'}・常温で${stateJa(e)}</span>`})}
+function closeModal(){const m=$('#modal');if(m)m.remove()}
+/* 計算用紙（指でもペンでも書ける方眼紙。ページは何枚でも） */
+function memoScroll(host,dy){host._oy=Math.max(0,(host._oy||0)+dy);host.style.backgroundPosition=`0 ${-host._oy}px`;inkPaint(host);const u=$('#mmTop');if(u)u.disabled=host._oy<1}
+let memoHint=0;
+function openMemo(){closeModal();memoOpen=true;const m=document.createElement('div');m.className='memo';m.id='memo';
+ m.innerHTML=`<div class="exhead"><div class="ttl"><b>計算用紙</b></div><button class="ib" id="mmTop" disabled>上へ</button><button class="ib" id="mmClr">全部<br>消す</button><button class="ib on" id="mmX">閉じる</button></div><div class="memopad" id="memopad"></div>`;
+ document.body.append(m);const pad=$('#memopad');inkAttach(pad,'memo1');
+ if(!memoHint){memoHint=1;toast('1本指で書く・2本指でスクロール')}
+ $('#mmTop').onclick=()=>memoScroll(pad,-1e9);
+ $('#mmClr').onclick=()=>{const L=inkStore()['memo1'];if(!L||!L.length)return;if(!confirm('計算用紙の書き込みを全部消しますか？'))return;inkStore()['memo1']=[];memoScroll(pad,-1e9);persistSess()};
+ $('#mmX').onclick=()=>{memoOpen=false;m.remove();inkBar()};inkBar()}
+
+/* ================= 画面切り替え ================= */
+let view='home',sess=null,arg=null,confirmDel=false;
+function go(v,a){if(view==='exam'&&v!=='exam')leaveExam();try{webkit.messageHandlers.resetZoom.postMessage({})}catch(e){}view=v;arg=a;confirmDel=false;render();window.scrollTo(0,0)}
+$('#tabs').addEventListener('click',e=>{const b=e.target.closest('button[data-v]');if(b)go(b.dataset.v)});
+function render(){const tab={set:'home',result:'stats',tlist:'topic',field:'topic'}[view]||view;
+ {const sp=$('#streakP');if(sp){const sk=streak(),tn=todayN();sp.innerHTML=`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2c1 4 5 6 5 11a5 5 0 0 1-10 0c0-2.5 1.2-4 2.5-5 .2 1.8 1 3 2.2 3.4C11 9 11 5.5 12 2z"/></svg><span><b class="num">${sk}</b>日連続</span><span class="td${tn>=GOAL?' ok':''}">今日 <b class="num">${Math.min(tn,GOAL)}</b>/${GOAL}${tn>=GOAL?' ✓':''}</span>`}}
+ document.querySelectorAll('#tabs button').forEach(b=>b.setAttribute('aria-current',String(b.dataset.v===tab)));
+ if(view==='exam'){document.body.classList.add('in-exam');return}
+ document.body.classList.remove('in-exam');
+ $('#app').innerHTML=({home:vHome,set:vSet,topic:vTopic,field:vField,tlist:vTList,stats:vStats,result:vResult,settings:vSettings}[view])();bind[view]&&bind[view]()}
+const bind={};
+const seg=(id,opts,cur)=>`<div class="seg" id="${id}">${opts.map(([v,l])=>`<button data-val="${v}" aria-pressed="${v===cur}">${l}</button>`).join('')}</div>`;
+
+/* ---- 成績の集計 ---- */
+const fullHist=id=>S.hist.filter(h=>h.set===id&&h.q==null);
+const bestFull=id=>{const L=fullHist(id);return L.length?Math.max(...L.map(h=>Math.round(h.score*100/h.max))):null};
+function bestQ(id,q){let b=null;S.hist.filter(h=>h.set===id&&!h.s).forEach(h=>{const o=h.byQ&&h.byQ[q];if(o&&(b==null||o[0]>b))b=o[0]});return b}
+function topicStat(){const T={};Object.keys(TOPICS).forEach(k=>T[k]=[0,0,0]);
+ S.hist.forEach(h=>{const st=setById(h.set);if(!st||!h.byQ||h.s)return;Object.entries(h.byQ).forEach(([q,o])=>{const t=st.tp[q-1];if(!T[t])return;T[t][0]+=o[0];T[t][1]+=o[1];T[t][2]++})});return T}
+
+/* ---- ホーム（過去問） ---- */
+const ICON_PT='<svg viewBox="0 0 24 24"><rect x="2" y="4" width="5" height="5"/><rect x="17" y="4" width="5" height="5"/><rect x="2" y="10" width="5" height="5"/><rect x="7" y="10" width="5" height="5"/><rect x="12" y="10" width="5" height="5"/><rect x="17" y="10" width="5" height="5"/><path d="M5 19h14"/></svg>';
+const ICON_MEMO='<svg viewBox="0 0 24 24"><path d="M5 3h10l4 4v14H5z"/><path d="M8 11l3 3 5-6"/><path d="M8 17h8"/></svg>';
+/* 連続日数：1分以上やった日 or 採点した日。今日まだなら昨日から数える */
+const GOAL=5;function studied(k){return (S.days[k]||0)>=60||S.hist.some(h=>dkey(new Date(h.t))===k)}
+function streak(){const d=new Date();if(!studied(dkey(d)))d.setDate(d.getDate()-1);let n=0;while(studied(dkey(d))){n++;d.setDate(d.getDate()-1)}return n}
+function todayN(){const k=dkey();return S.hist.filter(h=>dkey(new Date(h.t))===k).reduce((a,h)=>{const st=setById(h.set);return a+(st?new Set(scopeItems(st,h).map(i=>i.q+'.'+i.s)).size:0)},0)}
+/* ---- 設問ごとの記録：最後に解いたときに合っていたか ---- */
+function subStat(){const key=S.hist.length+':'+(S.hist[0]?S.hist[0].id:'');if(subStat.k===key)return subStat.m;const M={};
+ for(let i=S.hist.length-1;i>=0;i--){const h=S.hist[i];const st=setById(h.set);if(!st)continue;const G={};
+  gradeItems(scopeItems(st,h),h.ans||{}).forEach(r=>{const k=st.id+':'+r.it.q+'.'+r.it.s;(G[k]=G[k]||[]).push(r.ok)});
+  Object.entries(G).forEach(([k,a])=>{const ok=a.every(Boolean);const o=M[k]=M[k]||{n:0,ok:0,last:null};o.n++;if(ok)o.ok++;o.last=ok})}
+ subStat.k=key;subStat.m=M;return M}
+function fieldStat(pred){const M=subStat();const L=SUBS.filter(pred);let d=0,ok=0,n=0,okn=0;L.forEach(x=>{const o=M[x.id];if(o){d++;if(o.last)ok++;n+=o.n;okn+=o.ok}});return{t:L.length,d,ok,acc:n?Math.round(okn*100/n):null}}
+const pbar=(d,t,ok)=>`<span class="pbar"><i class="ok" style="width:${t?ok*100/t:0}%"></i><i class="ng" style="width:${t?(d-ok)*100/t:0}%"></i></span>`;
+/* ---- ランク戦（ランダム1問）：正解で上がり、上位ほど上がりにくい ---- */
+const RTIERS=[[0,'ブロンズ'],[1150,'シルバー'],[1300,'ゴールド'],[1450,'プラチナ'],[1650,'ダイヤ'],[1900,'マスター'],[2200,'レジェンド']],RMAX=2500;
+const rTier=r=>{let k=0;RTIERS.forEach((t,i)=>{if(r>=t[0])k=i});const nx=RTIERS[k+1];return{k,name:RTIERS[k][1],lo:RTIERS[k][0],hi:nx?nx[0]:null,next:nx?nx[1]:null}};
+const rGain=r=>r>=RMAX?0:Math.max(1,Math.round(28*Math.exp(-(r-1000)/450)));
+const rLoss=r=>Math.min(30,Math.max(6,Math.round(8+(r-1000)/40)));
+function rankCard(){const r=S.rate==null?null:Math.round(S.rate),tr=rTier(r??1000),pr=tr.hi?Math.min(100,((r??1000)-tr.lo)*100/(tr.hi-tr.lo)):100;
+ return`<button class="rankcard" id="rankGo"><span class="rkt"><span class="rkl">ランク戦・全範囲からランダム1問</span>${r==null?'<span class="rkv"><b>はじめる</b><span class="tierb tb0">ブロンズ</span></span><span class="rks">正解で上がり、間違えると下がる</span>':`<span class="rkv"><b class="num">${r}</b><span class="tierb tb${tr.k}">${tr.name}</span></span><span class="rkbar"><i style="width:${pr}%"></i></span><span class="rks">${tr.next?`${tr.next}まで あと${tr.hi-r}`:'最高ランク'}</span>`}</span><span class="rkgo">挑戦 ›</span></button>`}
+function pickSub(pred,o={}){const M=subStat();const L=SUBS.filter(x=>!isLocked(x.st)&&pred(x));if(!L.length)return;const fresh=L.filter(x=>!M[x.id]);const ng=L.filter(x=>M[x.id]&&!M[x.id].last);
+ const P=o.ng?ng:(fresh.length?fresh:L);const x=(P.length?P:L)[Math.floor(Math.random()*(P.length?P:L).length)];startSub(x.id,o)}
+function startSub(id,o={}){const x=subById(id);if(x)newExam(x.st.id,x.q,{s:x.s,rated:!!o.rated,rf:o.rf||null,fld:o.fld||null,wk:!!o.wk})}
+const isWeak=id=>!!(S.weak&&S.weak[id]);function toggleWeak(id){S.weak=S.weak||{};if(S.weak[id])delete S.weak[id];else S.weak[id]=1;save();toast(S.weak[id]?'苦手にチェックしました（分野別の「復習」から解けます）':'苦手のチェックを外しました');document.querySelectorAll('.weakb').forEach(b=>wkPaint(b,id))}
+/* 復習：苦手にした問題＋最後に間違えた問題をまとめて解く（正解すると外れる） */
+function reviewPool(){const M=subStat();return SUBS.filter(x=>!isLocked(x.st)&&(isWeak(x.id)||(M[x.id]&&!M[x.id].last)))}
+function startReview(ex){const L=reviewPool().filter(x=>x.id!==ex);if(!L.length){toast('復習する問題はすべて解き終わりました');go('topic');return}startSub(L[Math.floor(Math.random()*L.length)].id,{wk:true})}
+/* 2021〜2024年度は1回分ずつ解放：シェアで1日1つ、または設問を UNLOCK_N 問解くごとに1つ */
+const LKI='<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" style="vertical-align:-1px;margin-right:4px"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>',ULI='<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" style="vertical-align:-1px;margin-right:4px"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0"/></svg>';
+const LOCK_OLD=true,LOCK_Y=2024,UNLOCK_N=20;
+const isLocked=st=>LOCK_OLD&&st.y<=LOCK_Y&&!(S.unl&&S.unl[st.id]);
+const hasExpl=st=>st.subs.some(x=>EXPL[x.id]);
+const solveCredit=()=>Math.floor(Object.keys(subStat()).length/UNLOCK_N)-Object.values(S.unl||{}).filter(v=>v==='solve').length;
+const sharedToday=()=>Object.values(S.unl||{}).includes('share:'+dkey());
+function unlockSet(id,why){S.unl=S.unl||{};S.unl[id]=why;saveNow();closeModal();toast(`${setById(id).name}を解放しました！`);render()}
+function openUnlock(id){const st=setById(id);closeModal();if(solveCredit()>0){unlockSet(id,'solve');return}
+ const m=document.createElement('div');m.className='modal';m.id='modal';const n=Object.keys(subStat()).length,rest=UNLOCK_N-n%UNLOCK_N,left=SETS.filter(isLocked).length,sh=sharedToday();
+ m.innerHTML=`<div class="mbox stack" style="max-width:520px"><h2>${LKI}${st.name}</h2><p class="lead">${sh?'今日のシェア解放は使いました。明日また1回分開けられます。':'アプリをシェアすると、この回が開きます。シェアでの解放は1日1回分です。'}</p>${sh?'':'<button class="btn pri big" id="ulShare">シェアしてこの回を開く</button>'}<p class="note">シェアしなくても、設問を${UNLOCK_N}問解くごとに1回分開けられます（あと${rest}問）。鍵つきは残り${left}回分。</p><button class="btn" id="ulClose">閉じる</button></div>`;
+ document.body.append(m);m.onclick=e=>{if(e.target===m)closeModal()};$('#ulClose').onclick=closeModal;
+ const b=$('#ulShare');if(b)b.onclick=async()=>{const ok=await shareOut('共通テスト「化学」の過去問を本番の紙面で解けるアプリ「共テ化学 過去問道場」。1問ずつ自動採点・解説つき #共通テスト #化学 #共テ化学 '+SITE_URL);if(ok===false){toast('シェアが終わると開きます');return}unlockSet(id,'share:'+dkey())}}
+/* 各画面の軽い説明（初めて開いたときだけ。✕で消える） */
+const tip=(k,t)=>S.tips&&S.tips[k]?'':`<div class="tip" data-tip="${k}"><span>${t}</span><button class="tipx" aria-label="閉じる">✕</button></div>`;
+document.addEventListener('click',e=>{const x=e.target.closest('.tipx');if(!x)return;const t=x.closest('.tip');S.tips=S.tips||{};S.tips[t.dataset.tip]=1;save();t.remove()});
+const wkPaint=(b,id)=>{const on=isWeak(id);b.classList.toggle('on',on);b.setAttribute('aria-pressed',String(on));b.innerHTML=(on?'★':'☆')+' 苦手'};
+const rateOf=rf=>rf?((S.rateF||{})[rf]??1000):(S.rate??1000);const rLabel=rf=>rf?rf+'ランク':'ランクスコア';
+function rankField(b){pickSub(x=>FIELDS[x.f][0]===b,{rated:true,rf:b})}
+function nextPick(h){const sx=subById(h.set+':'+h.q+'.'+h.s);if(h.wk)return startReview(h.set+':'+h.q+'.'+h.s);h.rated?(h.rf?rankField(h.rf):pickSub(()=>true,{rated:true})):h.fld?pickSub(x=>x.f===h.fld,{fld:h.fld}):sx?nextInSet(sx):pickSub(()=>true)}
+/* 年度ページから解いたときは、同じ年度の次の問へ順番に進む */
+function nextInSet(sx){const L=sx.st.subs.filter(z=>z.q<=5).sort((a,b)=>a.q-b.q||a.s-b.s);const i=L.findIndex(z=>z.q===sx.q&&z.s===sx.s);const n=L[i+1];if(n)startSub(sx.st.id+':'+n.q+'.'+n.s);else go('set',sx.st.id)}
+
+function vHome(){const c=S.cur&&setById(S.cur.set);const sk=streak(),tn=todayN(),ok=tn>=GOAL;
+ const resume=c?`<div class="sheet stack resume"><div><span class="chip">続きから</span> <b>${esc(c.name)}${S.cur.q?` 第${S.cur.q}問`:'（通し）'}${S.cur.s?` 問${S.cur.s}`:''}</b></div><div class="row"><button class="btn pri" id="resume">再開する</button><button class="btn sm" id="discard">やめる</button></div></div>`:'';
+ const years=[...new Set(SETS.map(s=>s.y))];
+ return`<div class="stack">
+ ${resume}${rankCard()}${S.tut?tip('home','年度を選ぶと、通しでも1問ずつでも解けます。鍵つきの年度は、シェアで1日1回分、または設問を20問解くごとに1回分開きます。'):''}
+ ${S.tut?'':`<div class="sheet stack tutc"><h2>ようこそ！ 共テ化学 過去問道場へ</h2><ul style="margin:0;padding-left:1.2em;line-height:1.8"><li>共通テスト「化学」の過去問を、<b>本番と同じ紙面</b>で1問ずつ</li><li>マークをタップ → <b>その場で自動採点・解説</b></li><li>毎日1問で、連続記録とランクが上がる</li></ul><button class="btn pri big" id="tutTry">まず1問解いてみる（約2分）</button><div><button class="btn sm" id="tutOk">あとで</button></div></div>`}
+ <div class="tools"><button class="tool" id="hPT">${ICON_PT}<span><b>周期表</b>原子量・定数</span></button><button class="tool" id="hMemo">${ICON_MEMO}<span><b>計算用紙</b>手書きメモ</span></button></div>
+ ${years.map(y=>`<div class="yearh">${y}年度</div><div class="sets">${SETS.filter(s=>s.y===y).map(setCard).join('')}</div>`).join('')}</div>`}
+function setCard(st){const b=bestFull(st.id),f=fieldStat(x=>x.st===st);const ex=hasExpl(st)?'':'<span class="chip beta">解説準備中</span>';
+ if(isLocked(st))return`<button class="setc lock" data-set="${st.id}"><span class="k">${st.kind}</span>${ex}<span class="foot"><span>${solveCredit()>0?ULI+'タップで解放':LKI+'シェアで解放'}</span></span></button>`;
+ return`<button class="setc" data-set="${st.id}"><span class="k">${st.kind}</span>${ex}${pbar(f.d,f.t,f.ok)}<span class="foot"><span>設問 ${f.d}/${f.t}</span>${b!=null?`<b class="sc">ベスト${b}点</b>`:''}</span></button>`}
+bind.home=()=>{document.querySelectorAll('[data-set]').forEach(b=>b.onclick=()=>isLocked(setById(b.dataset.set))?openUnlock(b.dataset.set):go('set',b.dataset.set));
+ $('#hPT').onclick=openPT;$('#hMemo').onclick=()=>{sess=null;openMemo()};$('#rankGo').onclick=()=>pickSub(()=>true,{rated:true});
+ const t=$('#tutOk');if(t)t.onclick=()=>{S.tut=1;save();render()};const tt=$('#tutTry');if(tt)tt.onclick=()=>{S.tut=1;save();startSub('k26:1.1');setTimeout(()=>toast('問題を読んで、下のマーク欄の番号をタップ →「採点する」'),1500)};
+ const r=$('#resume');if(r)r.onclick=()=>startExam(S.cur);
+ const d=$('#discard');if(d)d.onclick=()=>{if(!confirm('途中のマークを捨てますか？'))return;S.cur=null;save();render()}};
+
+/* ---- 年度の詳細：大問と設問 ---- */
+function vSet(){const st=setById(arg);const sel=S.sel&&S.sel[st.id]||5;const qs=qsOf(st,sel);const M=subStat();
+ const rows=[...Array(st.nq)].map((_,i)=>{const q=i+1,its=st.items.filter(x=>x.q===q),b=bestQ(st.id,q),mx=its.reduce((a,x)=>a+x.pts,0);
+  if(q===6)return'';return`<div class="qblk"><div class="qrow"><span class="qn">第${q}問</span><span><span class="chip t-${st.tp[i]}">${st.tp[i]}</span>${q===6?' <span class="chip">旧課程用</span>':''} <span class="qm">${mx}点${b!=null?`・ベスト${b}`:''}</span></span></div>
+  ${q===6?'':`<div class="subs">${st.subs.filter(x=>x.q===q).map(x=>{const o=M[x.id];return`<button class="subb${o?(o.last?' ok':' ng'):''}" data-sub="${x.id}"><b>問${x.s}</b><span>${FIELDS[x.f][1]}</span></button>`}).join('')}</div>`}</div>`}).join('');
+ const bf=bestFull(st.id);
+ return`<div class="stack"><div><button class="btn sm" id="back">← 過去問</button></div>
+ <div class="sheet stack"><h2>${st.name}</h2>${hasExpl(st)?'':'<p class="note" style="margin:0"><span class="chip beta">解説準備中</span> この年度の解説は準備中です。正解・自動採点は使えます。</p>'}${bf!=null?`<div class="facts"><span class="best">ベスト${bf}点</span></div>`:''}
+  <button class="btn pri big" id="full">通しで解く</button>
+ <div class="row"><button class="btn sm" id="dlQ">問題冊子PDF</button><button class="btn sm" id="dlA">正解表PDF</button></div></div>
+ <div class="sheet"><h3>1問ずつ解く</h3>${rows}</div></div>`}
+bind.set=()=>{const st=setById(arg);$('#back').onclick=()=>go('home');
+ const sg=$('#selSeg');if(sg)sg.onclick=e=>{const b=e.target.closest('button');if(!b)return;S.sel=S.sel||{};S.sel[st.id]=+b.dataset.val;save();render()};
+ $('#full').onclick=()=>newExam(st.id,null);$('#dlQ').onclick=()=>dlPdf(st,'q');$('#dlA').onclick=()=>dlPdf(st,'a');
+
+ document.querySelectorAll('[data-sub]').forEach(b=>b.onclick=()=>startSub(b.dataset.sub))};
+
+/* ---- 分野別：理論・無機・有機 → 細かい分野 → 設問 ---- */
+function vTopic(){
+ return`<div class="stack"><h2 class="pageh">分野別</h2>${tip('topic','理論・無機・有機の分野ごとに解けます。「★ 復習する」は、間違えた問題と苦手な問題をまとめて解き直せます（正解すると外れます）。')}
+ ${rankCard()}
+ <div class="bigf">${Object.keys(BIGF).map(b=>{const f=fieldStat(x=>FIELDS[x.f][0]===b);const n=Object.values(FIELDS).filter(v=>v[0]===b).length;
+  return`<button class="bigc" data-big="${b}"><span class="bh"><span class="chip t-${b}">${b}</span><span><span class="num">${f.d}/${f.t}</span>問</span></span><span class="bd">${BIGF[b]}</span>${pbar(f.d,f.t,f.ok)}<span class="bf"><span>${n}分野</span>${f.acc!=null?`<span>正答率 <b>${f.acc}%</b></span>`:''}<span class="chev">›</span></span></button>`}).join('')}</div>
+${(()=>{const n=reviewPool().length;return`<button class="btn pri big" id="rndWk"${n?'':' disabled'}>★ 復習する（苦手・間違えた問題 ${n}問）</button><p class="note" style="margin:-4px 0 0">${n?'間違えた問題と「☆ 苦手」を押した問題。正解するとリストから外れます。':'間違えた問題と「☆ 苦手」を押した問題が、ここに集まります。'}</p>`})()}
+ <button class="btn big" id="rnd">全分野からランダムに1問</button></div>`}
+bind.topic=()=>{document.querySelectorAll('[data-big]').forEach(b=>b.onclick=()=>go('field',b.dataset.big));{const g=$('#rankGo');if(g)g.onclick=()=>pickSub(()=>true,{rated:true})}
+ $('#rnd').onclick=()=>pickSub(()=>true);{const w=$('#rndWk');if(w)w.onclick=()=>startReview()}};
+function vField(){const b=arg;const ks=Object.keys(FIELDS).filter(k=>FIELDS[k][0]===b);const F=fieldStat(x=>FIELDS[x.f][0]===b);
+ return`<div class="stack"><div><button class="btn sm" id="back">← 分野別</button></div>
+ <div class="fhead"><span class="chip t-${b}" style="font-size:1rem">${b}</span><span><span class="num">${F.d}/${F.t}</span>問</span></div>
+ ${(()=>{const r=Math.round(rateOf(b)),t=rTier(r),pl=(S.rateF||{})[b]!=null,H=S.hist.filter(h=>h.s&&(()=>{const x=subById(h.set+':'+h.q+'.'+h.s);return x&&FIELDS[x.f][0]===b})()),ok=H.filter(h=>h.score===h.max).length;
+  return`<div class="tiles"><div class="tile"><div class="v">${F.acc!=null?F.acc+'<small style="font-size:.8rem">%</small>':'－'}</div><div class="l">正答率</div></div><div class="tile"><div class="v">${H.length?ok+'<small style="font-size:.8rem">/'+H.length+'</small>':'－'}</div><div class="l">正解した回数</div></div></div>`})()}
+ <div class="tlist">${ks.map(k=>{const f=fieldStat(x=>x.f===k);return`<button class="srow" data-f="${k}"><span class="sbody"><span class="snm">${FIELDS[k][1]}</span>${pbar(f.d,f.t,f.ok)}</span><span class="scnt"><span class="num">${f.d}/${f.t}</span>${f.acc!=null?`<small>${f.acc}%</small>`:''}</span><span class="chev">›</span></button>`}).join('')}</div>
+ <button class="btn pri big" id="rnd">${b}からランダムに1問</button></div>`}
+bind.field=()=>{const b=arg;$('#back').onclick=()=>go('topic');document.querySelectorAll('[data-f]').forEach(x=>x.onclick=()=>go('tlist',x.dataset.f));
+ $('#rnd').onclick=()=>pickSub(x=>FIELDS[x.f][0]===b)};
+function vTList(){const k=arg;const M=subStat();const L=SUBS.filter(x=>x.f===k);const f=fieldStat(x=>x.f===k);const ng=L.filter(x=>M[x.id]&&!M[x.id].last).length;
+ const groups=SETS.map(st=>[st,L.filter(x=>x.st===st)]).filter(g=>g[1].length);
+ return`<div class="stack"><div><button class="btn sm" id="back">← ${FIELDS[k][0]}</button></div>
+ <div class="sheet stack"><div class="fhead"><h2>${FIELDS[k][1]}</h2><span><span class="num">${f.d}/${f.t}</span>問</span></div>${pbar(f.d,f.t,f.ok)}
+ <div class="row"><button class="btn pri" id="rnd">ランダムに1問</button>${ng?`<button class="btn" id="rndNg">間違えた${ng}問</button>`:''}</div></div>
+ <div class="sheet">${groups.map(([st,xs])=>`<div class="yg">${st.name}</div>${xs.map(x=>{const o=M[x.id];return`<button class="qline" data-sub="${x.id}"><span class="mk ${o?(o.last?'ok':'ng'):''}">${o?(o.last?'○':'×'):''}</span><span>第${x.q}問　<b>問${x.s}</b>${isWeak(x.id)?' <span class="wkst">★苦手</span>':''}</span><span class="chev">›</span></button>`}).join('')}`).join('')}</div></div>`}
+bind.tlist=()=>{const k=arg;$('#back').onclick=()=>go('field',FIELDS[k][0]);document.querySelectorAll('[data-sub]').forEach(b=>b.onclick=()=>startSub(b.dataset.sub,{fld:k}));
+ $('#rnd').onclick=()=>pickSub(x=>x.f===k,{fld:k});const n=$('#rndNg');if(n)n.onclick=()=>pickSub(x=>x.f===k,{fld:k,ng:true})};
+function newExam(id,q,o={}){if(isLocked(setById(id))){openUnlock(id);return}if(S.cur&&!S.cur.done&&Object.keys(S.cur.ans||{}).length&&!(S.cur.set===id&&S.cur.q===q&&(S.cur.steps?null:(S.cur.s||null))===(o.s||null))){if(!confirm('途中の演習があります。捨てて新しく始めますか？'))return}
+ const st=setById(id);const sel=q===6?6:5;
+ /* 大問を選んだときは、設問を1つずつ：答え合わせ→すぐ下に解説→次の設問へ（途中で終了画面は出さない） */
+ const steps=q&&!o.s?st.subs.filter(z=>z.q===q).sort((a,b)=>a.s-b.s).map(z=>z.s):null;
+ startExam({id:uid(),set:id,q,s:o.s||(steps&&steps.length?steps[0]:null),steps:steps&&steps.length?steps:null,gd:{},rated:!!o.rated,rf:o.rf||null,fld:o.fld||null,wk:!!o.wk,sel,ans:{},sec:0,ink:{},done:false,t0:Date.now()})}
+const stepDone=()=>!!(sess&&sess.steps&&!sess.done&&sess.gd&&sess.gd[sess.s]);const justDone=()=>!!(sess&&sess.jump);
+let tick=0,pageObs=null,zoom=1,renderedPages=new Map(),curQ=1,followT=0,followLock=0;
+function setCurQ(q,scroll){curQ=q;document.querySelectorAll('#sheetPane .msec').forEach(m=>m.classList.toggle('cur',+m.dataset.q===q));const l=$('#mQ');if(l)l.textContent=sess&&sess.s?`第${q}問 問${sess.s}`+(sess.steps&&!sess.done?`（${sess.steps.indexOf(sess.s)+1}/${sess.steps.length}）`:''):'第'+q+'問';
+ if(scroll){const st=setById(sess.set);const pg=document.querySelector(`.pg[data-n="${st.pages[q-1]}"]`);if(pg){followLock=Date.now()+600;$('#pdfPane').scrollTop=pg.offsetTop-8}}const sp=$('#sheetPane');if(sp)sp.scrollTop=0}
+function startExam(s){sess=s;S.cur=s;save();inkHist=[];zoom=1;view='exam';render();buildExam();
+ clearInterval(tick);tick=setInterval(()=>{if(view!=='exam'||!sess||sess.done||sess.paused||document.hidden)return;sess.sec++;S.days[dkey()]=(S.days[dkey()]||0)+1;updTimer();if(sess.sec%15===0)persistSess()},1000)}
+function persistSess(){if(sess&&!sess.done){S.cur=sess;save()}else if(sess&&sess.done)save()}
+function leaveExam(){clearInterval(tick);inkSet(false);closeModal();const m=$('#memo');if(m){m.remove();memoOpen=false}if(pageObs){pageObs.disconnect();pageObs=null}renderedPages.clear();$('#examRoot').innerHTML='';inkBar();if(sess&&!sess.done){S.cur=sess;saveNow()}}
+const limitOf=s=>s.steps?720:s.s?240:s.q?720:3600;
+function updTimer(){const b=$('#tmr');if(!b||!sess)return;if(sess.done){b.textContent=fmtT(sess.sec);b.className='ib tmr';return}
+ if(!S.set.timer){b.textContent=fmtT(sess.sec);b.className='ib tmr'+(sess.paused?' paused':'');return}
+ const r=limitOf(sess)-sess.sec;b.textContent=(r<0?'+':'')+fmtT(Math.abs(r));b.className='ib tmr'+(r<0?' over':'')+(sess.paused?' paused':'');
+ if(r===0)toast(sess.q?'目安の12分です（このまま続けられます）':'60分たちました（このまま続けられます）')}
+function buildExam(){const st=setById(sess.set);const qs=sess.q?[sess.q]:qsOf(st,sess.sel);const its=scopeItems(st,sess);
+ const from=sess.q?st.pages[sess.q-1]:1,to=sess.q?pageEnd(st,sess.q):null;
+ const root=$('#examRoot');
+ root.innerHTML=`<div class="exam${sess.s?' one':''}" id="exam" data-p="pdf">
+ <div class="exhead"><button class="ib" id="exX" aria-label="中断して戻る">✕</button><div class="ttl"><b>${st.short}${sess.q&&!sess.s?` 第${sess.q}問`:''}</b>${sess.done?'<span>見直し</span>':''}</div>
+ <button class="ib tmr" id="tmr" aria-label="タイマー（タップで一時停止）"></button>
+ <button class="ib" id="ptBtn" aria-label="周期表">${ICON_PT.replace('<svg','<svg')}周期表</button>
+ <button class="ib" id="mmBtn" aria-label="計算用紙">${ICON_MEMO}計算</button>
+ <button class="ib" id="inkBtn" aria-pressed="false" aria-label="指で書き込む"><svg viewBox="0 0 24 24"><path d="M4 20l4-1 11-11-3-3L5 16z"/><path d="M14 6l3 3"/></svg>ペン</button></div>
+ <div class="exbody">
+  <div class="pane pdfpane" id="pdfPane"><div class="pages" id="pages"><div class="small" style="color:#fff;padding:20px">問題冊子を読み込み中…</div></div><div class="zoomctl"><button id="zOut" aria-label="縮小">−</button><button id="zIn" aria-label="拡大">＋</button></div></div>
+  <div class="mpanel" id="mPanel"><div class="mhandle"><button id="mFold" aria-label="マーク欄をたたむ・開く">▾</button><b id="mQ"></b><span class="num" id="cnt"></span>${sess.s?'<button class="weakb" id="weakB"></button>':''}<span class="sp"></span>${qs.length>1?'<button id="mPrev" aria-label="前の大問">‹</button><button id="mNext" aria-label="次の大問">›</button>':''}<button id="mAll">全部</button></div>
+  <div class="pane sheetpane" id="sheetPane">${sheetHTML(st,qs,its)}</div></div>
+ </div></div>`;
+ $('#exX').onclick=()=>{if(!sess.done)toast('途中の状態を保存しました');go(sess.done?'result':'home',sess.done?sess.hid:undefined)};
+ $('#tmr').onclick=()=>{if(sess.done)return;sess.paused=!sess.paused;updTimer();toast(sess.paused?'タイマーを止めました':'タイマーを再開しました')};
+ $('#ptBtn').onclick=openPT;$('#mmBtn').onclick=openMemo;
+ {const wb=$('#weakB');if(wb){const id=sess.set+':'+sess.q+'.'+sess.s;wkPaint(wb,id);wb.onclick=()=>toggleWeak(id)}}
+ $('#inkBtn').onclick=()=>{inkSet(!inkOn);if(inkOn&&!S.inkTold){S.inkTold=1;save();toast('指で問題に書き込めます。Apple Pencil はペンを押さなくても書けます')}};
+ const tab=p=>{$('#exam').dataset.p=p;$('#mFold').textContent=p==='fold'?'▴':'▾';$('#mAll').classList.toggle('on',p==='sheet');$('#mAll').textContent=p==='sheet'?'閉じる':'全部'};
+ window.__tab=tab;
+ $('#mFold').onclick=()=>tab($('#exam').dataset.p==='fold'?'pdf':'fold');
+ $('#mAll').onclick=()=>tab($('#exam').dataset.p==='sheet'?'pdf':'sheet');
+ const goQ=d=>{const i=qs.indexOf(curQ)+d;if(i<0||i>=qs.length)return;setCurQ(qs[i],true)};
+ if($('#mPrev')){$('#mPrev').onclick=()=>goQ(-1);$('#mNext').onclick=()=>goQ(1)}
+ curQ=qs[0];setCurQ(curQ,false);
+ $('#pdfPane').addEventListener('scroll',()=>{if(followLock>Date.now())return;clearTimeout(followT);followT=setTimeout(()=>{const pane=$('#pdfPane');const y=pane.scrollTop+pane.clientHeight*.35;let n=null;pane.querySelectorAll('.pg').forEach(g=>{if(g.offsetTop<=y)n=+g.dataset.n});if(n==null)return;let q=qs[0];qs.forEach(x=>{if(st.pages[x-1]<=n)q=x});if(q!==curQ)setCurQ(q,false)},120)},{passive:true});
+ $('#zIn').onclick=()=>setZoom(Math.min(2.5,zoom+.5));$('#zOut').onclick=()=>setZoom(Math.max(1,zoom-.5));
+ bindSheet(st,qs,its);updTimer();updCount(its);
+ if(sess.done&&!sess.s){tab('sheet')}
+ mountFor(st,its,from,to)}
+function mountFor(st,its,from,to){const c0=sess.s&&!sess.wide?subClip(st,sess.q,sess.s):null;
+ const cl=c0?{rg:c0.rg.map(r=>[r[0],0,1]),cx:[0,1],full:1,y0:c0.rg[0][1]}:c0;
+ mountPages(st,cl?cl.rg[0][0]:from,cl?cl.rg[cl.rg.length-1][0]:to,cl).then(()=>{fixNote(st);if(cl&&cl.full){const f=$('#pages .clip');const pn=$('#pdfPane');if(f&&pn)pn.scrollTop=Math.max(0,f.offsetTop+cl.y0*f.offsetHeight-10)}if(sess&&sess.s&&sess.wide)scrollSub(st);if(sess&&sess.s&&(sess.done||stepDone())&&cl){const c=document.createElement('div');c.className='explcard';c.id='explCard';const t=explOf(st,sess.q,sess.s);
+  c.innerHTML=`<h3>正解と解説 <span class="chip beta">ベータ</span></h3>${its.map(i=>`<div class="erow">解答番号 <b class="num">${i.boxes.join('・')}</b>　あなた <b class="num">${i.boxes.map(b=>sess.ans[b]??'－').join('・')}</b>　正解 <b class="num">${i.a.join('・')}</b>${i.mode==='any'?'（順不同）':''}</div>`).join('')}<div class="etext">${t?explBody(t):'この設問の解説は準備中です。'}</div>`;$('#pages').append(c);if(sess.jump){sess.jump=0;setTimeout(()=>{const pn=$('#pdfPane');if(pn&&c.isConnected)pn.scrollTo({top:Math.max(0,c.offsetTop-pn.clientHeight*.25),behavior:'smooth'})},80)}}})}
+/* 大学入試センターが発表した問題訂正を、該当する問の上に出す */
+function fixNote(st){if(!st.fix||!sess)return;const L=Object.entries(st.fix).filter(([k])=>(!sess.q||k.startsWith(sess.q+'.'))&&(!sess.s||k===sess.q+'.'+sess.s));const pg=$('#pages');if(!L.length||!pg)return;
+ const d=document.createElement('div');d.className='fixnote';d.innerHTML=L.map(([k,t])=>`<b>${k.replace('.','の問')}</b> ${t}`.replace(/^<b>(\d)/,'<b>第$1問')).join('<br>');pg.prepend(d)}
+/* 設問1つ：問題冊子のその設問のところだけを切り出して見せる */
+function subClip(st,q,sn){const L=st.subs.filter(z=>z.q===q).sort((a,b)=>a.s-b.s);const i=L.findIndex(z=>z.s===sn);if(i<0)return null;const x=L[i],nx=L[i+1];
+ if(x.rg)return{rg:x.rg,cx:st.cx||[0,1]};
+ let p1,y1;if(nx){p1=nx.pg;y1=nx.y-.004;if(y1<.16){p1--;y1=1}}else{p1=pageEnd(st,q)||x.pg;y1=1}p1=Math.max(p1,x.pg);
+ const rg=[];for(let n=x.pg;n<=p1;n++)rg.push([n,n===x.pg?Math.max(0,x.y-.012):0,n===p1?y1:1]);return{rg,cx:[0,1]}}
+function toggleWide(){sess.wide=!sess.wide;persistSess();buildExam()}
+function scrollSub(st){const x=st.subs.find(z=>z.q===sess.q&&z.s===sess.s);if(!x)return;const pg=document.querySelector(`.pg[data-n="${x.pg}"]`);if(!pg)return;followLock=Date.now()+900;$('#pdfPane').scrollTop=pg.offsetTop+Math.max(0,x.y*pg.offsetHeight-16)}
+function sheetHTML(st,qs,its){const R=sess.done||stepDone()?summarize(st,qs,sess.ans,its):null;const SD=stepDone();const okBox={},groupNote={};
+ if(R)R.g.forEach(r=>r.it.boxes.forEach((b,k)=>okBox[b]={ok:r.boxOk[k],right:r.it.mode==='any'?null:r.it.a[k],r}));
+ its.forEach(it=>{if(it.mode!=='one')groupNote[it.boxes[0]]=it.each?`${it.boxes.join('・')} は順不同。1つ正解ごとに${it.pts/it.boxes.length}点`:it.mode==='any'?`${it.boxes.join('・')} は順不同。両方正解で${it.pts}点`:`${it.boxes.join('・')} は全部正解で${it.pts}点`});
+ let h='';if(R)h+=`<div class="sheet scorebox" style="margin-bottom:10px;padding:10px 12px"><div class="score"><span class="big">${R.score}</span><span>/ ${R.max}点</span></div><div class="small muted">緑の丸が正解。赤は間違えたマーク。</div></div>`;
+ qs.forEach(q=>{const qi=its.filter(i=>i.q===q);if(!qi.length)return;
+  h+=`<div class="msec" data-q="${q}"><div class="msh"><b>第${q}問</b><span class="chip t-${st.tp[q-1]}">${st.tp[q-1]}</span>${R?`<span class="small num">${R.byQ[q][0]}/${R.byQ[q][1]}</span>`:''}<button class="lnk" data-jump="${q}">冊子 p.${st.pages[q-1]} へ</button></div>`;
+  qi.forEach(it=>{if(groupNote[it.boxes[0]])h+=`<div class="gnote">${groupNote[it.boxes[0]]}</div>`;
+   it.boxes.forEach((b,k)=>{const o=okBox[b];const right=o?(it.mode==='any'?it.a:[it.a[k]]):[];
+    h+=`<div class="mrow${R?' done':''}" data-b="${b}"><span class="bn">${b}</span><div class="bubs">${[1,2,3,4,5,6,7,8,9,0].map(d=>`<button class="bb${sess.ans[b]===d?' sel':''}${right.includes(d)?' right':''}${R&&sess.ans[b]===d&&!o.ok?' wrong':''}" data-d="${d}" aria-label="${b}番に${d}をマーク"${R?' disabled':''}><i>${d}</i></button>`).join('')}</div>
+    ${R&&k===it.boxes.length-1?`<div class="res">${o.r.ok?`<b class="o">○ ${it.pts}点</b>`:(o.r.got>0?`<b class="x">△ ${o.r.got}/${it.pts}点</b>`:`<b class="x">× 0/${it.pts}点</b>`)}　正解 ${it.mode==='any'?it.a.join('・')+'（順不同）':it.a.join('・')}</div>`:''}</div>${R&&k===it.boxes.length-1&&!sess.s&&!its.some(j=>j.q===it.q&&j.s===it.s&&j.boxes[0]>it.boxes[0])?explHTML(st,it.q,it.s,false):''}`})})
+  h+='</div>'});
+ if(SD){const k=sess.steps.indexOf(sess.s),last=k+1>=sess.steps.length;h=`<div class="stepv ${R.score===R.max?'ok':'ng'}">${R.score===R.max?'○ 正解':'× 不正解'}<span class="small">問題の下に解説があります</span></div>`+h+`<div class="gradebar"><button class="btn pri big" id="stepNext">${last?`第${sess.q}問の結果へ`:`次の設問へ（問${sess.steps[k+1]}） ›`}</button></div>`}
+ else if(R&&sess.s&&!sess.steps){const hh=S.hist.find(x=>x.id===sess.hid)||{};const d=hh.rated?Math.round(hh.r1)-Math.round(hh.r0):0;
+  h=`<div class="stepv ${R.score===R.max?'ok':'ng'}">${R.score===R.max?'○ 正解':'× 不正解'}${hh.rated?`<span class="small">${rLabel(hh.rf)} <b class="num">${Math.round(hh.r1)}</b> <span class="num">${d>=0?'+':''}${d}</span>・${rTier(Math.round(hh.r1)).name}</span>`:'<span class="small">問題の下に解説があります</span>'}</div>`+h+`<div class="gradebar"><button class="btn pri big" id="subNext">${hh.rated?`次の1問（${hh.rf?hh.rf+'の':''}ランク戦）`:'次の1問'} ›</button><button class="btn" id="toResult" style="width:100%;margin-top:6px">くわしい結果・シェア</button></div>`}
+ else h+=R?`<div class="gradebar row"><button class="btn pri big" id="toResult">結果を見る</button></div>`:`<div class="gradebar"><button class="btn pri big" id="grade">${sess.steps?'答え合わせ':'採点する'}</button></div>`;
+ return h}
+function updCount(its){const n=boxesOf(its).filter(b=>sess.ans[b]!=null).length,t=boxesOf(its).length;const c=$('#cnt');if(c)c.textContent=`${n}/${t}`}
+function bindSheet(st,qs,its){const pane=$('#sheetPane');
+ pane.querySelectorAll('[data-jump]').forEach(b=>b.onclick=()=>{const q=+b.dataset.jump;const pg=document.querySelector(`.pg[data-n="${st.pages[q-1]}"]`);if(window.__tab)window.__tab('pdf');setCurQ(q,false);if(pg){followLock=Date.now()+600;$('#pdfPane').scrollTop=pg.offsetTop-8}else toast('この大問のページは表示範囲外です')});
+ if(sess.done){const r=$('#toResult');if(r)r.onclick=()=>go('result',sess.hid);const nx=$('#subNext');if(nx)nx.onclick=()=>{const h=S.hist.find(x=>x.id===sess.hid);if(!h)return go('home');nextPick(h)};return}
+ if(stepDone()){$('#stepNext').onclick=()=>{const k=sess.steps.indexOf(sess.s);if(k+1<sess.steps.length){sess.s=sess.steps[k+1];sess.wide=false;persistSess();buildExam()}else{sess.s=null;finishExam(st,[sess.q],scopeItems(st,{q:sess.q}))}};return}
+ pane.querySelectorAll('.mrow').forEach(row=>row.onclick=e=>{const bt=e.target.closest('.bb');if(!bt)return;const b=+row.dataset.b,d=+bt.dataset.d;
+  if(sess.ans[b]===d){delete sess.ans[b];snd('off')}else{sess.ans[b]=d;snd('tap')}row.querySelectorAll('.bb').forEach(x=>x.classList.toggle('sel',sess.ans[b]===+x.dataset.d));updCount(its);persistSess()});
+ $('#grade').onclick=()=>{const left=boxesOf(its).filter(b=>sess.ans[b]==null).length;if(left&&!confirm(`まだマークしていない解答番号が${left}個あります。${sess.steps?'答え合わせ':'採点'}しますか？`))return;
+  if(sess.steps){const R=summarize(st,qs,sess.ans,its);sess.gd[sess.s]=1;sess.jump=1;snd(R.score===R.max?'ok':'ng');persistSess();buildExam();return}
+  finishExam(st,qs,its)}}
+function finishExam(st,qs,its){its=its||scopeItems(st,sess);const R=summarize(st,qs,sess.ans,its);sess.done=true;sess.paused=false;
+ const h={id:sess.id,set:st.id,q:sess.q||null,s:sess.s||null,rated:sess.rated||false,rf:sess.rf||null,wk:sess.wk||false,fld:sess.fld||null,sel:sess.sel,score:R.score,max:R.max,byQ:R.byQ,sec:sess.sec,t:Date.now(),ans:Object.assign({},sess.ans),n:boxesOf(its).length};
+ if(sess.rated){const rf=sess.rf;let r=rateOf(rf);h.r0=r;r=R.score===R.max?Math.min(RMAX,r+rGain(r)):Math.max(0,r-rLoss(r));h.r1=r;if(rf){S.rateF=S.rateF||{};S.rateFBest=S.rateFBest||{};S.rateF[rf]=r;S.rateFBest[rf]=Math.max(S.rateFBest[rf]||0,r)}else{S.rate=r;S.rateBest=Math.max(S.rateBest||0,r)}}
+ const before=todayN();snd(sess.s?(R.score===R.max?'ok':'ng'):R.score===R.max?'perfect':R.score*100>=R.max*60?'done':'low');
+ const c0=LOCK_OLD?solveCredit():0;if(h.s&&sess.wk&&R.score===R.max&&isWeak(h.set+':'+h.q+'.'+h.s)){delete S.weak[h.set+':'+h.q+'.'+h.s];setTimeout(()=>toast('正解！ 復習リストから外しました'),300)}
+ S.hist.unshift(h);if(S.hist.length>500)S.hist.length=500;sess.hid=h.id;S.cur=null;
+ if(LOCK_OLD&&solveCredit()>c0&&SETS.some(isLocked))setTimeout(()=>toast(`設問${UNLOCK_N}問達成！ 鍵つきの年度を1回分開けられます`),1800);
+ saveNow();fbSync(true);notifSync();if(S.hist.length===1)askNotif();
+ if(R.score===R.max&&S.hist.length>=3&&(S.revN||0)<3&&Date.now()-(S.revT||0)>7*864e5){const r=nativeMsg('review');if(r){S.revN=(S.revN||0)+1;S.revT=Date.now();save();setTimeout(()=>r.postMessage({}),1500)}}
+ if(sess.s&&!sess.steps){sess.jump=1;buildExam()}else go('result',h.id);if(before<GOAL&&todayN()>=GOAL)setTimeout(()=>toast('今日の目標達成！ '+streak()+'日連続'),400)}
+/* 冊子のページ：見えているところだけ描く（メモリ節約） */
+async function mountPages(st,from,to,cl){const box=$('#pages');let doc;
+ try{doc=await getDoc(st.file)}catch(e){box.innerHTML='<div class="small" style="color:#fff;padding:20px">問題冊子を表示できませんでした。アプリを開き直してください。</div>';return}
+ if(view!=='exam')return;const last=to||doc.numPages;const p1=await doc.getPage(from);const v=p1.getViewport({scale:1});const ar=v.height/v.width;
+ box.innerHTML='';box.style.width=(zoom*100)+'%';
+ if(sess&&sess.s){const b=document.createElement('button');b.className='widebtn';b.textContent=cl?'▲ 大問のはじめから全部見る':'▼ この設問だけ表示する';b.onclick=toggleWide;box.append(b)}
+ for(let n=from;n<=last;n++){const d=document.createElement('div');d.className='pg';d.dataset.n=n;d.style.aspectRatio=`1 / ${ar}`;d.innerHTML=`<span class="ld">読み込み中…</span><span class="pno">${n}</span>`;
+  if(cl){const r=cl.rg.find(a=>a[0]===n);if(!r||r[2]-r[1]<.02)continue;const t=r[1],b=r[2],x0=cl.cx[0],k=cl.cx[1]-cl.cx[0];const w=document.createElement('div');w.className='clip';w.style.aspectRatio=`1 / ${((b-t)*ar/k).toFixed(4)}`;d.style.width=(100/k).toFixed(3)+'%';d.style.marginLeft=`-${(x0/k*100).toFixed(3)}%`;d.style.marginTop=`-${(t*ar/k*100).toFixed(3)}%`;w.append(d);box.append(w)}else box.append(d);inkAttach(d,'p'+n)}
+ pageObs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)drawPage(doc,e.target)}),{root:$('#pdfPane'),rootMargin:'120% 0px'});
+ box.querySelectorAll('.pg').forEach(p=>pageObs.observe(p))}
+async function drawPage(doc,el){const n=+el.dataset.n,W=el.clientWidth;if(!W)return;const key=n+':'+W;if(el._drawn===key)return;el._drawn=key;
+ let cv=el.querySelector('canvas.pc');if(!cv){cv=document.createElement('canvas');cv.className='pc';el.prepend(cv)}
+ const p=await doc.getPage(n);const v1=p.getViewport({scale:1});const dpr=Math.min(window.devicePixelRatio||1,2);const vp=p.getViewport({scale:W*dpr/v1.width});
+ if(el._task){try{el._task.cancel()}catch(e){}}const off=document.createElement('canvas');off.width=Math.floor(vp.width);off.height=Math.floor(vp.height);
+ el._task=p.render({canvasContext:off.getContext('2d'),viewport:vp});try{await el._task.promise}catch(e){if(el._drawn===key)el._drawn=null;return}
+ cv.width=off.width;cv.height=off.height;cv.getContext('2d').drawImage(off,0,0);
+ renderedPages.set(n,el);if(renderedPages.size>8){/* 遠いページの絵を捨てる */const pane=$('#pdfPane');const mid=pane.scrollTop+pane.clientHeight/2;
+  [...renderedPages.entries()].sort((a,b)=>Math.abs(b[1].offsetTop-mid)-Math.abs(a[1].offsetTop-mid)).slice(0,renderedPages.size-8).forEach(([k,e])=>{const c=e.querySelector('canvas.pc');if(c){c.width=1;c.height=1}e._drawn=null;renderedPages.delete(k)})}}
+/* 回転・画面サイズ変更で冊子を描き直す */
+let rszT=0;addEventListener('resize',()=>{clearTimeout(rszT);rszT=setTimeout(()=>{const box=$('#pages');if(view!=='exam'||!box||!pageObs)return;box.querySelectorAll('.pg').forEach(p=>{pageObs.unobserve(p);pageObs.observe(p)})},200)});
+function setZoom(z){const pane=$('#pdfPane'),box=$('#pages');if(!box)return;const r=pane.scrollTop/(pane.scrollHeight||1);zoom=z;box.style.width=(z*100)+'%';pane.scrollTop=r*pane.scrollHeight;
+ toast(z===1?'等倍':'×'+z);setTimeout(()=>{box.querySelectorAll('.pg').forEach(p=>{pageObs&&pageObs.unobserve(p);pageObs&&pageObs.observe(p)})},60)}
+
+/* ---- 結果 ---- */
+function vResult(){const h=S.hist.find(x=>x.id===arg);if(!h)return'<div class="sheet">記録が見つかりません。</div>';const st=setById(h.set);const qs=h.q?[h.q]:qsOf(st,h.sel);
+ const R=summarize(st,qs,h.ans,scopeItems(st,h));if(h.s)return vSubResult(h,st,R);const pct=Math.round(h.score*100/h.max);
+ const wrong=R.g.filter(r=>!r.ok);const weakQ=qs.map(q=>[q,R.byQ[q]]).sort((a,b)=>a[1][0]/a[1][1]-b[1][0]/b[1][1])[0];
+ return`<div class="stack"><div><button class="btn sm" id="back">← ${h.q?st.short:'ホーム'}</button></div>
+ <div class="sheet stack"><div class="small">${st.name}${h.q?` 第${h.q}問`:'（通し）'}・${fmtDate(h.t)}・${fmtT(h.sec)}</div>
+ ${h.score===h.max?'<div class="perfect">満点！</div>':''}<div class="score"><span class="big">${h.score}</span><span>/ ${h.max}点</span></div>
+ ${h.q?'':`<div class="stack" style="gap:6px">${qs.map(q=>`<div class="trow"><span>第${q}問</span><span class="meter"><i style="width:${R.byQ[q][0]*100/R.byQ[q][1]}%"></i></span><span class="num small">${R.byQ[q][0]}/${R.byQ[q][1]}</span></div>`).join('')}</div>`}
+ <div class="row"><button class="btn pri" id="review">冊子とマークを見直す</button><button class="btn" id="again">もう一度解く</button>${!h.q&&weakQ&&weakQ[1][0]<weakQ[1][1]?`<button class="btn" id="weak">第${weakQ[0]}問だけ解き直す</button>`:''}<button class="btn" id="share">結果をシェア</button></div></div>
+ <div class="sheet stack"><div class="setline"><h3>答え合わせと解説 <span class="chip beta">ベータ</span></h3>${seg('flt',[['all','すべて'],['ng','間違いだけ']],window.__flt||'all')}</div>${subList(st,R,h)}</div></div>`}
+/* 設問ごとの答え合わせ＋解説（タップで開く） */
+function subList(st,R,h){const G={};R.g.forEach(r=>{const k=r.it.q+'.'+r.it.s;(G[k]=G[k]||[]).push(r)});
+ return`<div class="slist">${Object.entries(G).filter(([k,a])=>window.__flt!=='ng'||!a.every(r=>r.ok)).map(([k,a])=>{const[q,sn]=k.split('.').map(Number);const ok=a.every(r=>r.ok);const x=st.subs.find(z=>z.q===q&&z.s===sn);const t=explOf(st,q,sn);
+  return`<details class="sx ${ok?'ok':'ng'}"><summary><span class="mk ${ok?'ok':'ng'}">${ok?'○':'×'}</span><span class="sxt"><b>第${q}問 問${sn}</b>${x?`<span class="small">${FIELDS[x.f][1]}</span>`:''}</span><span class="sxa num">${ok?'':'正解 '+a.map(r=>r.it.a.join('')).join('・')}</span></summary>
+  <div class="ebody">${a.map(r=>`<div class="erow">解答番号 <b class="num">${r.it.boxes.join('・')}</b>　あなた <b class="num">${r.it.boxes.map(b=>h.ans[b]??'－').join('・')}</b>　正解 <b class="num">${r.it.a.join('・')}</b>${r.it.mode==='any'?'（順不同）':''}　${r.it.pts}点</div>`).join('')}${t?`<div class="etext">${explBody(t)}</div>`:'<div class="etext">この設問の解説は準備中です。</div>'}${x?`<button class="btn sm" data-sub="${x.id}">この1問を解き直す</button>`:''}</div></details>`}).join('')||'<p>間違えた問題はありません。</p>'}</div>`}
+const ansTable=(R,h)=>`<table class="rt" style="margin-top:6px"><thead><tr><th>設問</th><th>解答番号</th><th>あなた</th><th>正解</th><th>配点</th><th></th></tr></thead><tbody>
+ ${R.g.map(r=>`<tr><td>${r.it.q}-${r.it.s}</td><td class="num">${r.it.boxes.join(r.it.mode==='any'?'–':'・')}</td><td class="num">${r.it.boxes.map(b=>h.ans[b]??'－').join('・')}</td><td class="num">${r.it.a.join('・')}${r.it.mode==='any'?'<br><span class="small">順不同</span>':''}</td><td class="num">${r.it.pts}</td><td class="${r.ok?'okc':'ngc'}">${r.ok?'○':'×'}</td></tr>`).join('')}</tbody></table>`;
+function vSubResult(h,st,R){const x=subById(h.set+':'+h.q+'.'+h.s);const ok=R.score===R.max;const d=h.rated?Math.round(h.r1)-Math.round(h.r0):0;const tr=h.rated?rTier(Math.round(h.r1)):null;
+ return`<div class="stack"><div><button class="btn sm" id="back">← ${h.rated?'ホーム':x?FIELDS[x.f][1]:'戻る'}</button></div>
+ <div class="sheet stack verdict ${ok?'ok':'ng'}"><div class="vsub">${st.name}　第${h.q}問 問${h.s}${x?`<span class="chip t-${FIELDS[x.f][0]}">${FIELDS[x.f][1]}</span>`:''}</div>
+ <div class="vbig">${ok?'○ 正解':'× 不正解'}</div><div><button class="weakb" id="weakR"></button></div>
+ ${h.rated?`${tr.k>rTier(Math.round(h.r0)).k?`<div class="promo">${tr.name}に昇格！</div>`:''}<div class="ratebox"><span>${rLabel(h.rf)}</span><b class="num">${Math.round(h.r1)}</b><span class="num ${d>=0?'up':'dn'}">${d>=0?'+':''}${d}</span><span class="tierb tb${tr.k}">${tr.name}</span>${tr.hi?`<span class="rkbar2"><i style="width:${(Math.round(h.r1)-tr.lo)*100/(tr.hi-tr.lo)}%"></i></span><span class="small">${tr.next}まで あと${tr.hi-Math.round(h.r1)}</span>`:''}</div>`:''}
+ <button class="btn pri big" id="next">${h.rated?`次の1問（${h.rf?h.rf+'の':''}ランク戦）`:'次の1問'}</button>
+ <div class="row"><button class="btn" id="review">冊子とマークを見直す</button><button class="btn" id="again">もう一度</button><button class="btn" id="share">シェア</button></div></div>
+ <div class="sheet stack"><h3>正解と解説 <span class="chip beta">ベータ</span></h3>${R.g.map(r=>`<div class="erow">解答番号 <b class="num">${r.it.boxes.join('・')}</b>　あなた <b class="num">${r.it.boxes.map(b=>h.ans[b]??'－').join('・')}</b>　正解 <b class="num">${r.it.a.join('・')}</b>${r.it.mode==='any'?'（順不同）':''} <span class="${r.ok?'okc':'ngc'}">${r.ok?'○':'×'}</span></div>`).join('')}<div class="etext">${explOf(st,h.q,h.s)?explBody(explOf(st,h.q,h.s)):'この設問の解説は準備中です。'}</div></div>
+ ${x?(()=>{const f=fieldStat(z=>z.f===x.f);return`<button class="sheet fcard" id="toField"><span class="fhead"><span><span class="chip t-${FIELDS[x.f][0]}">${FIELDS[x.f][0]}</span> <b>${FIELDS[x.f][1]}</b></span><span><span class="num">${f.d}/${f.t}</span>問</span></span>${pbar(f.d,f.t,f.ok)}<span class="small">${f.acc!=null?`正答率 ${f.acc}%　`:''}この分野の問題一覧へ ›</span></button>`})():''}</div>`}
+bind.result=()=>{const h=S.hist.find(x=>x.id===arg);const fl=$('#flt');if(fl)fl.onclick=e=>{const b=e.target.closest('button');if(!b)return;window.__flt=b.dataset.val;render()};document.querySelectorAll('.slist [data-sub]').forEach(b=>b.onclick=()=>startSub(b.dataset.sub));const sx=h&&h.s?subById(h.set+':'+h.q+'.'+h.s):null;
+ $('#back').onclick=()=>h&&h.s?(h.rated||!sx?go('home'):go('tlist',h.fld||sx.f)):go(h&&h.q?'set':'home',h&&h.q?h.set:undefined);if(!h)return;
+ const tf=$('#toField');if(tf)tf.onclick=()=>go('tlist',sx.f);const nx=$('#next');if(nx)nx.onclick=()=>nextPick(h);{const wb=$('#weakR');if(wb){const id=h.set+':'+h.q+'.'+h.s;wkPaint(wb,id);wb.onclick=()=>toggleWeak(id)}}
+ $('#review').onclick=()=>{const keep=sess&&sess.hid===h.id?sess:null;startExam(Object.assign(keep||{ink:{}},{id:h.id,hid:h.id,set:h.set,q:h.q,s:h.s||null,sel:h.sel,ans:h.ans,sec:h.sec,done:true}));S.cur=null;save()};
+ $('#again').onclick=()=>newExam(h.set,h.q,{s:h.s,fld:h.fld});const w=$('#weak');if(w)w.onclick=()=>newExam(h.set,+w.textContent.match(/第(\d)問/)[1]);
+ $('#share').onclick=()=>{const st=setById(h.set);shareOut(h.s?`共テ化学 過去問道場で${st.name} 第${h.q}問 問${h.s}に${h.score===h.max?'正解':'挑戦'}しました${h.rated?`（${rLabel(h.rf)}${Math.round(h.r1)}・${rTier(Math.round(h.r1)).name}）`:''}！ 共通テスト化学の過去問が無料で解けます #共通テスト #化学 #共テ化学`:`共テ化学 過去問道場で${st.name}${h.q?` 第${h.q}問`:''}を解いて ${h.score}/${h.max}点でした！ #共通テスト #化学 #共テ化学`)}};
+function dlPdf(st,k){const f=k==='a'?st.file.replace('-booklet','-ans'):st.file;const name=`共テ化学_${st.y}年度${st.kind}_${k==='a'?'正解表':'問題'}.pdf`;
+ const h=nativeMsg('share');if(h){h.postMessage({id:++shareSeq,file:f,name});return}const a=document.createElement('a');a.href='past/'+f;a.download=name;document.body.append(a);a.click();a.remove()}
+let shareSeq=0;const shareWait={};window.__shareDone=(id,ok)=>{const f=shareWait[id];delete shareWait[id];f&&f(ok)};
+async function shareOut(text){const h=nativeMsg('share');if(h){const id=++shareSeq;return new Promise(res=>{shareWait[id]=res;h.postMessage({id,text})})}
+ if(navigator.share){try{await navigator.share({text})}catch(e){}return}try{await navigator.clipboard.writeText(text);toast('コピーしました')}catch(e){}}
+
+/* ---- 毎日のお知らせ（iOS の通知）。許可は1問解いたあとに聞く ---- */
+const NOTI=()=>nativeMsg('notify');
+function notifSync(){const h=NOTI();if(!h||!S.notif)return;h.postMessage({act:'schedule',hour:S.notifH||20,done:todayN()>0,streak:streak()})}
+function askNotif(){const h=NOTI();if(!h||S.notif!=null)return;setTimeout(()=>{if(confirm(`毎日夜${S.notifH||20}時に「今日の1問、やりませんか？」とお知らせしますか？\n（あとでマイページから変えられます）`))h.postMessage({act:'request',hour:S.notifH||20,done:true,streak:streak()});else{S.notif=false;save()}},1200)}
+window.__notifResult=ok=>{S.notif=!!ok;save();toast(ok?'毎日お知らせします':'通知がオフになっています（iPhoneの「設定」→ 通知 から変えられます）');if(view==='settings')render()};
+window.__notifOff=()=>{S.notif=false;save()};
+
+/* ---- 成績 ---- */
+function vStats(){const H=S.hist;
+ const avg=H.length?Math.round(H.reduce((a,h)=>a+h.score/h.max,0)*100/H.length):null;const sec=Object.values(S.days).reduce((a,b)=>a+b,0);
+ const rk=window.__rk||'wq';
+ return`<div class="stack"><h2 class="pageh">成績</h2>
+ ${RANK_ON?`<div class="sheet stack rkcard"><div class="rkhead"><h3>みんなのランキング</h3>${S.social===false?'':`<button class="linkb" id="rkName">${esc(myName())} ✎</button>`}</div>
+  ${seg('rkSeg',Object.keys(RK).map(k=>[k,RK[k][0]]),rk)}
+  <div id="rank">${S.social===false?'<p class="note">ランキングに参加していません。</p><div><button class="btn sm" id="rkJoin">参加する</button></div>':'<p class="note">読み込み中…</p>'}</div></div>`:''}
+ <div class="tiles tiles3">
+ <div class="tile"><div class="v">${H.length}<small>回</small></div><div class="l">解いた回数</div></div>
+ <div class="tile"><div class="v">${avg!=null?avg+'<small>%</small>':'－'}</div><div class="l">平均得点率</div></div>
+ <div class="tile"><div class="v">${Math.round(sec/60)}<small>分</small></div><div class="l">勉強時間</div></div></div>
+ <div class="sheet stack"><h3>分野ごとの正答率</h3>${Object.keys(BIGF).map(b=>{const f=fieldStat(x=>FIELDS[x.f][0]===b);return`<button class="frow fbig" data-big="${b}"><span class="chip t-${b}">${b}</span>${pbar(f.d,f.t,f.ok)}<span class="num">${f.acc!=null?f.acc+'%':'－'}</span></button>`}).join('')}
+ <p class="note">緑は正解、赤は不正解の割合。タップすると分野別へ。</p></div>
+ <details class="sheet"><summary><b>これまでの記録</b> <span class="small muted">${H.length}件</span></summary>${H.length?H.slice(0,60).map(h=>{const st=setById(h.set);return st?`<div class="hrow" data-h="${h.id}"><span><b>${st.short}${h.q?` 第${h.q}問`:'（通し）'}${h.s?` 問${h.s}`:''}</b>${h.rated?` <span class="chip">${h.rf?h.rf+'ランク戦':'ランク戦'}</span>`:''}<br><span class="small muted">${fmtDate(h.t)}・${fmtT(h.sec)}</span></span><span class="s">${h.score}<small class="muted">/${h.max}</small></span></div>`:''}).join(''):'<p class="note" style="margin-top:6px">まだ記録がありません。「過去問」から解いてみましょう。</p>'}</details></div>`}
+bind.stats=()=>{document.querySelectorAll('[data-h]').forEach(r=>r.onclick=()=>go('result',r.dataset.h));document.querySelectorAll('[data-big]').forEach(b=>b.onclick=()=>go('field',b.dataset.big));
+ if($('#rkSeg'))$('#rkSeg').onclick=e=>{const b=e.target.closest('button');if(!b)return;window.__rk=b.dataset.val;render()};
+ {const n=$('#rkName');if(n)n.onclick=()=>{go('settings');setTimeout(()=>{const x=$('#nick');if(x){x.focus();x.scrollIntoView({block:'center'})}},50)}}
+ {const j=$('#rkJoin');if(j)j.onclick=()=>{S.social=true;save();render()}}
+ if(RANK_ON&&S.social!==false)loadRank()};
+
+/* ---- ランキング（Firebase 匿名認証） ---- */
+/* ランキング：Firestore のルールで chemUsers を許可したら true にする */
+const RANK_ON=true;
+/* ランキングの種類：[タブ名, 単位, Firestoreの項目, 自分の値, 0件のときの案内] */
+const RK={wq:['今週',' 個',()=>'wq_'+isoWeek(),()=>weekMarks(),'今週マークするとランキングに載ります。'],rate:['ランク','',()=>'rate',()=>S.rate==null?0:Math.round(S.rate),'ランク戦で1問解くと載ります。'],best:['通しベスト',' 点',()=>'best',()=>bestAll(),'通しで解くと載ります。']};
+const monday=()=>{const m=new Date();m.setHours(0,0,0,0);m.setDate(m.getDate()-((m.getDay()+6)%7));return m.getTime()};
+const weekMarks=()=>S.hist.filter(h=>h.t>=monday()).reduce((a,h)=>a+(h.n||0),0);
+const bestAll=()=>{const f=S.hist.filter(h=>!h.q);return f.length?Math.max(...f.map(h=>Math.round(h.score*100/h.max))):0};
+const FB={key:'AIzaSyCnUr1nrOJgKsnLbHBYeiruQwNiJDY3MQc',proj:'kyotest-listening',col:'chemUsers'};
+const FS=`https://firestore.googleapis.com/v1/projects/${FB.proj}/databases/(default)/documents`;
+const isoWeek=(d=new Date())=>{const t=new Date(Date.UTC(d.getFullYear(),d.getMonth(),d.getDate()));const day=t.getUTCDay()||7;t.setUTCDate(t.getUTCDate()+4-day);const y=t.getUTCFullYear();const w=Math.ceil(((t-Date.UTC(y,0,1))/864e5+1)/7);return y+'W'+String(w).padStart(2,'0')};
+const myName=()=>(S.nick||'').trim()||('ゲスト'+String((S.fb&&S.fb.uid)||'0000').slice(-4));
+async function fbToken(){S.fb=S.fb||{};const f=S.fb;if(f.tok&&f.exp>Date.now()+60000)return f.tok;let r;
+ if(f.refresh){r=await fetch(`https://securetoken.googleapis.com/v1/token?key=${FB.key}`,{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:'grant_type=refresh_token&refresh_token='+encodeURIComponent(f.refresh)});
+  if(r.ok){const j=await r.json();f.tok=j.id_token;f.refresh=j.refresh_token;f.uid=j.user_id;f.exp=Date.now()+(+j.expires_in)*1000;save();return f.tok}}
+ r=await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${FB.key}`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({returnSecureToken:true})});
+ if(!r.ok)throw new Error('auth');const j=await r.json();f.tok=j.idToken;f.refresh=j.refreshToken;f.uid=j.localId;f.exp=Date.now()+(+j.expiresIn)*1000;save();return f.tok}
+async function fsFetch(path,opt={}){const t=await fbToken();const r=await fetch(FS+path,Object.assign({},opt,{headers:{'Content-Type':'application/json',Authorization:'Bearer '+t}}));if(!r.ok)throw new Error('fs '+r.status);return r.json()}
+const fv=v=>typeof v==='string'?{stringValue:v}:{integerValue:String(Math.round(v))};
+const fget=x=>x?(x.stringValue??(x.integerValue!=null?+x.integerValue:x.doubleValue??null)):null;
+async function fbSync(force){if(!RANK_ON||S.social===false||!navigator.onLine||!S.hist.length)return;if(!force&&Date.now()-(fbSync.t||0)<90000)return;fbSync.t=Date.now();
+ try{await fbToken();const wk=isoWeek();
+  const fields={nick:fv(myName()),['wq_'+wk]:fv(weekMarks()),best:fv(bestAll()),rate:fv(RK.rate[3]()),updated:{timestampValue:new Date().toISOString()}};
+  await fsFetch(`/${FB.col}/${S.fb.uid}?`+Object.keys(fields).map(k=>'updateMask.fieldPaths='+k).join('&'),{method:'PATCH',body:JSON.stringify({fields})});fbSync.err=null}catch(e){fbSync.err=String(e)}}
+async function loadRank(){const el=$('#rank');if(!el)return;if(!navigator.onLine){el.innerHTML='<p class="note">オフラインのため表示できません。</p>';return}
+ const rb=window.__rk||'wq',K=RK[rb],fld=K[2](),u=K[1],myV=K[3](),me=S.fb&&S.fb.uid;
+ const flt=(op,v)=>({fieldFilter:{field:{fieldPath:fld},op,value:{integerValue:String(v)}}});
+ const cnt=async(op,v)=>{const r=await fsFetch(':runAggregationQuery',{method:'POST',body:JSON.stringify({structuredAggregationQuery:{structuredQuery:{from:[{collectionId:FB.col}],where:flt(op,v)},aggregations:[{alias:'n',count:{}}]}})});return +(r[0]&&r[0].result&&r[0].result.aggregateFields.n.integerValue||0)};
+ try{if(S.hist.length)await fbSync(true);const L=30;
+  const res=await fsFetch(':runQuery',{method:'POST',body:JSON.stringify({structuredQuery:{from:[{collectionId:FB.col}],where:flt('GREATER_THAN',0),orderBy:[{field:{fieldPath:fld},direction:'DESCENDING'}],limit:L}})});
+  const rows=res.filter(x=>x.document&&x.document.fields).map(x=>({uid:x.document.name.split('/').pop(),nick:fget(x.document.fields.nick),v:fget(x.document.fields[fld])||0})).filter(r=>r.v>0);
+  const full=rows.length<L;
+  const rankOf=v=>rows.filter(r=>r.v>v).length+1;
+  const myRank=myV>0?(full||rows.length&&myV>=rows[rows.length-1].v?rankOf(myV):await cnt('GREATER_THAN',myV)+1):null;
+  const top=rows.length?rows[0].v:Math.max(myV,1);
+  const row=(r,k,mine)=>`<div class="rk2${mine?' me':''}"><span class="rkno${k<=3?' t'+k:''}">${k}</span><span class="rkn">${esc(r.nick||'ゲスト')}</span><span class="rbar"><i style="width:${Math.max(3,Math.round(r.v*100/top))}%"></i></span><span class="rkval num">${r.v}<small>${u.trim()}</small></span></div>`;
+  const shown=rows.slice(0,10);const inTop=shown.some(r=>r.uid===me);
+  if(!$('#rank'))return;
+  $('#rank').innerHTML=`<div class="rkme"><div class="rkpos">${myRank?`<b class="num">${myRank}</b><span>位</span>`:'<b>－</b>'}</div>
+   <div class="rkmine">${myV>0?`<span class="small muted">あなたの記録</span><b class="num">${myV}<small>${u.trim()}</small></b><span class="rbar"><i style="width:${Math.max(3,Math.round(myV*100/Math.max(top,myV)))}%"></i></span>${myRank>1?`<span class="small muted">1位まで あと ${top-myV}${u.trim()}</span>`:myRank===1?'<span class="small muted">いま1位です！</span>':''}`:`<span class="small">${K[4]}</span>`}</div></div>
+   ${shown.length?`<div class="rklist">${shown.map(r=>row(r,rankOf(r.v),r.uid===me)).join('')}${!inTop&&myV>0?`<div class="rkgap">⋮</div>${row({nick:myName(),v:myV},myRank,true)}`:''}</div>`:'<p class="note">まだだれも載っていません。最初の1人になろう。</p>'}
+   ${rb==='wq'?'<p class="note" style="margin-top:6px">今週の記録は毎週月曜にリセットされます。</p>':''}`}
+ catch(e){const r=$('#rank');if(r)r.innerHTML='<p class="note">いまは表示できません。時間をおいて開き直してください。</p>'}}
+document.addEventListener('visibilitychange',()=>{if(document.hidden){if(sess&&!sess.done){S.cur=sess}saveNow()}});
+
+/* ---- マイページ ---- */
+function vSettings(){return`<div class="stack">${tip('my','ニックネーム、毎日のお知らせ、記録の引き継ぎ、問題冊子のダウンロードはここから。')}
+${RANK_ON?` <div class="sheet stack"><h3>プロフィール</h3><label class="setline"><b>ニックネーム</b><input type="text" id="nick" maxlength="16" placeholder="例：たろう" value="${esc(S.nick||'')}" style="max-width:55%"></label>
+ <div class="setline"><div><b>ランキングに参加</b></div>${seg('socSeg',[['on','参加'],['off','しない']],S.social===false?'off':'on')}</div></div>`:''}
+ <div class="sheet stack"><h3>アカウント・データの引き継ぎ</h3><p class="lead" style="font-size:.88rem">記録はこの端末の中に保存されます。機種変更や iPad との共有は「書き出す」で保存したファイルを、新しい端末で「読み込む」と引き継げます。</p>
+ <div class="row"><button class="btn sm" id="exp">記録を書き出す</button><button class="btn sm" id="imp">記録を読み込む</button><input type="file" id="impF" accept=".json,application/json" hidden></div></div>
+ <div class="sheet stack"><h3>ダウンロード（問題冊子・正解表）</h3>${SETS.map(st=>`<div class="dlrow"><b>${st.name}</b><span class="row"><button class="btn sm" data-dl="${st.id}:q">問題</button><button class="btn sm" data-dl="${st.id}:a">正解</button></span></div>`).join('')}</div>
+${NOTI()?` <div class="sheet stack"><h3>お知らせ</h3><div class="setline"><div><b>毎日のお知らせ</b></div>${seg('ntSeg',[['on','受け取る'],['off','オフ']],S.notif?'on':'off')}</div>
+ ${S.notif?`<div class="setline"><b>時間</b>${seg('ntH',[['7','朝7時'],['17','17時'],['20','20時'],['22','22時']],String(S.notifH||20))}</div>`:''}</div>`:''}
+ <div class="sheet stack"><h3>演習</h3><div class="setline"><div><b>残り時間を表示</b></div>${seg('tmSeg',[['on','表示'],['off','経過時間']],S.set.timer?'on':'off')}</div>
+ <div class="setline"><b>効果音</b>${seg('sdSeg',[['on','鳴らす'],['off','消す']],S.set.sound?'on':'off')}</div></div>
+ <div class="sheet stack"><h3>サポート</h3><div class="row"><button class="btn sm" id="howto">使い方</button><button class="btn sm" id="rateApp">アプリを評価する</button><button class="btn sm" id="feedback">ご意見・不具合報告</button></div>
+ <p class="note">収録：共通テスト「化学」2021〜2026年度の全12回（本試験・追試験、2021年度は第1日程・第2日程）。問題・正解は大学入試センターの公表資料です。分野はアプリによる大まかな分類です。本アプリは大学入試センターとは関係のない個人の学習用アプリです。</p></div>
+ <div class="sheet stack"><h3>データ</h3><div><button class="btn sm" id="resetAll">${confirmDel?'本当に成績を消す（元に戻せません）':'成績をリセット'}</button></div></div></div>`}
+bind.settings=()=>{document.querySelectorAll('[data-dl]').forEach(b=>b.onclick=()=>{const[i,k]=b.dataset.dl.split(':');dlPdf(setById(i),k)});
+ $('#exp').onclick=()=>{const d=new Date();const name=`共テ化学_記録_${d.getFullYear()}${String(d.getMonth()+1).padStart(2,'0')}${String(d.getDate()).padStart(2,'0')}.json`;
+  const txt=JSON.stringify({app:'kyochem',v:1,at:Date.now(),data:Object.assign({},S,{fb:undefined,cur:null})});const h=nativeMsg('share');
+  if(h){h.postMessage({id:++shareSeq,fileText:txt,name});return}const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([txt],{type:'application/json'}));a.download=name;document.body.append(a);a.click();a.remove()};
+ $('#imp').onclick=()=>$('#impF').click();
+ $('#impF').onchange=async e=>{const f=e.target.files[0];e.target.value='';if(!f)return;try{const j=JSON.parse(await f.text());if(j.app!=='kyochem'||!j.data||!Array.isArray(j.data.hist))throw 0;
+  if(!confirm(`記録${j.data.hist.length}件を読み込みます。いまの記録は置き換わります。よろしいですか？`))return;const fb=S.fb;S=Object.assign(JSON.parse(JSON.stringify(DEF)),j.data,{fb});saveNow();toast('記録を読み込みました');render()}catch(_){alert('このファイルは読み込めません。「記録を書き出す」で作ったファイルを選んでください。')}};
+ if($('#nick'))$('#nick').onchange=e=>{S.nick=e.target.value.trim().slice(0,16);save();fbSync(true);toast('ニックネームを保存しました')};
+ if($('#socSeg'))$('#socSeg').onclick=e=>{const b=e.target.closest('button');if(!b)return;S.social=b.dataset.val==='on';save();if(S.social)fbSync(true);else if(S.fb&&S.fb.uid)fsFetch(`/${FB.col}/${S.fb.uid}`,{method:'DELETE'}).catch(()=>{});render()};
+ $('#sdSeg').onclick=e=>{const b=e.target.closest('button');if(!b)return;S.set.sound=b.dataset.val==='on';save();if(S.set.sound)snd('done');render()};
+ if($('#ntSeg'))$('#ntSeg').onclick=e=>{const b=e.target.closest('button');if(!b)return;const h=NOTI();if(b.dataset.val==='on')h.postMessage({act:'request',hour:S.notifH||20,done:todayN()>0,streak:streak()});else{h.postMessage({act:'off'});S.notif=false;save();render()}};
+ if($('#ntH'))$('#ntH').onclick=e=>{const b=e.target.closest('button');if(!b)return;S.notifH=+b.dataset.val;save();notifSync();render()};
+ $('#tmSeg').onclick=e=>{const b=e.target.closest('button');if(!b)return;S.set.timer=b.dataset.val==='on';save();render()};
+ $('#howto').onclick=()=>{S.tut=0;save();go('home')};
+ $('#rateApp').onclick=()=>{const h=nativeMsg('review');if(h)h.postMessage({});else toast('App Storeで評価できます')};
+ $('#feedback').onclick=()=>{const u=SITE_URL+'/support.html';const h=nativeMsg('openURL');if(h)h.postMessage({url:u});else window.open(u,'_blank')};
+ $('#resetAll').onclick=()=>{if(!confirmDel){confirmDel=true;render();return}confirmDel=false;S.hist=[];S.days={};S.cur=null;S.rate=null;S.rateBest=0;saveNow();toast('成績をリセットしました');render()}};
+
+render();setTimeout(notifSync,3000);
+</script>
+</body></html>
